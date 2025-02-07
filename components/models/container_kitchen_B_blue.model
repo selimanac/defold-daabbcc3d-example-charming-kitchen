@@ -1,0 +1,10 @@
+mesh: "/assets/models/container_kitchen_B_blue.gltf"
+name: "container_kitchen_B_blue"
+materials {
+  name: "tiny_treats_1"
+  material: "/components/materials/model.material"
+  textures {
+    sampler: "tex0"
+    texture: "/assets/textures/tiny_treats_texture_1.png"
+  }
+}

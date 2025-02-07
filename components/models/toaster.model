@@ -1,0 +1,10 @@
+mesh: "/assets/models/toaster.gltf"
+name: "toaster"
+materials {
+  name: "tiny_treats_1"
+  material: "/components/materials/model.material"
+  textures {
+    sampler: "tex0"
+    texture: "/assets/textures/tiny_treats_texture_1.png"
+  }
+}

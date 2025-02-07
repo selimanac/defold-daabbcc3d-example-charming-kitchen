@@ -1,0 +1,10 @@
+mesh: "/builtins/assets/meshes/cube.dae"
+name: "blank"
+materials {
+  name: "default"
+  material: "/components/materials/blank.material"
+  textures {
+    sampler: "tex0"
+    texture: "/assets/textures/pink.png"
+  }
+}

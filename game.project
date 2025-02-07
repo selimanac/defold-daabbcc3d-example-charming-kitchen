@@ -1,0 +1,30 @@
+[bootstrap]
+main_collection = /scenes/main.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 1280
+height = 720
+high_dpi = 1
+
+[android]
+input_method = HiddenInputField
+
+[html5]
+scale_mode = stretch
+
+[project]
+title = defold-daabbcc3d-tiny-treats
+custom_resources = /assets/models/output.json
+dependencies#0 = https://github.com/selimanac/defold-daabbcc3d/archive/refs/heads/main.zip
+
+[native_extension]
+app_manifest = /test.appmanifest
+
+[daabbcc]
+max_group_count = 3
+max_gameobject_count = 128
+max_query_result_count = 32
+

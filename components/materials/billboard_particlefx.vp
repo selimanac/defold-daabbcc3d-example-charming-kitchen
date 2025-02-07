@@ -1,0 +1,19 @@
+// positions are in world space
+attribute mediump vec3 position;
+attribute mediump vec2 texcoord0;
+attribute lowp vec4 color;
+
+attribute mediump vec3 local_position;
+
+uniform mediump mat4 view_proj;
+uniform mediump mat4 mtx_proj;
+
+varying mediump vec2 var_texcoord0;
+varying lowp vec4 var_color;
+
+void main()
+{
+    gl_Position = (view_proj * vec4(position.xyz - local_position.xyz, 1.0)) + (mtx_proj * vec4(local_position.xy, 0.0, 0.0));
+    var_texcoord0 = texcoord0;
+    var_color = vec4(color.rgb * color.a, color.a);
+}
