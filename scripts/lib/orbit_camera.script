@@ -10,14 +10,17 @@ go.property("angle_y", 45)
 go.property("angle_min", -30)
 go.property("angle_max", 45)
 
+
+local libcamera = require("scripts.lib.libcamera")
+
 local function set_camera(self)
 	self.center = self.target ~= hash("") and go.get_world_position(self.target) or vmath.vector3(0)
 
-	local rot = vmath.quat_rotation_y(self.angle_y) * vmath.quat_rotation_x(self.angle_x)
-	local pos = vmath.rotate(rot, vmath.vector3(0, 0, self.distance)) + self.center
+	libcamera.rotation = vmath.quat_rotation_y(self.angle_y) * vmath.quat_rotation_x(self.angle_x)
+	libcamera.position = vmath.rotate(libcamera.rotation, vmath.vector3(0, 0, self.distance)) + self.center
 
-	go.set_rotation(rot)
-	go.set_position(pos)
+	go.set_rotation(libcamera.rotation)
+	go.set_position(libcamera.position)
 end
 
 function init(self)

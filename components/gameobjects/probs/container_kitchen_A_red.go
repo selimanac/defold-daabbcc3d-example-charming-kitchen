@@ -1,0 +1,4 @@
+components {
+  id: "container_kitchen_A_red"
+  component: "/components/models/probs/container_kitchen_A_red.model"
+}

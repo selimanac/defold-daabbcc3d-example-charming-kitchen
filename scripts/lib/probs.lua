@@ -1,4 +1,7 @@
+local data = require("scripts.lib.data")
+
 local probs = {}
+
 
 function probs.init()
 	local json_data, error = sys.load_resource("/assets/models/output.json")
@@ -13,8 +16,8 @@ function probs.init()
 		return
 	end
 
-	local probs_data = json.decode(json_data)
-	pprint(probs_data)
+	data.probs = json.decode(json_data)
+	--pprint(data.probs)
 end
 
 return probs

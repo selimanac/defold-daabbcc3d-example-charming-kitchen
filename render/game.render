@@ -1,0 +1,5 @@
+script: "/render/game.render_script"
+render_resources {
+  name: "shadow_pass"
+  path: "/components/materials/shadow_pass.material"
+}

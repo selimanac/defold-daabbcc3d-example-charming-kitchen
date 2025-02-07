@@ -1,5 +1,6 @@
 [bootstrap]
-main_collection = /scenes/main.collectionc
+main_collection = /scenes/test.collectionc
+render = /render/game.renderc
 
 [script]
 shared_state = 1
@@ -8,6 +9,7 @@ shared_state = 1
 width = 1280
 height = 720
 high_dpi = 1
+samples = 2
 
 [android]
 input_method = HiddenInputField

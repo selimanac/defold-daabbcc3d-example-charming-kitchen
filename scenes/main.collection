@@ -1,15 +1,4 @@
 name: "main"
-instances {
-  id: "factories"
-  prototype: "/components/factories.go"
-}
-collection_instances {
-  id: "wall_tiles_kitchen_corner_inner"
-  collection: "/components/collections/wall_tiles_kitchen_corner_inner.collection"
-  position {
-    z: 7.0
-  }
-}
 scale_along_z: 0
 embedded_instances {
   id: "camera"

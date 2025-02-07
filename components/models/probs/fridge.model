@@ -1,0 +1,10 @@
+mesh: "/assets/models/fridge.gltf"
+name: "fridge"
+materials {
+  name: "default"
+  material: "/components/materials/model.material"
+  textures {
+    sampler: "tex0"
+    texture: "/assets/textures/tiny_treats_texture_1.png"
+  }
+}
