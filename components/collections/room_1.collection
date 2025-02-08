@@ -1,0 +1,154 @@
+name: "base"
+instances {
+  id: "wall_tiles_kitchen_straight"
+  prototype: "/components/gameobjects/probs/wall_tiles_kitchen_straight.go"
+  position {
+    x: 3.0
+  }
+}
+instances {
+  id: "wall_tiles_kitchen_corner_inner"
+  prototype: "/components/gameobjects/probs/wall_tiles_kitchen_corner_inner.go"
+}
+instances {
+  id: "wall_tiles_kitchen_straight1"
+  prototype: "/components/gameobjects/probs/wall_tiles_kitchen_straight.go"
+  position {
+    x: 5.0
+  }
+}
+instances {
+  id: "wall_tiles_kitchen_straight2"
+  prototype: "/components/gameobjects/probs/wall_tiles_kitchen_straight.go"
+  position {
+    z: 3.0
+  }
+  rotation {
+    y: 0.70710677
+    w: 0.70710677
+  }
+}
+instances {
+  id: "floor_tiles_kitchen"
+  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  position {
+    x: 1.0
+    y: -0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "floor_tiles_kitchen1"
+  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  position {
+    x: 3.0
+    y: -0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "floor_tiles_kitchen2"
+  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  position {
+    x: 5.0
+    y: -0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "floor_tiles_kitchen3"
+  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  position {
+    x: 1.0
+    y: -0.5
+    z: 3.0
+  }
+}
+instances {
+  id: "floor_tiles_kitchen4"
+  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  position {
+    x: 3.0
+    y: -0.5
+    z: 3.0
+  }
+}
+instances {
+  id: "floor_tiles_kitchen5"
+  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  position {
+    x: 5.0
+    y: -0.5
+    z: 3.0
+  }
+}
+instances {
+  id: "collider_ground"
+  prototype: "/components/gameobjects/blank.go"
+  position {
+    x: 3.0
+    y: -0.25
+    z: 2.0
+  }
+  scale3 {
+    x: 6.0
+    y: 0.5
+    z: 4.0
+  }
+}
+instances {
+  id: "collider_wall_1"
+  prototype: "/components/gameobjects/blank.go"
+  position {
+    x: 3.0
+    y: 2.0
+  }
+  scale3 {
+    x: 6.0
+    y: 4.0
+    z: 0.5
+  }
+}
+instances {
+  id: "collider_wall_2"
+  prototype: "/components/gameobjects/blank.go"
+  position {
+    y: 2.0
+    z: 2.0
+  }
+  scale3 {
+    x: 0.5
+    y: 4.0
+    z: 4.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "walls"
+  children: "wall_tiles_kitchen_corner_inner"
+  children: "wall_tiles_kitchen_straight"
+  children: "wall_tiles_kitchen_straight1"
+  children: "wall_tiles_kitchen_straight2"
+  data: ""
+}
+embedded_instances {
+  id: "floor"
+  children: "floor_tiles_kitchen"
+  children: "floor_tiles_kitchen1"
+  children: "floor_tiles_kitchen2"
+  children: "floor_tiles_kitchen3"
+  children: "floor_tiles_kitchen4"
+  children: "floor_tiles_kitchen5"
+  data: ""
+}
+embedded_instances {
+  id: "container"
+  data: ""
+}
+embedded_instances {
+  id: "colliders"
+  children: "collider_ground"
+  children: "collider_wall_1"
+  children: "collider_wall_2"
+  data: ""
+}

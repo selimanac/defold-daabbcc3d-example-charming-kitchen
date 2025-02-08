@@ -21,7 +21,8 @@
             -5.960464477539062e-07,
             -0.8250000178813934,
             0.14999999105930328
-        ]
+        ],
+        "factory": "/prob_factories#blinds_kitchen"
     },
     "cuttingboard": {
         "size": [
@@ -45,7 +46,8 @@
             0.1499999761581421,
             0.04999999515712261,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#cuttingboard"
     },
     "toaster": {
         "size": [
@@ -69,7 +71,8 @@
             0.030711039900779724,
             0.30000515282154083,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#toaster"
     },
     "wall_papertowel_holder": {
         "size": [
@@ -93,7 +96,8 @@
             0.0,
             -0.08749999105930328,
             0.24500004202127457
-        ]
+        ],
+        "factory": "/prob_factories#wall_papertowel_holder"
     },
     "dishrack": {
         "size": [
@@ -117,7 +121,8 @@
             0.0,
             0.24999124556779861,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#dishrack"
     },
     "kettle": {
         "size": [
@@ -141,7 +146,8 @@
             -0.02734796702861786,
             0.2976040840148926,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#kettle"
     },
     "container_kitchen_B_red": {
         "size": [
@@ -165,7 +171,8 @@
             -8.32974910736084e-06,
             0.19976073503494263,
             5.960464477539063e-08
-        ]
+        ],
+        "factory": "/prob_factories#container_kitchen_B_red"
     },
     "floor_tiles_kitchen": {
         "size": [
@@ -189,7 +196,8 @@
             0.0,
             0.25,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#floor_tiles_kitchen"
     },
     "wall_cabinet_single_left": {
         "size": [
@@ -213,7 +221,8 @@
             7.450580596923828e-07,
             0.5,
             0.4999999552965164
-        ]
+        ],
+        "factory": "/prob_factories#wall_cabinet_single_left"
     },
     "mug_red": {
         "size": [
@@ -237,7 +246,8 @@
             0.06967290490865707,
             0.17500001192092896,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#mug_red"
     },
     "wall_tiles_kitchen_doorway": {
         "size": [
@@ -261,7 +271,8 @@
             0.8000001002351098,
             1.4000000953674316,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#wall_tiles_kitchen_doorway"
     },
     "countertop_sink": {
         "size": [
@@ -285,7 +296,8 @@
             0.0,
             0.8789379000663757,
             0.0006733834743499756
-        ]
+        ],
+        "factory": "/prob_factories#countertop_sink"
     },
     "countertop_straight_B": {
         "size": [
@@ -309,7 +321,8 @@
             0.0,
             0.5,
             0.0006733834743499756
-        ]
+        ],
+        "factory": "/prob_factories#countertop_straight_B"
     },
     "container_kitchen_A_white": {
         "size": [
@@ -333,7 +346,8 @@
             -8.32974910736084e-06,
             0.26642724871635437,
             5.960464477539063e-08
-        ]
+        ],
+        "factory": "/prob_factories#container_kitchen_A_white"
     },
     "wall_shelf_kitchen_hooks": {
         "size": [
@@ -357,7 +371,8 @@
             2.9802322387695312e-08,
             -0.25,
             0.3499999423815243
-        ]
+        ],
+        "factory": "/prob_factories#wall_shelf_kitchen_hooks"
     },
     "container_kitchen_A_blue": {
         "size": [
@@ -381,7 +396,8 @@
             -8.32974910736084e-06,
             0.26642724871635437,
             5.960464477539063e-08
-        ]
+        ],
+        "factory": "/prob_factories#container_kitchen_A_blue"
     },
     "spoon": {
         "size": [
@@ -405,31 +421,33 @@
             4.328787326812744e-06,
             0.2975827008485794,
             0.0002088751643896103
-        ]
+        ],
+        "factory": "/prob_factories#spoon"
     },
     "fridge": {
         "size": [
-            2.0,
-            1.0014891624450684,
-            0.6692019551992416
+            2.040000557899475,
+            3,
+            1.6163798570632935
         ],
         "aabb": {
             "min": [
-                -1.9366025924682617,
-                -0.06339740753173828,
-                1.4901161193847656e-08
+                -1,
+                0,
+                -0.5
             ],
             "max": [
-                0.06339740753173828,
-                0.9380917549133301,
-                0.6692019701004028
+                1.040000557899475,
+                3,
+                1.1163798570632935
             ]
         },
         "offset": [
-            -0.9366025924682617,
-            0.4373471736907959,
-            0.334600992500782
-        ]
+            0.02000027894973755,
+            1.5,
+            0.30818992853164673
+        ],
+        "factory": "/prob_factories#fridge"
     },
     "wall_cabinet_single_right": {
         "size": [
@@ -453,7 +471,8 @@
             -7.152557373046875e-07,
             0.5,
             0.4999999552965164
-        ]
+        ],
+        "factory": "/prob_factories#wall_cabinet_single_right"
     },
     "wall_shelf_kitchen_hooks_decorated": {
         "size": [
@@ -477,7 +496,8 @@
             2.9802322387695312e-08,
             -0.40162211656570435,
             0.3499999423815243
-        ]
+        ],
+        "factory": "/prob_factories#wall_shelf_kitchen_hooks_decorated"
     },
     "countertop_counter_outer": {
         "size": [
@@ -501,7 +521,8 @@
             3.0994415283203125e-06,
             0.5,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#countertop_counter_outer"
     },
     "countertop_single": {
         "size": [
@@ -525,7 +546,8 @@
             0.0,
             0.5,
             0.0006733834743499756
-        ]
+        ],
+        "factory": "/prob_factories#countertop_single"
     },
     "wall_plain_kitchen_corner_inner": {
         "size": [
@@ -549,7 +571,8 @@
             0.875144898891449,
             2.0,
             0.8751453533768654
-        ]
+        ],
+        "factory": "/prob_factories#wall_plain_kitchen_corner_inner"
     },
     "countertop_straight_C": {
         "size": [
@@ -573,7 +596,8 @@
             0.0,
             0.5,
             0.0006733834743499756
-        ]
+        ],
+        "factory": "/prob_factories#countertop_straight_C"
     },
     "wall_tiles_kitchen_corner_outer": {
         "size": [
@@ -597,7 +621,8 @@
             0.874710276722908,
             2.0,
             0.8747099488973618
-        ]
+        ],
+        "factory": "/prob_factories#wall_tiles_kitchen_corner_outer"
     },
     "countertop_corner_inner": {
         "size": [
@@ -621,7 +646,8 @@
             0.1250000298023224,
             0.5,
             0.12499997019767761
-        ]
+        ],
+        "factory": "/prob_factories#countertop_corner_inner"
     },
     "lid": {
         "size": [
@@ -645,7 +671,8 @@
             0.0,
             0.10525263845920563,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#lid"
     },
     "utensils_cup": {
         "size": [
@@ -669,7 +696,8 @@
             -0.027708202600479126,
             0.4162455201148987,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#utensils_cup"
     },
     "oven_glove": {
         "size": [
@@ -693,7 +721,8 @@
             -0.05934278666973114,
             7.450580596923828e-09,
             0.03314315527677536
-        ]
+        ],
+        "factory": "/prob_factories#oven_glove"
     },
     "wall_shelf_kitchen": {
         "size": [
@@ -717,7 +746,8 @@
             2.9802322387695312e-08,
             -0.25,
             0.3499999423815243
-        ]
+        ],
+        "factory": "/prob_factories#wall_shelf_kitchen"
     },
     "container_kitchen_A_red": {
         "size": [
@@ -741,7 +771,8 @@
             -8.32974910736084e-06,
             0.26642724871635437,
             5.960464477539063e-08
-        ]
+        ],
+        "factory": "/prob_factories#container_kitchen_A_red"
     },
     "papertowel_holder": {
         "size": [
@@ -765,7 +796,8 @@
             0.0,
             0.4000001400709152,
             0.03750152140855789
-        ]
+        ],
+        "factory": "/prob_factories#papertowel_holder"
     },
     "pot": {
         "size": [
@@ -789,7 +821,8 @@
             2.9802322387695312e-08,
             0.19999998807907104,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#pot"
     },
     "pan": {
         "size": [
@@ -813,7 +846,8 @@
             -3.725290298461914e-07,
             0.10000000149011612,
             0.15156175196170807
-        ]
+        ],
+        "factory": "/prob_factories#pan"
     },
     "container_kitchen_B_blue": {
         "size": [
@@ -837,7 +871,8 @@
             -8.32974910736084e-06,
             0.19976073503494263,
             5.960464477539063e-08
-        ]
+        ],
+        "factory": "/prob_factories#container_kitchen_B_blue"
     },
     "wall_tiles_kitchen_corner_inner": {
         "size": [
@@ -861,7 +896,8 @@
             0.8751449584960938,
             2.0,
             0.8751453533768654
-        ]
+        ],
+        "factory": "/prob_factories#wall_tiles_kitchen_corner_inner"
     },
     "container_kitchen_B_white": {
         "size": [
@@ -885,7 +921,8 @@
             -8.32974910736084e-06,
             0.19976073503494263,
             5.960464477539063e-08
-        ]
+        ],
+        "factory": "/prob_factories#container_kitchen_B_white"
     },
     "wall_plain_kitchen_corner_outer": {
         "size": [
@@ -909,7 +946,8 @@
             0.874710276722908,
             2.0,
             0.874709889292717
-        ]
+        ],
+        "factory": "/prob_factories#wall_plain_kitchen_corner_outer"
     },
     "wall_knife_rack": {
         "size": [
@@ -933,7 +971,8 @@
             0.0,
             0.05170923471450806,
             0.08477082848548889
-        ]
+        ],
+        "factory": "/prob_factories#wall_knife_rack"
     },
     "extractor_hood": {
         "size": [
@@ -957,7 +996,8 @@
             0.0,
             0.7999999895691872,
             0.7999999523162842
-        ]
+        ],
+        "factory": "/prob_factories#extractor_hood"
     },
     "wall_shelf_kitchen_corner": {
         "size": [
@@ -981,7 +1021,8 @@
             0.875000014901163,
             -0.25,
             0.8749999915548585
-        ]
+        ],
+        "factory": "/prob_factories#wall_shelf_kitchen_corner"
     },
     "dishrack_plates": {
         "size": [
@@ -1005,7 +1046,8 @@
             -1.4901161193847656e-08,
             0.3920261636376381,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#dishrack_plates"
     },
     "plate": {
         "size": [
@@ -1029,7 +1071,8 @@
             -1.4901161193847656e-08,
             0.05000003194436431,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#plate"
     },
     "wall_cabinet_corner": {
         "size": [
@@ -1053,7 +1096,8 @@
             0.8737831174512394,
             0.5,
             0.8746661841869354
-        ]
+        ],
+        "factory": "/prob_factories#wall_cabinet_corner"
     },
     "countertop_straight_A": {
         "size": [
@@ -1077,7 +1121,8 @@
             0.0,
             0.5,
             0.0006733834743499756
-        ]
+        ],
+        "factory": "/prob_factories#countertop_straight_A"
     },
     "knife": {
         "size": [
@@ -1101,7 +1146,8 @@
             -0.06620024144649506,
             0.31788989901542664,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#knife"
     },
     "mug_yellow": {
         "size": [
@@ -1125,7 +1171,8 @@
             0.06967290490865707,
             0.17500001192092896,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#mug_yellow"
     },
     "mug_blue": {
         "size": [
@@ -1149,7 +1196,8 @@
             0.06967290490865707,
             0.17500001192092896,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#mug_blue"
     },
     "spatula": {
         "size": [
@@ -1173,7 +1221,8 @@
             -0.0007197707891464233,
             0.2751629650592804,
             0.0
-        ]
+        ],
+        "factory": "/prob_factories#spatula"
     },
     "wall_tiles_kitchen_straight": {
         "size": [
@@ -1197,7 +1246,8 @@
             -5.960464477539063e-08,
             2.0,
             0.0005798861384391785
-        ]
+        ],
+        "factory": "/prob_factories#wall_tiles_kitchen_straight"
     },
     "wall_plain_kitchen_straight": {
         "size": [
@@ -1221,7 +1271,8 @@
             -5.960464477539063e-08,
             2.0,
             0.0005798861384391785
-        ]
+        ],
+        "factory": "/prob_factories#wall_plain_kitchen_straight"
     },
     "wall_tiles_kitchen_window": {
         "size": [
@@ -1245,7 +1296,8 @@
             5.960464477539063e-08,
             1.9999999403953552,
             0.0008062124252319336
-        ]
+        ],
+        "factory": "/prob_factories#wall_tiles_kitchen_window"
     },
     "wall_plain_kitchen_window": {
         "size": [
@@ -1269,31 +1321,33 @@
             1.1920928955078125e-07,
             1.9999999403953552,
             0.0008062124252319336
-        ]
+        ],
+        "factory": "/prob_factories#wall_plain_kitchen_window"
     },
     "stove": {
         "size": [
-            1.899999976158142,
-            0.6499999761581421,
-            0.3688933253288269
+            2,
+            1.2999999523162842,
+            1.6762335896492004
         ],
         "aabb": {
             "min": [
-                -0.949999988079071,
-                5.960464477539063e-08,
-                1.7881393432617188e-07
+                -1,
+                0,
+                -0.7500004172325134
             ],
             "max": [
-                0.949999988079071,
-                0.6500000357627869,
-                0.36889350414276123
+                1,
+                1.2999999523162842,
+                0.926233172416687
             ]
         },
         "offset": [
             0.0,
-            0.3250000476837158,
-            0.18444684147834778
-        ]
+            0.6499999761581421,
+            0.08811637759208679
+        ],
+        "factory": "/prob_factories#stove"
     },
     "wall_cabinet_straight": {
         "size": [
@@ -1317,6 +1371,7 @@
             0.0,
             0.5,
             0.4999999552965164
-        ]
+        ],
+        "factory": "/prob_factories#wall_cabinet_straight"
     }
 }

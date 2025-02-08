@@ -71,7 +71,7 @@ embedded_instances {
   id: "script"
   data: "components {\n"
   "  id: \"main\"\n"
-  "  component: \"/scripts/main.script\"\n"
+  "  component: \"/scripts/game.script\"\n"
   "}\n"
   ""
 }

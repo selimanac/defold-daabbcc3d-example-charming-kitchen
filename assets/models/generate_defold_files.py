@@ -80,7 +80,7 @@ def generate_factories_go(factory_files, output_folder):
         for name, factory_path in factory_files
     )
 
-    factories_go_path = os.path.join(output_folder, "factories/factories.go")
+    factories_go_path = os.path.join(output_folder, "gameobjects/prob_factories.go")
     factories_go_content = FACTORIES_GO_TEMPLATE.format(factories_content=factories_content)
 
     with open(factories_go_path, 'w') as f:

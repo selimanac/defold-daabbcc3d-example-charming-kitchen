@@ -1,12 +1,12 @@
-local collision          = {}
+local collision     = {}
 
-local aabb_group_id      = daabbcc3d.new_group(daabbcc3d.UPDATE_PARTIALREBUILD)
+local aabb_group_id = daabbcc3d.new_group(daabbcc3d.UPDATE_PARTIALREBUILD)
 
-collision.collision_bits = {
-	CURSOR = 1,        -- (2^0)
-	WALLS  = 2,        -- (2^1)
-	GROUND = 4,        -- (2^2)
-	PROBS  = 8,        -- (2^3)
+collision.bits      = {
+	CURSOR = 1,       -- (2^0)
+	WALLS  = 2,       -- (2^1)
+	GROUND = 4,       -- (2^2)
+	PROBS  = 8,       -- (2^3)
 
 	ALL    = bit.bnot(0) -- -1 for all results
 }

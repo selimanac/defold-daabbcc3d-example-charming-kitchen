@@ -1,0 +1,65 @@
+name: "game"
+instances {
+  id: "camera"
+  prototype: "/components/gameobjects/camera.go"
+}
+instances {
+  id: "prob_factories"
+  prototype: "/components/gameobjects/prob_factories.go"
+}
+instances {
+  id: "cursor"
+  prototype: "/components/gameobjects/cursor.go"
+}
+scale_along_z: 0
+embedded_instances {
+  id: "camera_target"
+  data: ""
+  position {
+    x: 3.0
+    y: 1.0
+    z: 2.0
+  }
+}
+embedded_instances {
+  id: "light_source"
+  data: ""
+  position {
+    x: 5.0
+    y: 10.0
+    z: 5.0
+  }
+}
+embedded_instances {
+  id: "light_target"
+  data: ""
+  position {
+    x: 2.0
+    z: 2.0
+  }
+}
+embedded_instances {
+  id: "factories"
+  children: "prob_factories"
+  data: "components {\n"
+  "  id: \"room_1\"\n"
+  "  component: \"/components/factories/room_1.collectionfactory\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "scripts"
+  data: "components {\n"
+  "  id: \"game\"\n"
+  "  component: \"/scripts/game.script\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "guid"
+  data: "components {\n"
+  "  id: \"game\"\n"
+  "  component: \"/components/gui/game.gui\"\n"
+  "}\n"
+  ""
+}

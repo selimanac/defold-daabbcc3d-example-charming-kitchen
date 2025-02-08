@@ -1,0 +1,44 @@
+go.property("camera_target", hash("/camera_target"))
+go.property("camera_distance", 13)
+go.property("camera_distance_min", 0)
+go.property("camera_distance_max", 20)
+go.property("camera_scroll_speed", 1)
+go.property("camera_angle_x", -30)
+go.property("camera_angle_y", 45)
+go.property("camera_angle_min", -30)
+go.property("camera_angle_max", 45)
+go.property("camera_auto_turn", false)
+
+
+local manager = require("scripts.lib.manager")
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	local camera_settings = {
+		target = self.camera_target,
+		distance = self.camera_distance,
+		distance_min = self.camera_distance_min,
+		distance_max = self.camera_distance_max,
+		zoom_speed = self.camera_scroll_speed,
+		angle_x = self.camera_angle_x,
+		angle_y = self.camera_angle_y,
+		angle_min = self.camera_angle_min,
+		angle_max = self.camera_angle_max,
+		auto_turn = self.camera_auto_turn
+	}
+
+	manager.init(camera_settings)
+end
+
+function on_message(self, message_id, message, sender)
+	manager.message(message_id, message, sender)
+end
+
+function update(self, dt)
+	manager.update(dt)
+end
+
+function on_input(self, action_id, action)
+	manager.input(action_id, action)
+end

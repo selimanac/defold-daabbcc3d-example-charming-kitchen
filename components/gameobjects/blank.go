@@ -1,4 +1,4 @@
 components {
-  id: "blank"
-  component: "/components/models/blank.model"
+  id: "collider"
+  component: "/components/models/collider.model"
 }

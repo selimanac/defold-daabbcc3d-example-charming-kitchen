@@ -1,4 +1,5 @@
 local const            = {}
+const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
 
 const.SHADOW_SETTINGS  = {
 	projection_width  = 30,
@@ -13,8 +14,26 @@ const.SHADOW_SETTINGS  = {
 const.LIGHT_SETTINGS   = {
 	source = '/light_source',
 	target = '/light_target',
-	diffuse_light_color = vmath.vector3(0.65), -- Diffuse light color
+	diffuse_light_color = vmath.vector3(0.7), -- Diffuse light color
 }
 
-const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
+const.TRIGGERS         = {
+	MOUSE_BUTTON_1 = hash("MOUSE_BUTTON_1"),
+	MOUSE_WHEEL_UP = hash("MOUSE_WHEEL_UP"),
+	MOUSE_WHEEL_DOWN = hash("MOUSE_WHEEL_DOWN"),
+}
+
+const.FACTORIES        = {
+	PROBS = {},
+	ROOMS = {
+		[1] = "/factories#room_1"
+	}
+}
+
+const.MSG              = {
+	PICK_PROBE = hash("pick_probe")
+}
+
+const.CURSOR           = "/cursor"
+
 return const

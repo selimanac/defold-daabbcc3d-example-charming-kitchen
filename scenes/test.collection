@@ -13,34 +13,6 @@ instances {
     z: 0.09904576
     w: 0.8923991
   }
-  component_properties {
-    id: "orbit_camera"
-    properties {
-      id: "target"
-      value: "/camera_target"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "distance"
-      value: "13.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "angle_x"
-      value: "-30.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "angle_min"
-      value: "-30.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "angle_max"
-      value: "45.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
 }
 instances {
   id: "cursor"
@@ -95,6 +67,7 @@ instances {
   id: "extractor_hood"
   prototype: "/components/gameobjects/probs/extractor_hood.go"
   position {
+    x: 0.25
     y: 2.0
     z: 3.0
   }
@@ -130,7 +103,7 @@ embedded_instances {
   id: "scripts"
   data: "components {\n"
   "  id: \"main\"\n"
-  "  component: \"/scripts/main.script\"\n"
+  "  component: \"/scripts/game.script\"\n"
   "}\n"
   ""
 }

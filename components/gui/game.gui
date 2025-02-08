@@ -1,0 +1,28 @@
+script: "/scripts/gui/game.gui_script"
+nodes {
+  position {
+    x: 78.0
+    y: 309.0
+  }
+  size {
+    x: 50.0
+    y: 50.0
+  }
+  color {
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "dispatch_btn"
+  layer: "gfx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+layers {
+  name: "text"
+}
+layers {
+  name: "gfx"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

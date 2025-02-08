@@ -1,6 +1,9 @@
+local const = require("scripts.lib.const")
+
 local libcamera = {}
 
-libcamera.ID = "test:/camera#camera"
+libcamera.CONTAINER_ID = ""
+libcamera.ID = ""
 libcamera.DISPLAY_WIDTH = sys.get_config_int("display.width")
 libcamera.DISPLAY_HEIGHT = sys.get_config_int("display.height")
 libcamera.view = vmath.matrix4()
@@ -9,8 +12,89 @@ libcamera.position = vmath.vector3()
 libcamera.rotation = vmath.quat()
 libcamera.frustum = vmath.quat()
 
-function libcamera.init()
-	--	libcamera.update()
+libcamera.settings = {
+	target = "",
+	distance = 0,
+	distance_min = 0,
+	distance_max = 0,
+	zoom_speed = 1,
+	angle_x = 0,
+	angle_y = 0,
+	angle_min = 0,
+	angle_max = 0,
+	auto_turn = false
+}
+
+local touch_down = false
+local camera_center = vmath.vector3()
+
+local function set_camera()
+	camera_center = libcamera.settings.target ~= hash("") and go.get_world_position(libcamera.settings.target) or vmath.vector3(0)
+
+	libcamera.rotation = vmath.quat_rotation_y(libcamera.settings.angle_y) * vmath.quat_rotation_x(libcamera.settings.angle_x)
+	libcamera.position = vmath.rotate(libcamera.rotation, vmath.vector3(0, 0, libcamera.settings.distance)) + camera_center
+
+	go.set_rotation(libcamera.rotation, libcamera.CONTAINER_ID)
+	go.set_position(libcamera.position, libcamera.CONTAINER_ID)
+end
+
+function libcamera.init(camera_settings)
+	libcamera.CONTAINER_ID = msg.url("/camera")
+	libcamera.ID = msg.url("/camera")
+	libcamera.ID.fragment = "camera"
+
+	if camera_settings then
+		libcamera.settings = camera_settings
+
+		libcamera.settings.angle_x = math.rad(camera_settings.angle_x)
+		libcamera.settings.angle_y = math.rad(camera_settings.angle_y)
+		libcamera.settings.angle_min = math.rad(camera_settings.angle_min)
+		libcamera.settings.angle_max = math.rad(camera_settings.angle_max)
+	end
+end
+
+function libcamera.toogle_auto_turn(self)
+	libcamera.settings.auto_turn = not libcamera.settings.auto_turn and true or false
+end
+
+function libcamera.update(dt)
+	if libcamera.settings.target ~= hash("") and go.get_world_position(libcamera.settings.target) then
+		set_camera()
+	end
+
+	if not touch_down and libcamera.settings.auto_turn then
+		libcamera.settings.angle_y = libcamera.settings.angle_y - (5 * dt) * 0.1
+		set_camera()
+	end
+end
+
+function libcamera.input(action_id, action)
+	if action_id == const.TRIGGERS.MOUSE_BUTTON_1 then
+		touch_down = true
+		if action.released then
+			touch_down = false
+		end
+	end
+
+	if touch_down and action_id == nil then
+		libcamera.settings.angle_x = libcamera.settings.angle_x + action.dy * 0.01
+		libcamera.settings.angle_y = libcamera.settings.angle_y - action.dx * 0.01
+
+		libcamera.settings.angle_x = math.min(libcamera.settings.angle_x, libcamera.settings.angle_max)
+		libcamera.settings.angle_x = math.max(libcamera.settings.angle_x, libcamera.settings.angle_min)
+
+		set_camera()
+	end
+
+	if action_id == const.TRIGGERS.MOUSE_WHEEL_DOWN then
+		libcamera.settings.distance = libcamera.settings.distance + libcamera.settings.zoom_speed * 0.20
+		libcamera.settings.distance = math.min(libcamera.settings.distance, libcamera.settings.distance_max)
+		set_camera()
+	elseif action_id == const.TRIGGERS.MOUSE_WHEEL_UP then
+		libcamera.settings.distance = libcamera.settings.distance - libcamera.settings.zoom_speed * 0.20
+		libcamera.settings.distance = math.max(libcamera.settings.distance, libcamera.settings.distance_min)
+		set_camera()
+	end
 end
 
 local function unproject(v, inv_view, inv_proj)
@@ -70,10 +154,6 @@ local function ray_plane_intersect_normal(ray_origin, ray_dir, plane_point, plan
 end
 
 function libcamera.ray_plane_intersect(ray_origin, ray_dir, plane_point)
-	--	libcamera.view = camera.get_view(libcamera.ID)
-	--libcamera.projection = camera.get_projection(libcamera.ID)
-
-
 	local plane_normal = libcamera.get_camera_forward() -- Plane always faces camera
 	local denom = vmath.dot(ray_dir, plane_normal)
 

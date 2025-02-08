@@ -50,7 +50,8 @@ def process_gltf_file(file_path):
             "min": min_vals,
             "max": max_vals
         },
-        "offset": offset
+        "offset": offset,
+       # "factory": "/prob_factories#wall_plain_kitchen_window" + 
     }
 
 def main():
@@ -75,6 +76,7 @@ def main():
             # Use the file name (without folder path) as the key.
             file_name = os.path.basename(gltf_file)
             name_without_ext = os.path.splitext(file_name)[0]
+            mesh_data["factory"] = "/prob_factories#" +name_without_ext
             results[name_without_ext] = mesh_data
             print(f"Processed {file_name}: size = {mesh_data['size']}, offset = {mesh_data['offset']}")
 

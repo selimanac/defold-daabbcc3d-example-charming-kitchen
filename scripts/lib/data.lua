@@ -7,4 +7,10 @@ data.cursor = {
 	position = vmath.vector3()
 }
 
+data.selected_prob = {
+	position = vmath.vector3()
+}
+
+data.game_manager = ""
+
 return data

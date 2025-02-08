@@ -1,5 +1,5 @@
 [bootstrap]
-main_collection = /scenes/test.collectionc
+main_collection = /scenes/game.collectionc
 render = /render/game.renderc
 
 [script]

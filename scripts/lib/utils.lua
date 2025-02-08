@@ -8,13 +8,13 @@ function utils.get_rotation_from_normal(normal_x, normal_y, normal_z)
 	-- If the normal is nearly vertical, handle separately
 	if math.abs(normal_x) < 1e-6 and math.abs(normal_z) < 1e-6 then
 		if normal_y > 0 then
-			return vmath.quat()                   -- Identity quaternion, no rotation needed
+			return vmath.quat()          -- Identity quaternion, no rotation needed
 		else
 			return vmath.quat_rotation_x(math.pi) -- Flip 180° if normal is (0, -1, 0)
 		end
 	end
 
-	local pitch = math.atan2(normal_y, math.sqrt(normal_x * normal_x + normal_z * normal_z))
+	local pitch = -math.atan2(-normal_y, math.sqrt(normal_x * normal_x + normal_z * normal_z))
 	local yaw = math.atan2(normal_x, normal_z)
 	local quat_y = vmath.quat_rotation_y(yaw)
 	local quat_x = vmath.quat_rotation_x(pitch)
