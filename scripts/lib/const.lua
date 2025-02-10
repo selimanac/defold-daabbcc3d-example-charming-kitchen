@@ -19,21 +19,31 @@ const.LIGHT_SETTINGS   = {
 
 const.TRIGGERS         = {
 	MOUSE_BUTTON_1 = hash("MOUSE_BUTTON_1"),
+	MOUSE_BUTTON_3 = hash("MOUSE_BUTTON_3"),
 	MOUSE_WHEEL_UP = hash("MOUSE_WHEEL_UP"),
 	MOUSE_WHEEL_DOWN = hash("MOUSE_WHEEL_DOWN"),
+	KEY_UP = hash("KEY_UP"),
+	KEY_SPACE = hash("KEY_SPACE"),
+	KEY_D = hash("KEY_D")
 }
 
 const.FACTORIES        = {
-	PROBS = {},
+	PROPS = {},
 	ROOMS = {
 		[1] = "/factories#room_1"
 	}
 }
 
 const.MSG              = {
-	PICK_PROBE = hash("pick_probe")
+	PICK_PROP = hash("pick_prop"),
+	SETUP_GUI = hash("setup_gui")
 }
 
 const.CURSOR           = "/cursor"
+
+const.URLS             = {
+	MANAGER = "/scripts#game",
+	GUI = "/gui#game"
+}
 
 return const

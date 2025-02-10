@@ -1,6 +1,22 @@
+key_trigger {
+  input: KEY_UP
+  action: "KEY_UP"
+}
+key_trigger {
+  input: KEY_SPACE
+  action: "KEY_SPACE"
+}
+key_trigger {
+  input: KEY_D
+  action: "KEY_D"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_1
   action: "MOUSE_BUTTON_1"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_3
+  action: "MOUSE_BUTTON_3"
 }
 mouse_trigger {
   input: MOUSE_WHEEL_UP

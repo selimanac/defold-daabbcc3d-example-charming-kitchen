@@ -1,12 +1,65 @@
 local const = require("scripts.lib.const")
 local data = require("scripts.lib.data")
+local libcamera = require("scripts.lib.libcamera")
 
-local dispatch_btn_node
+local prop_item_template
+local scroll_child_root_node
+local scroll_position = vmath.vector3()
+local scroll_list_root_node
+
+local props = {}
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
-	dispatch_btn_node = gui.get_node("dispatch_btn")
+	scroll_child_root_node = gui.get_node("scroll_child_root")
+	scroll_list_root_node = gui.get_node("scroll_list_container")
+
+	scroll_position = gui.get_position(scroll_child_root_node)
+
+	prop_item_template = gui.get_node("prop_item/container")
+	gui.set_enabled(prop_item_template, false)
+
+	--msg.post(const.URLS.MANAGER, const.MSG.PICK_PROP, { name = "wall_cabinet_corner" })
+end
+
+local start_x = 60   -- starting x position
+local start_y = 670  -- starting y position
+local spacing_x = 80 -- horizontal spacing between items
+local spacing_y = 80 -- vertical spacing between items
+local columns = 3    -- number of columns in the grid
+
+local function setup_gui()
+	local prop_position = gui.get_position(prop_item_template)
+	local i = 1
+	for title, prop in pairs(data.props) do
+		local prop_item_clone = gui.clone_tree(prop_item_template)
+		local prop_item = {}
+
+		prop_item["container"] = prop_item_clone[hash("prop_item/container")]
+		--prop_item["title"] = prop_item_clone[hash("prop_item/text")]
+		prop_item["name"] = title
+		--	gui.set_text(prop_item.title, title)
+		--	gui.set_texture(prop_item["container"], "thumbs/" .. title)
+		gui.play_flipbook(prop_item["container"], title)
+
+		local col = (i - 1) % columns
+		local row = math.floor((i - 1) / columns)
+
+		local x = start_x + (col * spacing_x)
+		local y = start_y - (row * spacing_y)
+
+		prop_position.x = x
+		prop_position.y = y
+		gui.set_position(prop_item["container"], prop_position)
+		--gui.set_alpha(prop_item["container"], 1)
+		gui.set_parent(prop_item["container"], scroll_child_root_node, true)
+
+		gui.set_enabled(prop_item.container, true)
+
+		table.insert(props, prop_item)
+		i = i + 1
+	end
 end
 
 function final(self)
@@ -15,21 +68,54 @@ function final(self)
 	-- Remove this function if not needed
 end
 
+local velocity_y = 0
+local target_pos = 0
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	if data.gui_scroll then
+		pprint(target_pos)
+		if target_pos > scroll_position.y then
+			scroll_position.y = scroll_position.y + (1000 * velocity_y) * dt
+			gui.set_position(scroll_child_root_node, scroll_position)
+		end
+	end
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == const.MSG.SETUP_GUI then
+		setup_gui()
+	end
 end
 
 function on_input(self, action_id, action)
-	if action.pressed and gui.pick_node(dispatch_btn_node, action.x, action.y) then
-		msg.post(data.game_manager, const.MSG.PICK_PROBE, { name = "countertop_sink" })
+	for _, prop in ipairs(props) do
+		if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 and gui.pick_node(prop.container, action.x, action.y) then
+			msg.post(const.URLS.MANAGER, const.MSG.PICK_PROP, { name = prop.name })
+		end
+	end
+
+	if gui.pick_node(scroll_list_root_node, action.x, action.y) then
+		data.gui_scroll = true
+		if action_id == const.TRIGGERS.MOUSE_WHEEL_DOWN then
+			-- scroll_position.y = scroll_position.y + 10
+			-- gui.set_position(scroll_child_root_node, scroll_position)
+			velocity_y = 1
+			target_pos = scroll_position.y + (120 * velocity_y)
+			if action.released then
+				--velocity_y = 0
+			end
+		elseif action_id == const.TRIGGERS.MOUSE_WHEEL_UP then
+			-- scroll_position.y = scroll_position.y - 10
+
+			-- gui.set_position(scroll_child_root_node, scroll_position)
+			velocity_y = -1
+			target_pos = scroll_position.y - (120 * velocity_y)
+			if action.released then
+				--velocity_y = 0
+			end
+		end
+	else
+		data.gui_scroll = false
+		velocity_y = 0
 	end
 end
 

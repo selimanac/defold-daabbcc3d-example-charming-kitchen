@@ -46,10 +46,10 @@ def generate_files(gltf_file, model_output_folder, go_output_folder, factory_out
     factory_path = os.path.join(factory_output_folder, factory_file_name)
 
     # Defold relative paths
-    model_defold_path = f"/components/models/probs/{model_file_name}"
+    model_defold_path = f"/components/models/props/{model_file_name}"
     mesh_defold_path = f"/assets/models/{file_name}"
-    go_defold_path = f"/components/gameobjects/probs/{go_file_name}"
-    factory_defold_path = f"/components/factories/probs/{factory_file_name}"
+    go_defold_path = f"/components/gameobjects/props/{go_file_name}"
+    factory_defold_path = f"/components/factories/props/{factory_file_name}"
 
     # Create file contents
     model_content = MODEL_TEMPLATE.format(mesh_path=mesh_defold_path, name=name_without_ext)
@@ -80,7 +80,7 @@ def generate_factories_go(factory_files, output_folder):
         for name, factory_path in factory_files
     )
 
-    factories_go_path = os.path.join(output_folder, "gameobjects/prob_factories.go")
+    factories_go_path = os.path.join(output_folder, "gameobjects/prop_factories.go")
     factories_go_content = FACTORIES_GO_TEMPLATE.format(factories_content=factories_content)
 
     with open(factories_go_path, 'w') as f:
@@ -96,9 +96,9 @@ def main():
     output_folder = sys.argv[2]
 
     # Define separate folders for each type
-    model_output_folder = os.path.join(output_folder, "models/probs")
-    go_output_folder = os.path.join(output_folder, "gameobjects/probs")
-    factory_output_folder = os.path.join(output_folder, "factories/probs")
+    model_output_folder = os.path.join(output_folder, "models/props")
+    go_output_folder = os.path.join(output_folder, "gameobjects/props")
+    factory_output_folder = os.path.join(output_folder, "factories/props")
 
     # Ensure output folders exist
     os.makedirs(model_output_folder, exist_ok=True)

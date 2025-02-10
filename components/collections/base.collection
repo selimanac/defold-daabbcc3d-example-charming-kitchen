@@ -1,25 +1,25 @@
 name: "base"
 instances {
   id: "wall_tiles_kitchen_straight"
-  prototype: "/components/gameobjects/probs/wall_tiles_kitchen_straight.go"
+  prototype: "/components/gameobjects/props/wall_tiles_kitchen_straight.go"
   position {
     x: 3.0
   }
 }
 instances {
   id: "wall_tiles_kitchen_corner_inner"
-  prototype: "/components/gameobjects/probs/wall_tiles_kitchen_corner_inner.go"
+  prototype: "/components/gameobjects/props/wall_tiles_kitchen_corner_inner.go"
 }
 instances {
   id: "wall_tiles_kitchen_straight1"
-  prototype: "/components/gameobjects/probs/wall_tiles_kitchen_straight.go"
+  prototype: "/components/gameobjects/props/wall_tiles_kitchen_straight.go"
   position {
     x: 5.0
   }
 }
 instances {
   id: "wall_tiles_kitchen_straight2"
-  prototype: "/components/gameobjects/probs/wall_tiles_kitchen_straight.go"
+  prototype: "/components/gameobjects/props/wall_tiles_kitchen_straight.go"
   position {
     z: 3.0
   }
@@ -30,7 +30,7 @@ instances {
 }
 instances {
   id: "floor_tiles_kitchen"
-  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  prototype: "/components/gameobjects/props/floor_tiles_kitchen.go"
   position {
     x: 1.0
     y: -0.5
@@ -39,7 +39,7 @@ instances {
 }
 instances {
   id: "floor_tiles_kitchen1"
-  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  prototype: "/components/gameobjects/props/floor_tiles_kitchen.go"
   position {
     x: 3.0
     y: -0.5
@@ -48,7 +48,7 @@ instances {
 }
 instances {
   id: "floor_tiles_kitchen2"
-  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  prototype: "/components/gameobjects/props/floor_tiles_kitchen.go"
   position {
     x: 5.0
     y: -0.5
@@ -57,7 +57,7 @@ instances {
 }
 instances {
   id: "floor_tiles_kitchen3"
-  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  prototype: "/components/gameobjects/props/floor_tiles_kitchen.go"
   position {
     x: 1.0
     y: -0.5
@@ -66,7 +66,7 @@ instances {
 }
 instances {
   id: "floor_tiles_kitchen4"
-  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  prototype: "/components/gameobjects/props/floor_tiles_kitchen.go"
   position {
     x: 3.0
     y: -0.5
@@ -75,7 +75,7 @@ instances {
 }
 instances {
   id: "floor_tiles_kitchen5"
-  prototype: "/components/gameobjects/probs/floor_tiles_kitchen.go"
+  prototype: "/components/gameobjects/props/floor_tiles_kitchen.go"
   position {
     x: 5.0
     y: -0.5

@@ -8,7 +8,8 @@ go.property("camera_angle_y", 45)
 go.property("camera_angle_min", -30)
 go.property("camera_angle_max", 45)
 go.property("camera_auto_turn", false)
-
+go.property("camera_auto_turn_speed", 5)
+go.property("collider_debug", false)
 
 local manager = require("scripts.lib.manager")
 
@@ -25,10 +26,15 @@ function init(self)
 		angle_y = self.camera_angle_y,
 		angle_min = self.camera_angle_min,
 		angle_max = self.camera_angle_max,
-		auto_turn = self.camera_auto_turn
+		auto_turn = self.camera_auto_turn,
+		auto_turn_speed = self.camera_auto_turn_speed
 	}
 
-	manager.init(camera_settings)
+	local game_settings = {
+		collider_debug = self.collider_debug
+	}
+
+	manager.init(camera_settings, game_settings)
 end
 
 function on_message(self, message_id, message, sender)

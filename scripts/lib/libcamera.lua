@@ -1,4 +1,5 @@
 local const = require("scripts.lib.const")
+local data = require("scripts.lib.data")
 
 local libcamera = {}
 
@@ -22,7 +23,8 @@ libcamera.settings = {
 	angle_y = 0,
 	angle_min = 0,
 	angle_max = 0,
-	auto_turn = false
+	auto_turn = false,
+	auto_turn_speed = 5
 }
 
 local touch_down = false
@@ -53,7 +55,7 @@ function libcamera.init(camera_settings)
 	end
 end
 
-function libcamera.toogle_auto_turn(self)
+function libcamera.toogle_auto_turn()
 	libcamera.settings.auto_turn = not libcamera.settings.auto_turn and true or false
 end
 
@@ -63,17 +65,21 @@ function libcamera.update(dt)
 	end
 
 	if not touch_down and libcamera.settings.auto_turn then
-		libcamera.settings.angle_y = libcamera.settings.angle_y - (5 * dt) * 0.1
+		libcamera.settings.angle_y = libcamera.settings.angle_y - (libcamera.settings.auto_turn_speed * dt) * 0.1
 		set_camera()
 	end
 end
 
 function libcamera.input(action_id, action)
-	if action_id == const.TRIGGERS.MOUSE_BUTTON_1 then
+	if action_id == const.TRIGGERS.MOUSE_BUTTON_3 then
 		touch_down = true
 		if action.released then
 			touch_down = false
 		end
+	end
+
+	if action_id == const.TRIGGERS.KEY_SPACE and action.pressed then
+		libcamera.toogle_auto_turn()
 	end
 
 	if touch_down and action_id == nil then
@@ -86,14 +92,17 @@ function libcamera.input(action_id, action)
 		set_camera()
 	end
 
-	if action_id == const.TRIGGERS.MOUSE_WHEEL_DOWN then
-		libcamera.settings.distance = libcamera.settings.distance + libcamera.settings.zoom_speed * 0.20
-		libcamera.settings.distance = math.min(libcamera.settings.distance, libcamera.settings.distance_max)
-		set_camera()
-	elseif action_id == const.TRIGGERS.MOUSE_WHEEL_UP then
-		libcamera.settings.distance = libcamera.settings.distance - libcamera.settings.zoom_speed * 0.20
-		libcamera.settings.distance = math.max(libcamera.settings.distance, libcamera.settings.distance_min)
-		set_camera()
+
+	if data.cursor.is_active == false then
+		if action_id == const.TRIGGERS.MOUSE_WHEEL_DOWN and data.gui_scroll == false then
+			libcamera.settings.distance = libcamera.settings.distance + libcamera.settings.zoom_speed * 0.20
+			libcamera.settings.distance = math.min(libcamera.settings.distance, libcamera.settings.distance_max)
+			set_camera()
+		elseif action_id == const.TRIGGERS.MOUSE_WHEEL_UP and data.gui_scroll == false then
+			libcamera.settings.distance = libcamera.settings.distance - libcamera.settings.zoom_speed * 0.20
+			libcamera.settings.distance = math.max(libcamera.settings.distance, libcamera.settings.distance_min)
+			set_camera()
+		end
 	end
 end
 
@@ -139,7 +148,7 @@ end
 
 -- local world_pos = ray_plane_intersect(ray_origin, ray_dir, plane_point, plane_normal)
 
-local function ray_plane_intersect_normal(ray_origin, ray_dir, plane_point, plane_normal)
+function libcamera.ray_plane_intersect_normal(ray_origin, ray_dir, plane_point, plane_normal)
 	local denom = vmath.dot(ray_dir, plane_normal)
 	if math.abs(denom) < 1e-6 then
 		-- The ray is parallel to the plane; no valid intersection.

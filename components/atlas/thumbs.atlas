@@ -1,0 +1,124 @@
+images {
+  image: "/assets/textures/thumbs/blinds_kitchen.png"
+}
+images {
+  image: "/assets/textures/thumbs/container_kitchen_A_blue.png"
+}
+images {
+  image: "/assets/textures/thumbs/container_kitchen_A_white.png"
+}
+images {
+  image: "/assets/textures/thumbs/container_kitchen_B_blue.png"
+}
+images {
+  image: "/assets/textures/thumbs/container_kitchen_B_red.png"
+}
+images {
+  image: "/assets/textures/thumbs/container_kitchen_B_white.png"
+}
+images {
+  image: "/assets/textures/thumbs/countertop_corner_inner.png"
+}
+images {
+  image: "/assets/textures/thumbs/countertop_counter_outer.png"
+}
+images {
+  image: "/assets/textures/thumbs/countertop_single.png"
+}
+images {
+  image: "/assets/textures/thumbs/countertop_sink.png"
+}
+images {
+  image: "/assets/textures/thumbs/countertop_straight_A.png"
+}
+images {
+  image: "/assets/textures/thumbs/countertop_straight_B.png"
+}
+images {
+  image: "/assets/textures/thumbs/countertop_straight_C.png"
+}
+images {
+  image: "/assets/textures/thumbs/cuttingboard.png"
+}
+images {
+  image: "/assets/textures/thumbs/dishrack_plates.png"
+}
+images {
+  image: "/assets/textures/thumbs/extractor_hood.png"
+}
+images {
+  image: "/assets/textures/thumbs/fridge.png"
+}
+images {
+  image: "/assets/textures/thumbs/kettle.png"
+}
+images {
+  image: "/assets/textures/thumbs/lid.png"
+}
+images {
+  image: "/assets/textures/thumbs/mug_blue.png"
+}
+images {
+  image: "/assets/textures/thumbs/mug_red.png"
+}
+images {
+  image: "/assets/textures/thumbs/mug_yellow.png"
+}
+images {
+  image: "/assets/textures/thumbs/oven_glove.png"
+}
+images {
+  image: "/assets/textures/thumbs/pan.png"
+}
+images {
+  image: "/assets/textures/thumbs/papertowel_holder.png"
+}
+images {
+  image: "/assets/textures/thumbs/plate.png"
+}
+images {
+  image: "/assets/textures/thumbs/pot.png"
+}
+images {
+  image: "/assets/textures/thumbs/stove.png"
+}
+images {
+  image: "/assets/textures/thumbs/test.png"
+}
+images {
+  image: "/assets/textures/thumbs/toaster.png"
+}
+images {
+  image: "/assets/textures/thumbs/utensils_cup.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_cabinet_corner.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_cabinet_single_right.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_cabinet_straight.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_knife_rack.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_papertowel_holder.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_shelf_kitchen.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_shelf_kitchen_corner.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_shelf_kitchen_hooks_decorated.png"
+}
+images {
+  image: "/assets/textures/thumbs/container_kitchen_A_red.png"
+}
+images {
+  image: "/assets/textures/thumbs/wall_cabinet_single_left.png"
+}
+extrude_borders: 2

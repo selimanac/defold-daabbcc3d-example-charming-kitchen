@@ -1,0 +1,1037 @@
+{
+    "blinds_kitchen": {
+        "size": [
+            1.6,
+            1.95,
+            0.3
+        ],
+        "aabb": {
+            "min": [
+                -0.8000012040138245,
+                -1.8000000715255737,
+                0
+            ],
+            "max": [
+                0.800000011920929,
+                0.15000003576278687,
+                0.29999998211860657
+            ]
+        },
+        "offset": [
+            0,
+            0,
+            0
+        ],
+        "factory": "/prop_factories#blinds_kitchen",
+        "collider": "WALLS",
+        "category": "WALL"
+    },
+    "cuttingboard": {
+        "size": [
+            1.3,
+            0.1,
+            0.75
+        ],
+        "aabb": {
+            "min": [
+                -0.5,
+                -3.725290298461914e-09,
+                -0.375
+            ],
+            "max": [
+                0.7999999523162842,
+                0.09999999403953552,
+                0.375
+            ]
+        },
+        "offset": [
+            0,
+            0,
+            0.0
+        ],
+        "factory": "/prop_factories#cuttingboard",
+        "collider": "PROPS"
+    },
+    "toaster": {
+        "size": [
+            0.9,
+            0.6,
+            0.5
+        ],
+        "aabb": {
+            "min": [
+                -0.4273330569267273,
+                5.155801773071289e-06,
+                -0.25
+            ],
+            "max": [
+                0.48875513672828674,
+                0.6000051498413086,
+                0.25
+            ]
+        },
+        "offset": [
+            0,
+            0.3,
+            0.0
+        ],
+        "factory": "/prop_factories#toaster",
+        "collider": "PROPS"
+    },
+    "wall_papertowel_holder": {
+        "size": [
+            1.6,
+            0.6,
+            0.5
+        ],
+        "aabb": {
+            "min": [
+                -0.800000011920929,
+                -0.3750000298023224,
+                1.4901161193847656e-08
+            ],
+            "max": [
+                0.800000011920929,
+                0.20000004768371582,
+                0.49000006914138794
+            ]
+        },
+        "offset": [
+            0.0,
+            0,
+            0
+        ],
+        "factory": "/prop_factories#wall_papertowel_holder",
+        "collider": "WALLS"
+    },
+    "kettle": {
+        "size": [
+            0.8,
+            0.6,
+            0.6
+        ],
+        "aabb": {
+            "min": [
+                -0.43365728855133057,
+                0,
+                -0.3000001609325409
+            ],
+            "max": [
+                0.37896135449409485,
+                0.5952081680297852,
+                0.3000001609325409
+            ]
+        },
+        "offset": [
+            0,
+            0.3,
+            0.0
+        ],
+        "factory": "/prop_factories#kettle",
+        "collider": "PROPS"
+    },
+    "container_kitchen_B_red": {
+        "size": [
+            0.4,
+            0.4,
+            0.4
+        ],
+        "aabb": {
+            "min": [
+                -0.2000078409910202,
+                0,
+                -0.19999949634075165
+            ],
+            "max": [
+                0.19999118149280548,
+                0.39952147006988525,
+                0.1999996155500412
+            ]
+        },
+        "offset": [
+            0,
+            0.2,
+            0
+        ],
+        "factory": "/prop_factories#container_kitchen_B_red",
+        "collider": "PROPS"
+    },
+    "wall_cabinet_single_left": {
+        "size": [
+            1,
+            1,
+            1
+        ],
+        "aabb": {
+            "min": [
+                -0.4999992251396179,
+                0,
+                -2.9802322387695312e-08
+            ],
+            "max": [
+                0.5000007152557373,
+                1,
+                0.9999999403953552
+            ]
+        },
+        "offset": [
+            0,
+            0.5,
+            0.5
+        ],
+        "factory": "/prop_factories#wall_cabinet_single_left",
+        "collider": "WALLS"
+    },
+    "mug_red": {
+        "size": [
+            0.5,
+            0.35,
+            0.4
+        ],
+        "aabb": {
+            "min": [
+                -0.18627838790416718,
+                0,
+                -0.1875000149011612
+            ],
+            "max": [
+                0.3256241977214813,
+                0.3500000238418579,
+                0.1875000149011612
+            ]
+        },
+        "offset": [
+            0,
+            0.15,
+            0
+        ],
+        "factory": "/prop_factories#mug_red",
+        "collider": "PROPS"
+    },
+    "countertop_sink": {
+        "size": [
+            2,
+            1.0,
+            1.5
+        ],
+        "aabb": {
+            "min": [
+                -1,
+                0,
+                -0.75
+            ],
+            "max": [
+                1,
+                1.7578758001327515,
+                0.7513467669487
+            ]
+        },
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ],
+        "factory": "/prop_factories#countertop_sink"
+    },
+    "countertop_straight_B": {
+        "size": [
+            2,
+            1,
+            1.5
+        ],
+        "aabb": {
+            "min": [
+                -1,
+                0,
+                -0.75
+            ],
+            "max": [
+                1,
+                1,
+                0.7513467669487
+            ]
+        },
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ],
+        "factory": "/prop_factories#countertop_straight_B"
+    },
+    "container_kitchen_A_white": {
+        "size": [
+            0.4,
+            0.5,
+            0.4
+        ],
+        "aabb": {
+            "min": [
+                -0.2000078409910202,
+                0,
+                -0.19999949634075165
+            ],
+            "max": [
+                0.19999118149280548,
+                0.5328544974327087,
+                0.1999996155500412
+            ]
+        },
+        "offset": [
+            0,
+            0.25,
+            0
+        ],
+        "factory": "/prop_factories#container_kitchen_A_white",
+        "collider": "PROPS"
+    },
+    "container_kitchen_A_blue": {
+        "size": [
+            0.4,
+            0.5,
+            0.4
+        ],
+        "aabb": {
+            "min": [
+                -0.2000078409910202,
+                0,
+                -0.19999949634075165
+            ],
+            "max": [
+                0.19999118149280548,
+                0.5328544974327087,
+                0.1999996155500412
+            ]
+        },
+        "offset": [
+            0,
+            0.25,
+            0
+        ],
+        "factory": "/prop_factories#container_kitchen_A_blue",
+        "collider": "PROPS"
+    },
+    "fridge": {
+        "size": [
+            2.0,
+            3,
+            1.6
+        ],
+        "aabb": {
+            "min": [
+                -1,
+                0,
+                -0.5
+            ],
+            "max": [
+                1.040000557899475,
+                3,
+                1.1163798570632935
+            ]
+        },
+        "offset": [
+            0,
+            1.5,
+            0.3
+        ],
+        "factory": "/prop_factories#fridge",
+        "category": "WHAT",
+        "target": "GROUND"
+    },
+    "wall_cabinet_single_right": {
+        "size": [
+            1.0,
+            1,
+            1
+        ],
+        "aabb": {
+            "min": [
+                -0.5000007152557373,
+                0,
+                -2.9802322387695312e-08
+            ],
+            "max": [
+                0.4999992847442627,
+                1,
+                0.9999999403953552
+            ]
+        },
+        "offset": [
+            0,
+            0.5,
+            0.5
+        ],
+        "factory": "/prop_factories#wall_cabinet_single_right",
+        "collider": "WALLS",
+        "category": "WHAT",
+        "target": "GROUND"
+    },
+    "wall_shelf_kitchen_hooks_decorated": {
+        "size": [
+            2,
+            0.8,
+            0.7
+        ],
+        "aabb": {
+            "min": [
+                -0.9999999403953552,
+                -0.8032442331314087,
+                -4.371137762859689e-08
+            ],
+            "max": [
+                1,
+                0,
+                0.6999999284744263
+            ]
+        },
+        "offset": [
+            0,
+            -0.4,
+            0.35
+        ],
+        "factory": "/prop_factories#wall_shelf_kitchen_hooks_decorated",
+        "collider": "WALLS"
+    },
+    "countertop_counter_outer": {
+        "size": [
+            1.5,
+            1,
+            1.5
+        ],
+        "aabb": {
+            "min": [
+                -0.7499969601631165,
+                0,
+                -0.7500000596046448
+            ],
+            "max": [
+                0.7500031590461731,
+                1,
+                0.7500000596046448
+            ]
+        },
+        "offset": [
+            0,
+            0.5,
+            0.0
+        ],
+        "factory": "/prop_factories#countertop_counter_outer"
+    },
+    "countertop_single": {
+        "size": [
+            1.0,
+            1,
+            1.5
+        ],
+        "aabb": {
+            "min": [
+                -0.5,
+                0,
+                -0.75
+            ],
+            "max": [
+                0.5,
+                1,
+                0.7513467669487
+            ]
+        },
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ],
+        "factory": "/prop_factories#countertop_single"
+    },
+    "countertop_straight_C": {
+        "size": [
+            2,
+            1,
+            1.5
+        ],
+        "aabb": {
+            "min": [
+                -1,
+                0,
+                -0.75
+            ],
+            "max": [
+                1,
+                1,
+                0.7513467669487
+            ]
+        },
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ],
+        "factory": "/prop_factories#countertop_straight_C"
+    },
+    "countertop_corner_inner": {
+        "size": [
+            1.75,
+            1,
+            1.75
+        ],
+        "aabb": {
+            "min": [
+                -0.7500008940696716,
+                0,
+                -0.7500000596046448
+            ],
+            "max": [
+                1.0000009536743164,
+                1,
+                1
+            ]
+        },
+        "offset": [
+            0.15,
+            0.5,
+            0.15
+        ],
+        "factory": "/prop_factories#countertop_corner_inner"
+    },
+    "lid": {
+        "size": [
+            0.7,
+            0.21,
+            0.7
+        ],
+        "aabb": {
+            "min": [
+                -0.3499999940395355,
+                -2.9802322387695312e-08,
+                -0.3499999940395355
+            ],
+            "max": [
+                0.3499999940395355,
+                0.21050530672073364,
+                0.3499999940395355
+            ]
+        },
+        "offset": [
+            0.0,
+            0.1,
+            0.0
+        ],
+        "factory": "/prop_factories#lid",
+        "collider": "PROPS"
+    },
+    "utensils_cup": {
+        "size": [
+            0.65,
+            0.83,
+            0.4
+        ],
+        "aabb": {
+            "min": [
+                -0.35043835639953613,
+                0,
+                -0.20000000298023224
+            ],
+            "max": [
+                0.2950219511985779,
+                0.8324910402297974,
+                0.20000000298023224
+            ]
+        },
+        "offset": [
+            0,
+            0.41,
+            0.0
+        ],
+        "factory": "/prop_factories#utensils_cup",
+        "collider": "PROPS"
+    },
+    "oven_glove": {
+        "size": [
+            0.45,
+            0.2,
+            0.5
+        ],
+        "aabb": {
+            "min": [
+                -0.2813940942287445,
+                -0.09817017614841461,
+                -0.22863690555095673
+            ],
+            "max": [
+                0.16270852088928223,
+                0.0981701910495758,
+                0.29492321610450745
+            ]
+        },
+        "offset": [
+            0,
+            0.05,
+            0
+        ],
+        "factory": "/prop_factories#oven_glove",
+        "collider": "PROPS"
+    },
+    "wall_shelf_kitchen": {
+        "size": [
+            2,
+            0.5,
+            0.7
+        ],
+        "aabb": {
+            "min": [
+                -0.9999999403953552,
+                -0.5,
+                -4.371137762859689e-08
+            ],
+            "max": [
+                1,
+                0,
+                0.6999999284744263
+            ]
+        },
+        "offset": [
+            0,
+            0,
+            0.3
+        ],
+        "factory": "/prop_factories#wall_shelf_kitchen",
+        "collider": "WALLS"
+    },
+    "container_kitchen_A_red": {
+        "size": [
+            0.4,
+            0.5,
+            0.4
+        ],
+        "aabb": {
+            "min": [
+                -0.2000078409910202,
+                0,
+                -0.19999949634075165
+            ],
+            "max": [
+                0.19999118149280548,
+                0.5328544974327087,
+                0.1999996155500412
+            ]
+        },
+        "offset": [
+            0,
+            0.25,
+            0
+        ],
+        "factory": "/prop_factories#container_kitchen_A_red",
+        "collider": "PROPS"
+    },
+    "papertowel_holder": {
+        "size": [
+            0.4,
+            0.8,
+            0.47
+        ],
+        "aabb": {
+            "min": [
+                -0.19999967515468597,
+                1.1026859283447266e-06,
+                -0.1999996155500412
+            ],
+            "max": [
+                0.19999967515468597,
+                0.7999991774559021,
+                0.275002658367157
+            ]
+        },
+        "offset": [
+            0.0,
+            0.4,
+            0
+        ],
+        "factory": "/prop_factories#papertowel_holder",
+        "collider": "PROPS"
+    },
+    "pot": {
+        "size": [
+            1,
+            0.4,
+            0.7
+        ],
+        "aabb": {
+            "min": [
+                -0.4999999403953552,
+                0,
+                -0.3499999940395355
+            ],
+            "max": [
+                0.5,
+                0.3999999761581421,
+                0.3499999940395355
+            ]
+        },
+        "offset": [
+            0,
+            0.2,
+            0.0
+        ],
+        "factory": "/prop_factories#pot",
+        "collider": "PROPS"
+    },
+    "pan": {
+        "size": [
+            0.7,
+            0.2,
+            1
+        ],
+        "aabb": {
+            "min": [
+                -0.35000038146972656,
+                0,
+                -0.34843823313713074
+            ],
+            "max": [
+                0.34999963641166687,
+                0.20000000298023224,
+                0.6515617370605469
+            ]
+        },
+        "offset": [
+            0,
+            0.1,
+            0
+        ],
+        "factory": "/prop_factories#pan",
+        "collider": "PROPS"
+    },
+    "container_kitchen_B_blue": {
+        "size": [
+            0.4,
+            0.4,
+            0.4
+        ],
+        "aabb": {
+            "min": [
+                -0.2000078409910202,
+                0,
+                -0.19999949634075165
+            ],
+            "max": [
+                0.19999118149280548,
+                0.39952147006988525,
+                0.1999996155500412
+            ]
+        },
+        "offset": [
+            0,
+            0.2,
+            0
+        ],
+        "factory": "/prop_factories#container_kitchen_B_blue",
+        "collider": "PROPS"
+    },
+    "container_kitchen_B_white": {
+        "size": [
+            0.4,
+            0.4,
+            0.4
+        ],
+        "aabb": {
+            "min": [
+                -0.2000078409910202,
+                0,
+                -0.19999949634075165
+            ],
+            "max": [
+                0.19999118149280548,
+                0.39952147006988525,
+                0.1999996155500412
+            ]
+        },
+        "offset": [
+            0,
+            0.2,
+            0
+        ],
+        "factory": "/prop_factories#container_kitchen_B_white",
+        "collider": "PROPS"
+    },
+    "wall_knife_rack": {
+        "size": [
+            1.6,
+            1.0,
+            0.17
+        ],
+        "aabb": {
+            "min": [
+                -0.800000011920929,
+                -0.4689632058143616,
+                1.4901161193847656e-08
+            ],
+            "max": [
+                0.800000011920929,
+                0.5723816752433777,
+                0.1695416420698166
+            ]
+        },
+        "offset": [
+            0.0,
+            0,
+            0.08
+        ],
+        "factory": "/prop_factories#wall_knife_rack",
+        "collider": "WALLS"
+    },
+    "extractor_hood": {
+        "size": [
+            2,
+            2,
+            1.6
+        ],
+        "aabb": {
+            "min": [
+                -1,
+                -0.19999997317790985,
+                0
+            ],
+            "max": [
+                1,
+                1.7999999523162842,
+                1.5999999046325684
+            ]
+        },
+        "offset": [
+            0.0,
+            0.8,
+            0.8
+        ],
+        "factory": "/prop_factories#extractor_hood",
+        "collider": "WALLS"
+    },
+    "wall_shelf_kitchen_corner": {
+        "size": [
+            1.75,
+            0.28,
+            1.75
+        ],
+        "aabb": {
+            "min": [
+                2.980232594040899e-08,
+                -0.5,
+                -1.689028295004391e-08
+            ],
+            "max": [
+                1.75,
+                0,
+                1.75
+            ]
+        },
+        "offset": [
+            0.2,
+            0.15,
+            0.2
+        ],
+        "factory": "/prop_factories#wall_shelf_kitchen_corner",
+        "collider": "WALLS"
+    },
+    "dishrack_plates": {
+        "size": [
+            0.75,
+            0.78,
+            0.8
+        ],
+        "aabb": {
+            "min": [
+                -0.3750000298023224,
+                -4.5746564865112305e-06,
+                -0.4000000059604645
+            ],
+            "max": [
+                0.375,
+                0.7840569019317627,
+                0.4000000059604645
+            ]
+        },
+        "offset": [
+            0,
+            0.39,
+            0.0
+        ],
+        "factory": "/prop_factories#dishrack_plates",
+        "collider": "PROPS"
+    },
+    "plate": {
+        "size": [
+            0.75,
+            0.1,
+            0.75
+        ],
+        "aabb": {
+            "min": [
+                -0.3750000298023224,
+                2.514570951461792e-08,
+                -0.375
+            ],
+            "max": [
+                0.375,
+                0.1000000387430191,
+                0.375
+            ]
+        },
+        "offset": [
+            0,
+            0.05,
+            0.0
+        ],
+        "factory": "/prop_factories#plate",
+        "collider": "PROPS"
+    },
+    "wall_cabinet_corner": {
+        "size": [
+            1.75,
+            1,
+            1.75
+        ],
+        "aabb": {
+            "min": [
+                -0.0012168766697868705,
+                0,
+                -0.0003338456153869629
+            ],
+            "max": [
+                1.7487831115722656,
+                1,
+                1.7496662139892578
+            ]
+        },
+        "offset": [
+            0.15,
+            0.0,
+            0.15
+        ],
+        "factory": "/prop_factories#wall_cabinet_corner"
+    },
+    "countertop_straight_A": {
+        "size": [
+            2,
+            1,
+            1.5
+        ],
+        "aabb": {
+            "min": [
+                -1,
+                0,
+                -0.75
+            ],
+            "max": [
+                1,
+                1,
+                0.7513467669487
+            ]
+        },
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ],
+        "factory": "/prop_factories#countertop_straight_A"
+    },
+    "mug_yellow": {
+        "size": [
+            0.5,
+            0.35,
+            0.37
+        ],
+        "aabb": {
+            "min": [
+                -0.18627838790416718,
+                0,
+                -0.1875000149011612
+            ],
+            "max": [
+                0.3256241977214813,
+                0.3500000238418579,
+                0.1875000149011612
+            ]
+        },
+        "offset": [
+            0.0,
+            0.175,
+            0.0
+        ],
+        "factory": "/prop_factories#mug_yellow",
+        "collider": "PROPS"
+    },
+    "mug_blue": {
+        "size": [
+            0.5,
+            0.35,
+            0.37
+        ],
+        "aabb": {
+            "min": [
+                -0.18627838790416718,
+                0,
+                -0.1875000149011612
+            ],
+            "max": [
+                0.3256241977214813,
+                0.3500000238418579,
+                0.1875000149011612
+            ]
+        },
+        "offset": [
+            0.0,
+            0.175,
+            0.0
+        ],
+        "factory": "/prop_factories#mug_blue",
+        "collider": "PROPS"
+    },
+    "stove": {
+        "size": [
+            2,
+            1.1,
+            1.67
+        ],
+        "aabb": {
+            "min": [
+                -1,
+                0,
+                -0.7500004172325134
+            ],
+            "max": [
+                1,
+                1.2999999523162842,
+                0.926233172416687
+            ]
+        },
+        "offset": [
+            0.0,
+            0.55,
+            0
+        ],
+        "factory": "/prop_factories#stove"
+    },
+    "wall_cabinet_straight": {
+        "size": [
+            2,
+            1,
+            1
+        ],
+        "aabb": {
+            "min": [
+                -1,
+                0,
+                -2.9802322387695312e-08
+            ],
+            "max": [
+                1,
+                1,
+                0.9999999403953552
+            ]
+        },
+        "offset": [
+            0.0,
+            0.5,
+            0.5
+        ],
+        "factory": "/prop_factories#wall_cabinet_straight",
+        "collider": "WALLS"
+    }
+}

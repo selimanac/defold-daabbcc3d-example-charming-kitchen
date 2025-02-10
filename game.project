@@ -19,7 +19,7 @@ scale_mode = stretch
 
 [project]
 title = defold-daabbcc3d-tiny-treats
-custom_resources = /assets/models/output.json
+custom_resources = /assets/models/output-edit.json
 dependencies#0 = https://github.com/selimanac/defold-daabbcc3d/archive/refs/heads/main.zip
 
 [native_extension]
@@ -29,4 +29,9 @@ app_manifest = /test.appmanifest
 max_group_count = 3
 max_gameobject_count = 128
 max_query_result_count = 32
+
+[input]
+repeat_delay = 0.0
+repeat_interval = 0.0
+use_accelerometer = 0
 

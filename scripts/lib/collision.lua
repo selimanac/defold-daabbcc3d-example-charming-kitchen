@@ -6,10 +6,12 @@ collision.bits      = {
 	CURSOR = 1,       -- (2^0)
 	WALLS  = 2,       -- (2^1)
 	GROUND = 4,       -- (2^2)
-	PROBS  = 8,       -- (2^3)
+	PROPS  = 8,       -- (2^3)
 
 	ALL    = bit.bnot(0) -- -1 for all results
 }
+
+collision.targets   = bit.bor(collision.bits.WALLS, collision.bits.GROUND)
 
 function collision.insert_aabb(position, width, height, depth, collision_bit)
 	collision_bit = collision_bit and collision_bit or nil

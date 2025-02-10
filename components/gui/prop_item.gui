@@ -1,0 +1,26 @@
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+textures {
+  name: "thumbs"
+  texture: "/components/atlas/thumbs.atlas"
+}
+nodes {
+  size {
+    x: 64.0
+    y: 64.0
+  }
+  type: TYPE_BOX
+  texture: "thumbs/container_kitchen_B_red"
+  id: "container"
+  layer: "gfx"
+}
+layers {
+  name: "gfx"
+}
+layers {
+  name: "text"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

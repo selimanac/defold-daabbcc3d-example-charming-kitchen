@@ -1,28 +1,95 @@
 script: "/scripts/gui/game.gui_script"
+textures {
+  name: "thumbs"
+  texture: "/components/atlas/thumbs.atlas"
+}
 nodes {
   position {
-    x: 78.0
-    y: 309.0
+    x: 56.0
+    y: 720.0
+  }
+  type: TYPE_TEMPLATE
+  id: "prop_item"
+  inherit_alpha: true
+  template: "/components/gui/prop_item.gui"
+}
+nodes {
+  type: TYPE_BOX
+  id: "prop_item/container"
+  parent: "prop_item"
+  template_node_child: true
+}
+nodes {
+  position {
+    y: 720.0
   }
   size {
-    x: 50.0
-    y: 50.0
+    x: 300.0
+    y: 720.0
+  }
+  type: TYPE_BOX
+  id: "scroll_list_root"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NW
+  layer: "gfx"
+  inherit_alpha: true
+  clipping_mode: CLIPPING_MODE_STENCIL
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 300.0
+    y: 720.0
   }
   color {
+    x: 0.502
+    y: 0.0
+    z: 0.502
+  }
+  type: TYPE_BOX
+  id: "scroll_child_root"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NW
+  parent: "scroll_list_root"
+  layer: "gfx"
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 720.0
+    z: 1.0
+  }
+  size {
+    x: 300.0
+    y: 720.0
+  }
+  color {
+    x: 0.502
     y: 0.0
     z: 0.0
   }
   type: TYPE_BOX
-  id: "dispatch_btn"
-  layer: "gfx"
-  inherit_alpha: true
+  id: "scroll_list_container"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NW
+  layer: "scroll"
+  clipping_visible: false
+  alpha: 0.0
   size_mode: SIZE_MODE_AUTO
+}
+layers {
+  name: "gfx"
 }
 layers {
   name: "text"
 }
 layers {
-  name: "gfx"
+  name: "scroll"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

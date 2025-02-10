@@ -1,4 +1,0 @@
-components {
-  id: "countertop_straight_C"
-  component: "/components/models/probs/countertop_straight_C.model"
-}
