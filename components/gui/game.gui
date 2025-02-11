@@ -1,4 +1,8 @@
 script: "/scripts/gui/game.gui_script"
+fonts {
+  name: "good_matcha"
+  font: "/components/fonts/good_matcha.font"
+}
 textures {
   name: "thumbs"
   texture: "/components/atlas/thumbs.atlas"
@@ -81,6 +85,139 @@ nodes {
   clipping_visible: false
   alpha: 0.0
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1230.0
+    y: 690.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  id: "save_btn"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  layer: "gfx"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 60.0
+    y: 20.0
+  }
+  color {
+    x: 0.329
+    y: 0.145
+    z: 0.686
+  }
+  type: TYPE_TEXT
+  text: "SAVE"
+  font: "good_matcha"
+  id: "save_text"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  parent: "save_btn"
+  layer: "text"
+}
+nodes {
+  position {
+    x: 1140.8851
+    y: 690.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  id: "load_btn"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  layer: "gfx"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 60.0
+    y: 20.0
+  }
+  color {
+    x: 0.329
+    y: 0.145
+    z: 0.686
+  }
+  type: TYPE_TEXT
+  text: "LOAD"
+  font: "good_matcha"
+  id: "load_text"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  parent: "load_btn"
+  layer: "text"
+}
+nodes {
+  position {
+    x: 1265.0
+    y: 654.0
+  }
+  size {
+    x: 300.0
+    y: 20.0
+  }
+  color {
+    x: 0.114
+    y: 0.729
+  }
+  type: TYPE_TEXT
+  text: "Room could not be saved!"
+  font: "good_matcha"
+  id: "save_load_status"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_E
+  layer: "text"
+}
+nodes {
+  position {
+    x: 1051.0
+    y: 690.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  id: "clear_btn"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  layer: "gfx"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 60.0
+    y: 20.0
+  }
+  color {
+    x: 0.329
+    y: 0.145
+    z: 0.686
+  }
+  type: TYPE_TEXT
+  text: "CLEAR"
+  font: "good_matcha"
+  id: "clear_text"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  parent: "clear_btn"
+  layer: "text"
 }
 layers {
   name: "gfx"

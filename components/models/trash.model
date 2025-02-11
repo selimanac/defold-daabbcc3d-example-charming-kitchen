@@ -1,0 +1,14 @@
+mesh: "/assets/models/trash_yellow.gltf"
+name: "garbage"
+materials {
+  name: "default"
+  material: "/components/materials/shadow_model_smooth.material"
+  textures {
+    sampler: "shadow_render_depth_texture"
+    texture: "/assets/textures/TrashBin1_1_Albedo2.png"
+  }
+  textures {
+    sampler: "shadow_render_diffuse_texture"
+    texture: "/assets/textures/TrashBin1_1_Albedo2.png"
+  }
+}

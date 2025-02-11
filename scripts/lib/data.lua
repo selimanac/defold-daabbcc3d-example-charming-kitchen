@@ -1,5 +1,7 @@
 local data = {}
 
+data.gui_scroll = false
+
 data.props = {}
 data.cursor = {
 	origin = vmath.vector3(),
@@ -13,7 +15,8 @@ data.selected_prop = {
 	position = vmath.vector3()
 }
 
-data.gui_scroll = false
+
+data.room_number = 1
 data.room_props = {}
 data.room_colliders = {}
 

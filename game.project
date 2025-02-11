@@ -18,8 +18,8 @@ input_method = HiddenInputField
 scale_mode = stretch
 
 [project]
-title = defold-daabbcc3d-tiny-treats
-custom_resources = /assets/models/output-edit.json
+title = defold-daabbcc3d-charming-kitchen
+custom_resources = /data/props.json
 dependencies#0 = https://github.com/selimanac/defold-daabbcc3d/archive/refs/heads/main.zip
 
 [native_extension]

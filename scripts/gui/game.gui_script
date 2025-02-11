@@ -1,10 +1,6 @@
-local const     = require("scripts.lib.const")
-local data      = require("scripts.lib.data")
-local libcamera = require("scripts.lib.libcamera")
-
-
-
-local props                   = {}
+local const                   = require("scripts.lib.const")
+local data                    = require("scripts.lib.data")
+local libcamera               = require("scripts.lib.libcamera")
 
 -- Scroll
 local scroll_delta            = 130 -- How much to change the target per mouse wheel tick.
@@ -17,6 +13,7 @@ local scroll_target_y         = 0
 local scroll_snap_threshold   = 0.1 -- A small threshold to snap when close enough.
 
 -- Grid
+local grid_props              = {}
 local grid_start_x            = 60  -- starting x position
 local grid_start_y            = 670 -- starting y position
 local grid_spacing_x          = 80  -- horizontal spacing between items
@@ -27,23 +24,10 @@ local grid_columns            = 3   -- number of columns in the grid
 local prop_item_template
 local scroll_child_root_node
 local scroll_list_root_node
-
-
-function init(self)
-	msg.post(".", "acquire_input_focus")
-
-	scroll_child_root_node = gui.get_node("scroll_child_root")
-	scroll_list_root_node = gui.get_node("scroll_list_container")
-	prop_item_template = gui.get_node("prop_item/container")
-
-	gui.set_enabled(prop_item_template, false)
-
-	scroll_initial_pos = gui.get_position(scroll_child_root_node)
-	scroll_current_y   = scroll_initial_pos.y
-	scroll_target_y    = scroll_initial_pos.y
-
-	--	msg.post(const.URLS.MANAGER, const.MSG.PICK_PROP, { name = "wall_shelf_kitchen" })
-end
+local load_btn_node
+local save_btn_node
+local save_load_status_node
+local reset_btn_node
 
 local function setup_gui()
 	local prop_position = gui.get_position(prop_item_template)
@@ -71,13 +55,48 @@ local function setup_gui()
 		gui.set_parent(prop_item["container"], scroll_child_root_node, true)
 		gui.set_enabled(prop_item.container, true)
 
-		table.insert(props, prop_item)
+		table.insert(grid_props, prop_item)
 		i = i + 1
 	end
 end
 
+local function pop_btn(btn_node)
+	gui.animate(btn_node, gui.PROP_SCALE, vmath.vector3(1.2, 0.8, 1), gui.EASING_INCIRC, 0.3, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
+end
 
+local function set_file_status(status_text)
+	gui.set_text(save_load_status_node, status_text)
 
+	local color = gui.get_color(save_load_status_node)
+	gui.set_color(save_load_status_node, vmath.vector4(color.x, color.y, color.z, 0))
+	gui.set_enabled(save_load_status_node, true)
+
+	gui.animate(save_load_status_node, gui.PROP_COLOR, vmath.vector4(color.x, color.y, color.z, 1), gui.EASING_OUTSINE, 1.2, 0, function()
+		gui.set_color(save_load_status_node, vmath.vector4(color.x, color.y, color.z, 0))
+		gui.set_enabled(save_load_status_node, false)
+	end, gui.PLAYBACK_ONCE_PINGPONG)
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	scroll_child_root_node = gui.get_node("scroll_child_root")
+	scroll_list_root_node = gui.get_node("scroll_list_container")
+	prop_item_template = gui.get_node("prop_item/container")
+	load_btn_node = gui.get_node("load_btn")
+	save_btn_node = gui.get_node("save_btn")
+	save_load_status_node = gui.get_node("save_load_status")
+	reset_btn_node = gui.get_node("clear_btn")
+
+	gui.set_enabled(save_load_status_node, false)
+	gui.set_enabled(prop_item_template, false)
+
+	scroll_initial_pos = gui.get_position(scroll_child_root_node)
+	scroll_current_y   = scroll_initial_pos.y
+	scroll_target_y    = scroll_initial_pos.y
+
+	--	msg.post(const.URLS.MANAGER, const.MSG.PICK_PROP, { name = "wall_shelf_kitchen" })
+end
 
 function update(self, dt)
 	if data.gui_scroll then
@@ -96,16 +115,21 @@ end
 function on_message(_, message_id, message, _)
 	if message_id == const.MSG.SETUP_GUI then
 		setup_gui()
+	elseif message_id == const.MSG.SAVE_LOAD_ROOM_COMPLETE then
+		set_file_status(message.status)
 	end
 end
 
 function on_input(_, action_id, action)
-	for _, prop in ipairs(props) do
+	-- Grid prop items
+	for _, prop in ipairs(grid_props) do
 		if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 and gui.pick_node(prop.container, action.x, action.y) then
+			pop_btn(prop.container)
 			msg.post(const.URLS.MANAGER, const.MSG.PICK_PROP, { name = prop.name })
 		end
 	end
 
+	-- Grid scroll
 	if gui.pick_node(scroll_list_root_node, action.x, action.y) then
 		data.gui_scroll = true
 
@@ -118,5 +142,19 @@ function on_input(_, action_id, action)
 		scroll_target_y = math.max(scroll_min_scroll_y, math.min(scroll_max_scroll_y, scroll_target_y))
 	else
 		data.gui_scroll = false
+	end
+
+	-- Save & Load
+	if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 then
+		if gui.pick_node(load_btn_node, action.x, action.y) then
+			pop_btn(load_btn_node)
+			msg.post(const.URLS.MANAGER, const.MSG.LOAD_ROOM)
+		elseif gui.pick_node(save_btn_node, action.x, action.y) then
+			pop_btn(save_btn_node)
+			msg.post(const.URLS.MANAGER, const.MSG.SAVE_ROOM)
+		elseif gui.pick_node(reset_btn_node, action.x, action.y) then
+			pop_btn(reset_btn_node)
+			msg.post(const.URLS.MANAGER, const.MSG.RESET_ROOM)
+		end
 	end
 end

@@ -87,12 +87,12 @@ instances {
   prototype: "/components/gameobjects/blank.go"
   position {
     x: 3.0
-    y: -0.05
+    y: -0.25
     z: 2.25
   }
   scale3 {
     x: 6.0
-    y: 0.1
+    y: 0.5
     z: 4.0
   }
 }
@@ -102,26 +102,50 @@ instances {
   position {
     x: 3.0
     y: 2.0
-    z: 0.2
   }
   scale3 {
     x: 6.0
     y: 4.0
-    z: 0.1
+    z: 0.5
   }
 }
 instances {
   id: "collider_wall_2"
   prototype: "/components/gameobjects/blank.go"
   position {
-    x: 0.2
     y: 2.0
     z: 2.0
   }
   scale3 {
-    x: 0.1
+    x: 0.5
     y: 4.0
     z: 4.0
+  }
+}
+instances {
+  id: "trash"
+  prototype: "/components/gameobjects/trash.go"
+  position {
+    x: 7.513098
+    y: -0.5
+    z: 1.0
+  }
+  scale3 {
+    x: 1.5
+    y: 1.5
+    z: 1.5
+  }
+}
+instances {
+  id: "collider_trash"
+  prototype: "/components/gameobjects/blank.go"
+  position {
+    x: 7.513098
+    y: 0.333901
+    z: 1.0
+  }
+  scale3 {
+    y: 2.0
   }
 }
 scale_along_z: 0
@@ -150,6 +174,7 @@ embedded_instances {
 embedded_instances {
   id: "colliders"
   children: "collider_ground"
+  children: "collider_trash"
   children: "collider_wall_1"
   children: "collider_wall_2"
   data: ""

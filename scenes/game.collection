@@ -4,10 +4,6 @@ instances {
   prototype: "/components/gameobjects/camera.go"
 }
 instances {
-  id: "prop_factories"
-  prototype: "/components/gameobjects/prop_factories.go"
-}
-instances {
   id: "cursor"
   prototype: "/components/gameobjects/cursor.go"
 }
@@ -15,47 +11,21 @@ instances {
   id: "game_gui"
   prototype: "/components/gameobjects/game_gui.go"
 }
+collection_instances {
+  id: "container"
+  collection: "/components/collections/container.collection"
+}
 scale_along_z: 0
-embedded_instances {
-  id: "camera_target"
-  data: ""
-  position {
-    x: 3.0
-    y: 1.0
-    z: 2.0
-  }
-}
-embedded_instances {
-  id: "light_source"
-  data: ""
-  position {
-    x: 5.0
-    y: 10.0
-    z: 5.0
-  }
-}
-embedded_instances {
-  id: "light_target"
-  data: ""
-  position {
-    x: 2.0
-    z: 2.0
-  }
-}
-embedded_instances {
-  id: "factories"
-  children: "prop_factories"
-  data: "components {\n"
-  "  id: \"room_1\"\n"
-  "  component: \"/components/factories/room_1.collectionfactory\"\n"
-  "}\n"
-  ""
-}
 embedded_instances {
   id: "scripts"
   data: "components {\n"
   "  id: \"game\"\n"
   "  component: \"/scripts/game.script\"\n"
+  "  properties {\n"
+  "    id: \"camera_target\"\n"
+  "    value: \"/container/camera_target\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
   "  properties {\n"
   "    id: \"camera_distance_min\"\n"
   "    value: \"10.0\"\n"
@@ -73,64 +43,4 @@ embedded_instances {
   "  }\n"
   "}\n"
   ""
-}
-embedded_instances {
-  id: "collision_debug"
-  data: "embedded_components {\n"
-  "  id: \"model\"\n"
-  "  type: \"model\"\n"
-  "  data: \"mesh: \\\"/assets/models/cube.glb\\\"\\n"
-  "name: \\\"{{NAME}}\\\"\\n"
-  "materials {\\n"
-  "  name: \\\"default\\\"\\n"
-  "  material: \\\"/components/materials/model.material\\\"\\n"
-  "  textures {\\n"
-  "    sampler: \\\"tex0\\\"\\n"
-  "    texture: \\\"/assets/textures/pink.png\\\"\\n"
-  "  }\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  ""
-  position {
-    x: -348.0
-  }
-}
-embedded_instances {
-  id: "room_container"
-  data: ""
-}
-embedded_instances {
-  id: "ground"
-  data: "embedded_components {\n"
-  "  id: \"model\"\n"
-  "  type: \"model\"\n"
-  "  data: \"mesh: \\\"/builtins/assets/meshes/quad_2x2.dae\\\"\\n"
-  "name: \\\"{{NAME}}\\\"\\n"
-  "materials {\\n"
-  "  name: \\\"default\\\"\\n"
-  "  material: \\\"/components/materials/shadow_model_smooth.material\\\"\\n"
-  "  textures {\\n"
-  "    sampler: \\\"shadow_render_depth_texture\\\"\\n"
-  "    texture: \\\"/assets/textures/ground.png\\\"\\n"
-  "  }\\n"
-  "  textures {\\n"
-  "    sampler: \\\"shadow_render_diffuse_texture\\\"\\n"
-  "    texture: \\\"/assets/textures/ground.png\\\"\\n"
-  "  }\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  ""
-  position {
-    y: -0.5
-  }
-  rotation {
-    x: -0.70710677
-    w: 0.70710677
-  }
-  scale3 {
-    x: 30.0
-    y: 30.0
-  }
 }

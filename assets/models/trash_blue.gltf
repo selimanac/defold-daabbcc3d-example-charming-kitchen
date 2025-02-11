@@ -15,12 +15,12 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"wall_shelf_kitchen_hooks_decorated"
+			"name":"TrashBin1_2"
 		}
 	],
 	"meshes":[
 		{
-			"name":"wall_shelf_kitchen_hooks_decorated",
+			"name":"TrashBin.004",
 			"primitives":[
 				{
 					"attributes":{
@@ -37,68 +37,68 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":1125,
+			"count":498,
 			"max":[
-				1.0241186618804932,
-				0.4282817244529724,
-				0.23306655883789062
+				0.25735536217689514,
+				1.048329472541809,
+				0.25612348318099976
 			],
 			"min":[
-				-0.9758812189102173,
-				-0.3749625086784363,
-				-0.46693339943885803
+				-0.25735539197921753,
+				0,
+				-0.2585873007774353
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":1125,
+			"count":498,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":1125,
+			"count":498,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":2706,
+			"count":1548,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":13500,
+			"byteLength":5976,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":13500,
-			"byteOffset":13500,
+			"byteLength":5976,
+			"byteOffset":5976,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":9000,
-			"byteOffset":27000,
+			"byteLength":3984,
+			"byteOffset":11952,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":5412,
-			"byteOffset":36000,
+			"byteLength":3096,
+			"byteOffset":15936,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":41412,
-			"uri":"wall_shelf_kitchen_hooks_decorated.bin"
+			"byteLength":19032,
+			"uri":"trash_blue.bin"
 		}
 	]
 }

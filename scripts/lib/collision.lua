@@ -7,7 +7,7 @@ collision.bits      = {
 	WALLS  = 2,       -- (2^1)
 	GROUND = 4,       -- (2^2)
 	PROPS  = 8,       -- (2^3)
-
+	TRASH  = 16,
 	ALL    = bit.bnot(0) -- -1 for all results
 }
 
@@ -61,6 +61,10 @@ end
 
 function collision.update_aabb(aabb)
 	daabbcc3d.update_aabb(aabb_group_id, aabb.aabb_id, aabb.position, aabb.size.width, aabb.size.height, aabb.size.depth)
+end
+
+function collision.remove(aabb_id)
+	daabbcc3d.remove(aabb_group_id, aabb_id)
 end
 
 function collision.reset()

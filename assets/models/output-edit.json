@@ -22,7 +22,7 @@
             0,
             0
         ],
-        "factory": "/prop_factories#blinds_kitchen",
+        "factory": "/container/prop_factories#blinds_kitchen",
         "collider": "WALLS",
         "category": "WALL"
     },
@@ -49,7 +49,7 @@
             0,
             0.0
         ],
-        "factory": "/prop_factories#cuttingboard",
+        "factory": "/container/prop_factories#cuttingboard",
         "collider": "PROPS"
     },
     "toaster": {
@@ -75,7 +75,7 @@
             0.3,
             0.0
         ],
-        "factory": "/prop_factories#toaster",
+        "factory": "/container/prop_factories#toaster",
         "collider": "PROPS"
     },
     "wall_papertowel_holder": {
@@ -101,7 +101,7 @@
             0,
             0
         ],
-        "factory": "/prop_factories#wall_papertowel_holder",
+        "factory": "/container/prop_factories#wall_papertowel_holder",
         "collider": "WALLS"
     },
     "kettle": {
@@ -127,7 +127,7 @@
             0.3,
             0.0
         ],
-        "factory": "/prop_factories#kettle",
+        "factory": "/container/prop_factories#kettle",
         "collider": "PROPS"
     },
     "container_kitchen_B_red": {
@@ -153,7 +153,7 @@
             0.2,
             0
         ],
-        "factory": "/prop_factories#container_kitchen_B_red",
+        "factory": "/container/prop_factories#container_kitchen_B_red",
         "collider": "PROPS"
     },
     "wall_cabinet_single_left": {
@@ -179,7 +179,7 @@
             0.5,
             0.5
         ],
-        "factory": "/prop_factories#wall_cabinet_single_left",
+        "factory": "/container/prop_factories#wall_cabinet_single_left",
         "collider": "WALLS"
     },
     "mug_red": {
@@ -205,7 +205,7 @@
             0.15,
             0
         ],
-        "factory": "/prop_factories#mug_red",
+        "factory": "/container/prop_factories#mug_red",
         "collider": "PROPS"
     },
     "countertop_sink": {
@@ -231,7 +231,7 @@
             0.5,
             0
         ],
-        "factory": "/prop_factories#countertop_sink"
+        "factory": "/container/prop_factories#countertop_sink"
     },
     "countertop_straight_B": {
         "size": [
@@ -256,7 +256,7 @@
             0.5,
             0
         ],
-        "factory": "/prop_factories#countertop_straight_B"
+        "factory": "/container/prop_factories#countertop_straight_B"
     },
     "container_kitchen_A_white": {
         "size": [
@@ -281,7 +281,7 @@
             0.25,
             0
         ],
-        "factory": "/prop_factories#container_kitchen_A_white",
+        "factory": "/container/prop_factories#container_kitchen_A_white",
         "collider": "PROPS"
     },
     "container_kitchen_A_blue": {
@@ -307,7 +307,7 @@
             0.25,
             0
         ],
-        "factory": "/prop_factories#container_kitchen_A_blue",
+        "factory": "/container/prop_factories#container_kitchen_A_blue",
         "collider": "PROPS"
     },
     "fridge": {
@@ -333,7 +333,7 @@
             1.5,
             0.3
         ],
-        "factory": "/prop_factories#fridge",
+        "factory": "/container/prop_factories#fridge",
         "category": "WHAT",
         "target": "GROUND"
     },
@@ -360,7 +360,7 @@
             0.5,
             0.5
         ],
-        "factory": "/prop_factories#wall_cabinet_single_right",
+        "factory": "/container/prop_factories#wall_cabinet_single_right",
         "collider": "WALLS",
         "category": "WHAT",
         "target": "GROUND"
@@ -388,7 +388,7 @@
             -0.4,
             0.35
         ],
-        "factory": "/prop_factories#wall_shelf_kitchen_hooks_decorated",
+        "factory": "/container/prop_factories#wall_shelf_kitchen_hooks_decorated",
         "collider": "WALLS"
     },
     "countertop_counter_outer": {
@@ -414,7 +414,7 @@
             0.5,
             0.0
         ],
-        "factory": "/prop_factories#countertop_counter_outer"
+        "factory": "/container/prop_factories#countertop_counter_outer"
     },
     "countertop_single": {
         "size": [
@@ -439,7 +439,7 @@
             0.5,
             0
         ],
-        "factory": "/prop_factories#countertop_single"
+        "factory": "/container/prop_factories#countertop_single"
     },
     "countertop_straight_C": {
         "size": [
@@ -464,7 +464,7 @@
             0.5,
             0
         ],
-        "factory": "/prop_factories#countertop_straight_C"
+        "factory": "/container/prop_factories#countertop_straight_C"
     },
     "countertop_corner_inner": {
         "size": [
@@ -489,7 +489,7 @@
             0.5,
             0.15
         ],
-        "factory": "/prop_factories#countertop_corner_inner"
+        "factory": "/container/prop_factories#countertop_corner_inner"
     },
     "lid": {
         "size": [
@@ -514,7 +514,7 @@
             0.1,
             0.0
         ],
-        "factory": "/prop_factories#lid",
+        "factory": "/container/prop_factories#lid",
         "collider": "PROPS"
     },
     "utensils_cup": {
@@ -540,7 +540,7 @@
             0.41,
             0.0
         ],
-        "factory": "/prop_factories#utensils_cup",
+        "factory": "/container/prop_factories#utensils_cup",
         "collider": "PROPS"
     },
     "oven_glove": {
@@ -566,7 +566,7 @@
             0.05,
             0
         ],
-        "factory": "/prop_factories#oven_glove",
+        "factory": "/container/prop_factories#oven_glove",
         "collider": "PROPS"
     },
     "wall_shelf_kitchen": {
@@ -592,7 +592,7 @@
             0.03,
             0
         ],
-        "factory": "/prop_factories#wall_shelf_kitchen",
+        "factory": "/container/prop_factories#wall_shelf_kitchen",
         "collider": "WALLS"
     },
     "container_kitchen_A_red": {
@@ -618,7 +618,7 @@
             0.25,
             0
         ],
-        "factory": "/prop_factories#container_kitchen_A_red",
+        "factory": "/container/prop_factories#container_kitchen_A_red",
         "collider": "PROPS"
     },
     "papertowel_holder": {
@@ -644,7 +644,7 @@
             0.4,
             0
         ],
-        "factory": "/prop_factories#papertowel_holder",
+        "factory": "/container/prop_factories#papertowel_holder",
         "collider": "PROPS"
     },
     "pot": {
@@ -670,7 +670,7 @@
             0.2,
             0.0
         ],
-        "factory": "/prop_factories#pot",
+        "factory": "/container/prop_factories#pot",
         "collider": "PROPS"
     },
     "pan": {
@@ -696,7 +696,7 @@
             0.1,
             0
         ],
-        "factory": "/prop_factories#pan",
+        "factory": "/container/prop_factories#pan",
         "collider": "PROPS"
     },
     "container_kitchen_B_blue": {
@@ -722,7 +722,7 @@
             0.2,
             0
         ],
-        "factory": "/prop_factories#container_kitchen_B_blue",
+        "factory": "/container/prop_factories#container_kitchen_B_blue",
         "collider": "PROPS"
     },
     "container_kitchen_B_white": {
@@ -748,7 +748,7 @@
             0.2,
             0
         ],
-        "factory": "/prop_factories#container_kitchen_B_white",
+        "factory": "/container/prop_factories#container_kitchen_B_white",
         "collider": "PROPS"
     },
     "wall_knife_rack": {
@@ -774,7 +774,7 @@
             0,
             0.08
         ],
-        "factory": "/prop_factories#wall_knife_rack",
+        "factory": "/container/prop_factories#wall_knife_rack",
         "collider": "WALLS"
     },
     "extractor_hood": {
@@ -800,7 +800,7 @@
             0.8,
             0.8
         ],
-        "factory": "/prop_factories#extractor_hood",
+        "factory": "/container/prop_factories#extractor_hood",
         "collider": "WALLS"
     },
     "wall_shelf_kitchen_corner": {
@@ -826,7 +826,7 @@
             0.15,
             0.23
         ],
-        "factory": "/prop_factories#wall_shelf_kitchen_corner",
+        "factory": "/container/prop_factories#wall_shelf_kitchen_corner",
         "collider": "WALLS"
     },
     "dishrack_plates": {
@@ -852,7 +852,7 @@
             0.39,
             0.0
         ],
-        "factory": "/prop_factories#dishrack_plates",
+        "factory": "/container/prop_factories#dishrack_plates",
         "collider": "PROPS"
     },
     "plate": {
@@ -878,7 +878,7 @@
             0.05,
             0.0
         ],
-        "factory": "/prop_factories#plate",
+        "factory": "/container/prop_factories#plate",
         "collider": "PROPS"
     },
     "wall_cabinet_corner": {
@@ -904,7 +904,7 @@
             0.0,
             0.15
         ],
-        "factory": "/prop_factories#wall_cabinet_corner"
+        "factory": "/container/prop_factories#wall_cabinet_corner"
     },
     "countertop_straight_A": {
         "size": [
@@ -929,7 +929,7 @@
             0.5,
             0
         ],
-        "factory": "/prop_factories#countertop_straight_A"
+        "factory": "/container/prop_factories#countertop_straight_A"
     },
     "mug_yellow": {
         "size": [
@@ -954,7 +954,7 @@
             0.175,
             0.0
         ],
-        "factory": "/prop_factories#mug_yellow",
+        "factory": "/container/prop_factories#mug_yellow",
         "collider": "PROPS"
     },
     "mug_blue": {
@@ -980,7 +980,7 @@
             0.175,
             0.0
         ],
-        "factory": "/prop_factories#mug_blue",
+        "factory": "/container/prop_factories#mug_blue",
         "collider": "PROPS"
     },
     "stove": {
@@ -1006,7 +1006,7 @@
             0.55,
             0
         ],
-        "factory": "/prop_factories#stove"
+        "factory": "/container/prop_factories#stove"
     },
     "wall_cabinet_straight": {
         "size": [
@@ -1031,7 +1031,7 @@
             0.5,
             0.5
         ],
-        "factory": "/prop_factories#wall_cabinet_straight",
+        "factory": "/container/prop_factories#wall_cabinet_straight",
         "collider": "WALLS"
     }
 }

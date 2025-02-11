@@ -1,12 +1,13 @@
-local props = require("scripts.lib.props")
-local cursor = require("scripts.lib.cursor")
+local props         = require("scripts.lib.props")
+local cursor        = require("scripts.lib.cursor")
 local render_helper = require("render.render_helper")
-local const = require("scripts.lib.const")
-local libcamera = require("scripts.lib.libcamera")
-local room = require("scripts.lib.room")
-local data = require("scripts.lib.data")
+local const         = require("scripts.lib.const")
+local libcamera     = require("scripts.lib.libcamera")
+local room          = require("scripts.lib.room")
+local data          = require("scripts.lib.data")
+local file          = require("scripts.lib.file")
 
-local manager = {}
+local manager       = {}
 
 local function collect_garbage()
 	print("garbage before: ", collectgarbage("count"))
@@ -31,6 +32,16 @@ local function setup_urls()
 	for k, v in pairs(const.URLS) do
 		const.URLS[k] = msg.url(v)
 	end
+
+	for factory_key, factory_url in pairs(const.FACTORIES) do
+		if type(factory_url) == "table" then
+			for i, v in ipairs(factory_url) do
+				factory_url[i] = msg.url(v)
+			end
+		else
+			const.FACTORIES[factory_key] = msg.url(factory_url)
+		end
+	end
 end
 
 function manager.init(camera_settings, game_settings)
@@ -50,6 +61,7 @@ end
 
 function manager.message(message_id, message, sender)
 	cursor.message(message_id, message, sender)
+	file.message(message_id, message, sender)
 end
 
 function manager.update(dt)

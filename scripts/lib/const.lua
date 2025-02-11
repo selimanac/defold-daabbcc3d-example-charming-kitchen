@@ -1,5 +1,6 @@
 local const            = {}
 const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
+const.PROPS_DATA       = "/data/props.json"
 
 const.SHADOW_SETTINGS  = {
 	projection_width  = 30,
@@ -12,8 +13,8 @@ const.SHADOW_SETTINGS  = {
 }
 
 const.LIGHT_SETTINGS   = {
-	source = '/light_source',
-	target = '/light_target',
+	source = '/container/light_source',
+	target = '/container/light_target',
 	diffuse_light_color = vmath.vector3(0.7), -- Diffuse light color
 }
 
@@ -28,15 +29,20 @@ const.TRIGGERS         = {
 }
 
 const.FACTORIES        = {
-	PROPS = {},
+	PROP = "/container/prop_factories",
 	ROOMS = {
-		[1] = "/factories#room_1"
+		[1] = "/container/factories#room_1"
 	}
 }
 
 const.MSG              = {
 	PICK_PROP = hash("pick_prop"),
-	SETUP_GUI = hash("setup_gui")
+	SETUP_GUI = hash("setup_gui"),
+	SAVE_ROOM = hash("save_room"),
+	LOAD_ROOM = hash("load_room"),
+	SAVE_LOAD_ROOM_COMPLETE = hash("save_load_room_complete"),
+	RESET_ROOM = hash("reset_room")
+
 }
 
 const.CURSOR           = "/cursor"
@@ -44,7 +50,7 @@ const.CURSOR           = "/cursor"
 const.URLS             = {
 	MANAGER = "/scripts#game",
 	GUI = "/game_gui#game",
-	ROOM_CONTAINER = "room_container"
+	ROOM_CONTAINER = "/container/room_container"
 }
 
 return const

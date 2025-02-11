@@ -43,6 +43,7 @@ function cursor.update(dt)
 	end
 	ray_end_position = libcamera.position + data.cursor.dir * RAY_DISTANCE
 
+
 	local prop_collision_bit = current_prop.collider and collision.bits[current_prop.collider] or nil
 
 	--Camera to world ray
@@ -52,11 +53,19 @@ function cursor.update(dt)
 		is_prop_placed = true
 		local ray_collision_response = raycast_result[1]
 
-		if ray_collision_response.normal.y == 0 then
+
+		--[[if ray_collision_response.normal.y == 0 and prop_collision_bit == nil then
 			local normal_rotation = utils.get_rotation_from_normal((ray_collision_response.normal.x), (ray_collision_response.normal.y), (ray_collision_response.normal.z))
 
 			rotate_prop(normal_rotation)
 		end
+
+
+		if prop_collision_bit == collision.bits.WALLS then
+			local normal_rotation = utils.get_rotation_from_normal((ray_collision_response.normal.x), (ray_collision_response.normal.y), (ray_collision_response.normal.z))
+
+			rotate_prop(normal_rotation)
+		end]]
 
 		data.cursor.position.x = ray_collision_response.contact_point.x
 		data.cursor.position.y = ray_collision_response.contact_point.y
@@ -85,22 +94,21 @@ function cursor.update(dt)
 		-- debug collider
 		if data.game_settings.collider_debug then
 			if vmath.length(rotated_prop_size) > 0 then
-				go.set_scale(rotated_prop_size, "/collision_debug")
+				go.set_scale(rotated_prop_size, "/container/collision_debug")
 			end
 
-			go.set_position(collider_position_offset, "/collision_debug")
+			go.set_position(collider_position_offset, "/container/collision_debug")
 		end
 
 
 		-- Query rotated AABB of Cursor
-		prop_query_result, prop_query_count = collision.query_aabb(collider_position_offset, rotated_prop_size.x, rotated_prop_size.y, rotated_prop_size.z, nil, true)
+		prop_query_result, prop_query_count = collision.query_aabb_sort(collider_position_offset, rotated_prop_size.x, rotated_prop_size.y, rotated_prop_size.z, nil, true)
 
 		if prop_query_result then
-			prop_target_count = 0
 			for i = 1, prop_query_count do
 				local query_collision_response = prop_query_result[i]
 
-				local collider_position_offset = vmath.vector3(
+				local query_collider_position_offset = vmath.vector3(
 					(query_collision_response.normal.x) * query_collision_response.depth,
 					(query_collision_response.normal.y) * query_collision_response.depth,
 					(query_collision_response.normal.z) * query_collision_response.depth
@@ -111,22 +119,13 @@ function cursor.update(dt)
 
 
 
-				data.cursor.position = data.cursor.position + collider_position_offset
+				data.cursor.position = data.cursor.position + query_collider_position_offset
 			end
 		end
 	else
 		is_prop_placed = false
 	end
 
-	--[[	print(prop_target_count)
-	if prop_target_count > 0 then
-		is_correct_target = true
-		print(is_correct_target)
-	else
-		is_correct_target = false
-		print(is_correct_target)
-	end]]
-	--pprint(prop_target_count)
 
 
 	go.set_position(data.cursor.position, const.CURSOR)
@@ -134,23 +133,13 @@ end
 
 local function set_prop()
 	data.cursor.is_active = false
-	go.set_parent(current_prop.id, const.URLS.ROOM_CONTAINER, true)
-
-	go.animate(current_prop.id, "scale", go.PLAYBACK_ONCE_PINGPONG, vmath.vector3(0.9, 1.3, 1), go.EASING_INSINE, 0.2)
-
-	local pos = go.get_world_position(current_prop.id)
-
-	local collider_position_offset = pos + prop_offset
-
-	local prop_aabb_id = collision.insert_aabb(collider_position_offset, rotated_prop_size.x, rotated_prop_size.y, rotated_prop_size.z, collision.bits.PROPS)
-
-	data.room_props[prop_aabb_id] = current_prop
-
-	pprint(pos)
-	-- debug collider
+	local prop = props.set(current_prop, prop_offset, rotated_prop_size)
+	print("ADDED")
+	pprint(prop)
+	-- -- debug collider
 	if data.game_settings.collider_debug then
-		go.set_scale(rotated_prop_size, "/collision_debug")
-		go.set_position(collider_position_offset, "/collision_debug")
+		go.set_scale(rotated_prop_size, "/container/collision_debug")
+		go.set_position(current_prop.collider_position_offset, "/container/collision_debug")
 	end
 
 	current_prop = {}
@@ -163,6 +152,9 @@ local function add_prop(name)
 	end
 	data.cursor.is_active = true
 	current_prop = props.create(name)
+	go.set_parent(current_prop.id, const.CURSOR, false)
+	rotated_prop_size = current_prop.size
+	prop_offset = current_prop.offset
 end
 
 function cursor.message(message_id, message, sender)

@@ -1,0 +1,514 @@
+{
+    "blinds_kitchen": {
+        "size": [
+            1.6,
+            1.95,
+            0.3
+        ],
+        "offset": [
+            0,
+            0,
+            0
+        ],
+        "collider": "WALLS"
+    },
+    "cuttingboard": {
+        "size": [
+            1.3,
+            0.1,
+            0.75
+        ],
+        "offset": [
+            0,
+            0,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "toaster": {
+        "size": [
+            0.9,
+            0.6,
+            0.5
+        ],
+        "offset": [
+            0,
+            0.3,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "wall_papertowel_holder": {
+        "size": [
+            1.6,
+            0.6,
+            0.5
+        ],
+        "offset": [
+            0.0,
+            0,
+            0
+        ],
+        "collider": "WALLS"
+    },
+    "kettle": {
+        "size": [
+            0.8,
+            0.6,
+            0.6
+        ],
+        "offset": [
+            0,
+            0.3,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "container_kitchen_B_red": {
+        "size": [
+            0.4,
+            0.4,
+            0.4
+        ],
+        "offset": [
+            0,
+            0.2,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "wall_cabinet_single_left": {
+        "size": [
+            1,
+            1,
+            1
+        ],
+        "offset": [
+            0,
+            0.5,
+            0.5
+        ],
+        "collider": "WALLS"
+    },
+    "mug_red": {
+        "size": [
+            0.5,
+            0.35,
+            0.4
+        ],
+        "offset": [
+            0,
+            0.15,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "countertop_sink": {
+        "size": [
+            2,
+            1.0,
+            1.5
+        ],
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ]
+    },
+    "countertop_straight_B": {
+        "size": [
+            2,
+            1,
+            1.5
+        ],
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ]
+    },
+    "container_kitchen_A_white": {
+        "size": [
+            0.4,
+            0.5,
+            0.4
+        ],
+        "offset": [
+            0,
+            0.25,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "container_kitchen_A_blue": {
+        "size": [
+            0.4,
+            0.5,
+            0.4
+        ],
+        "offset": [
+            0,
+            0.25,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "fridge": {
+        "size": [
+            2.0,
+            3,
+            1.6
+        ],
+        "offset": [
+            0,
+            1.5,
+            0.3
+        ],
+        "target": "GROUND"
+    },
+    "wall_cabinet_single_right": {
+        "size": [
+            1.0,
+            1,
+            1
+        ],
+        "offset": [
+            0,
+            0.5,
+            0.5
+        ],
+        "collider": "WALLS"
+    },
+    "wall_shelf_kitchen_hooks_decorated": {
+        "size": [
+            2,
+            0.8,
+            0.7
+        ],
+        "offset": [
+            0,
+            0,
+            0
+        ],
+        "collider": "WALLS"
+    },
+    "countertop_counter_outer": {
+        "size": [
+            1.5,
+            1,
+            1.5
+        ],
+        "offset": [
+            0,
+            0.5,
+            0.0
+        ]
+    },
+    "countertop_single": {
+        "size": [
+            1.0,
+            1,
+            1.5
+        ],
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ]
+    },
+    "countertop_straight_C": {
+        "size": [
+            2,
+            1,
+            1.5
+        ],
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ]
+    },
+    "countertop_corner_inner": {
+        "size": [
+            1.75,
+            1,
+            1.75
+        ],
+        "offset": [
+            0.15,
+            0.5,
+            0.15
+        ]
+    },
+    "lid": {
+        "size": [
+            0.7,
+            0.21,
+            0.7
+        ],
+        "offset": [
+            0.0,
+            0.1,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "utensils_cup": {
+        "size": [
+            0.65,
+            0.83,
+            0.4
+        ],
+        "offset": [
+            0,
+            0.41,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "oven_glove": {
+        "size": [
+            0.45,
+            0.2,
+            0.5
+        ],
+        "offset": [
+            0,
+            0.05,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "wall_shelf_kitchen": {
+        "size": [
+            2,
+            0.5,
+            0.7
+        ],
+        "offset": [
+            0,
+            0.03,
+            0
+        ],
+        "collider": "WALLS"
+    },
+    "container_kitchen_A_red": {
+        "size": [
+            0.4,
+            0.5,
+            0.4
+        ],
+        "offset": [
+            0,
+            0.25,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "papertowel_holder": {
+        "size": [
+            0.4,
+            0.8,
+            0.47
+        ],
+        "offset": [
+            0.0,
+            0.4,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "pot": {
+        "size": [
+            1,
+            0.4,
+            0.7
+        ],
+        "offset": [
+            0,
+            0.2,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "pan": {
+        "size": [
+            0.7,
+            0.2,
+            1
+        ],
+        "offset": [
+            0,
+            0.1,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "container_kitchen_B_blue": {
+        "size": [
+            0.4,
+            0.4,
+            0.4
+        ],
+        "offset": [
+            0,
+            0.2,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "container_kitchen_B_white": {
+        "size": [
+            0.4,
+            0.4,
+            0.4
+        ],
+        "offset": [
+            0,
+            0.2,
+            0
+        ],
+        "collider": "PROPS"
+    },
+    "wall_knife_rack": {
+        "size": [
+            1.6,
+            1.0,
+            0.17
+        ],
+        "offset": [
+            0.0,
+            0,
+            0.08
+        ],
+        "collider": "WALLS"
+    },
+    "extractor_hood": {
+        "size": [
+            2,
+            2,
+            1.6
+        ],
+        "offset": [
+            0.0,
+            0.2,
+            0
+        ],
+        "collider": "WALLS"
+    },
+    "wall_shelf_kitchen_corner": {
+        "size": [
+            1.75,
+            0.28,
+            1.75
+        ],
+        "offset": [
+            0.22,
+            0.15,
+            0.23
+        ],
+        "collider": "WALLS"
+    },
+    "dishrack_plates": {
+        "size": [
+            0.75,
+            0.78,
+            0.8
+        ],
+        "offset": [
+            0,
+            0.39,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "plate": {
+        "size": [
+            0.75,
+            0.1,
+            0.75
+        ],
+        "offset": [
+            0,
+            0.05,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "wall_cabinet_corner": {
+        "size": [
+            1.75,
+            1,
+            1.75
+        ],
+        "offset": [
+            0.15,
+            0.0,
+            0.15
+        ],
+        "collider": "WALLS"
+    },
+    "countertop_straight_A": {
+        "size": [
+            2,
+            1,
+            1.5
+        ],
+        "offset": [
+            0.0,
+            0.5,
+            0
+        ]
+    },
+    "mug_yellow": {
+        "size": [
+            0.5,
+            0.35,
+            0.37
+        ],
+        "offset": [
+            0.0,
+            0.175,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "mug_blue": {
+        "size": [
+            0.5,
+            0.35,
+            0.37
+        ],
+        "offset": [
+            0.0,
+            0.175,
+            0.0
+        ],
+        "collider": "PROPS"
+    },
+    "stove": {
+        "size": [
+            2,
+            1.1,
+            1.67
+        ],
+        "offset": [
+            0.0,
+            0.55,
+            0
+        ]
+    },
+    "wall_cabinet_straight": {
+        "size": [
+            2,
+            1,
+            1
+        ],
+        "offset": [
+            0.0,
+            0.5,
+            0.5
+        ],
+        "collider": "WALLS"
+    }
+}
