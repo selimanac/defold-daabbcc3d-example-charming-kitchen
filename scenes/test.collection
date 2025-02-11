@@ -87,7 +87,7 @@ instances {
 }
 collection_instances {
   id: "base"
-  collection: "/components/collections/base.collection"
+  collection: "/components/collections/room_1.collection"
 }
 scale_along_z: 0
 embedded_instances {

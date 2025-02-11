@@ -43,7 +43,8 @@ const.CURSOR           = "/cursor"
 
 const.URLS             = {
 	MANAGER = "/scripts#game",
-	GUI = "/gui#game"
+	GUI = "/game_gui#game",
+	ROOM_CONTAINER = "room_container"
 }
 
 return const

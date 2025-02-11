@@ -589,8 +589,8 @@
         },
         "offset": [
             0,
-            0,
-            0.3
+            0.03,
+            0
         ],
         "factory": "/prop_factories#wall_shelf_kitchen",
         "collider": "WALLS"
@@ -822,9 +822,9 @@
             ]
         },
         "offset": [
-            0.2,
+            0.22,
             0.15,
-            0.2
+            0.23
         ],
         "factory": "/prop_factories#wall_shelf_kitchen_corner",
         "collider": "WALLS"

@@ -134,17 +134,24 @@ end
 
 local function set_prop()
 	data.cursor.is_active = false
-	go.set_parent(current_prop.id, "/room", true)
+	go.set_parent(current_prop.id, const.URLS.ROOM_CONTAINER, true)
 
 	go.animate(current_prop.id, "scale", go.PLAYBACK_ONCE_PINGPONG, vmath.vector3(0.9, 1.3, 1), go.EASING_INSINE, 0.2)
 
 	local pos = go.get_world_position(current_prop.id)
 
-	local collider_position_offset = pos + current_prop.offset
+	local collider_position_offset = pos + prop_offset
 
-	local prop_aabb_id = collision.insert_aabb(collider_position_offset, current_prop.size.x, current_prop.size.y, current_prop.size.z, collision.bits.PROPS)
+	local prop_aabb_id = collision.insert_aabb(collider_position_offset, rotated_prop_size.x, rotated_prop_size.y, rotated_prop_size.z, collision.bits.PROPS)
 
 	data.room_props[prop_aabb_id] = current_prop
+
+	pprint(pos)
+	-- debug collider
+	if data.game_settings.collider_debug then
+		go.set_scale(rotated_prop_size, "/collision_debug")
+		go.set_position(collider_position_offset, "/collision_debug")
+	end
 
 	current_prop = {}
 end

@@ -1,19 +1,7 @@
-name: "game"
-instances {
-  id: "camera"
-  prototype: "/components/gameobjects/camera.go"
-}
+name: "container"
 instances {
   id: "prop_factories"
   prototype: "/components/gameobjects/prop_factories.go"
-}
-instances {
-  id: "cursor"
-  prototype: "/components/gameobjects/cursor.go"
-}
-instances {
-  id: "game_gui"
-  prototype: "/components/gameobjects/game_gui.go"
 }
 scale_along_z: 0
 embedded_instances {
@@ -24,55 +12,6 @@ embedded_instances {
     y: 1.0
     z: 2.0
   }
-}
-embedded_instances {
-  id: "light_source"
-  data: ""
-  position {
-    x: 5.0
-    y: 10.0
-    z: 5.0
-  }
-}
-embedded_instances {
-  id: "light_target"
-  data: ""
-  position {
-    x: 2.0
-    z: 2.0
-  }
-}
-embedded_instances {
-  id: "factories"
-  children: "prop_factories"
-  data: "components {\n"
-  "  id: \"room_1\"\n"
-  "  component: \"/components/factories/room_1.collectionfactory\"\n"
-  "}\n"
-  ""
-}
-embedded_instances {
-  id: "scripts"
-  data: "components {\n"
-  "  id: \"game\"\n"
-  "  component: \"/scripts/game.script\"\n"
-  "  properties {\n"
-  "    id: \"camera_distance_min\"\n"
-  "    value: \"10.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"camera_auto_turn\"\n"
-  "    value: \"false\"\n"
-  "    type: PROPERTY_TYPE_BOOLEAN\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"collider_debug\"\n"
-  "    value: \"false\"\n"
-  "    type: PROPERTY_TYPE_BOOLEAN\n"
-  "  }\n"
-  "}\n"
-  ""
 }
 embedded_instances {
   id: "collision_debug"
@@ -97,8 +36,13 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "room_container"
-  data: ""
+  id: "factories"
+  children: "prop_factories"
+  data: "components {\n"
+  "  id: \"room_1\"\n"
+  "  component: \"/components/factories/room_1.collectionfactory\"\n"
+  "}\n"
+  ""
 }
 embedded_instances {
   id: "ground"
@@ -133,4 +77,25 @@ embedded_instances {
     x: 30.0
     y: 30.0
   }
+}
+embedded_instances {
+  id: "light_source"
+  data: ""
+  position {
+    x: 5.0
+    y: 10.0
+    z: 5.0
+  }
+}
+embedded_instances {
+  id: "light_target"
+  data: ""
+  position {
+    x: 2.0
+    z: 2.0
+  }
+}
+embedded_instances {
+  id: "room_container"
+  data: ""
 }
