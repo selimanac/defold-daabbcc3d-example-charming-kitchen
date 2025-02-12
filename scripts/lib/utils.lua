@@ -27,4 +27,16 @@ function utils.get_rotation_from_normal_quad(normal_x, normal_y, normal_z)
 	return vmath.quat_from_to(vmath.vector3(0, 1, 0), normal)
 end
 
+function utils.table_copy(tbl)
+	local copy = {}
+	for key, value in pairs(tbl) do
+		if type(value) ~= 'table' then
+			copy[key] = value
+		else
+			copy[key] = utils.table_copy(value)
+		end
+	end
+	return copy
+end
+
 return utils

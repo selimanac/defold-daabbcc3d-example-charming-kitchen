@@ -43,11 +43,15 @@ function room.init(room_number)
 end
 
 function room.reset()
+	pprint("room.reset")
+	pprint(data.room_props)
 	for aabb_id, prop in pairs(data.room_props) do
+		print("DELETE:", aabb_id)
 		collision.remove(aabb_id)
 		go.delete(prop.id)
 	end
 	data.room_props = {}
+	pprint(data.room_props)
 end
 
 function room.generate(room_props)

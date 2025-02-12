@@ -3,11 +3,11 @@ const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
 const.PROPS_DATA       = "/data/props.json"
 
 const.SHADOW_SETTINGS  = {
-	projection_width  = 30,
-	projection_height = 30,
-	projection_near   = -100,
-	projection_far    = 100,
-	depth_bias        = 0.002, -- Usually, it's 0.00002 for perspective and 0.002 for orthographic projection.
+	projection_width  = 20,
+	projection_height = 20,
+	projection_near   = -80,
+	projection_far    = 80,
+	depth_bias        = 0.0008, -- Usually, it's 0.00002 for perspective and 0.002 for orthographic projection.
 	shadow_opacity    = 0.2, -- Shadow opacity
 	buffer_size       = 2048
 }

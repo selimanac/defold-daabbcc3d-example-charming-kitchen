@@ -17,34 +17,33 @@ local plane_point       = vmath.vector3(0, 6, 6)
 
 local prop_query_result = {}
 local prop_query_count  = 0
-local current_prop      = {}
+local active_prop       = {}
 local rotated_prop_size = vmath.vector3()
 local prop_offset       = vmath.vector3()
 local prop_rotation     = 0
 local is_prop_placed    = false
 local is_prop_rotated   = false
-local is_correct_target = false
-local prop_target_count = 0
+local is_pick_probe     = false
 
 local function rotate_prop(rotation)
-	rotated_prop_size = vmath.rotate(rotation, current_prop.size)
+	rotated_prop_size = vmath.rotate(rotation, active_prop.size)
 	rotated_prop_size.x = math.abs(rotated_prop_size.x)
 	rotated_prop_size.y = math.abs(rotated_prop_size.y)
 	rotated_prop_size.z = math.abs(rotated_prop_size.z)
 
-	prop_offset = vmath.rotate(rotation, current_prop.offset)
+	prop_offset = vmath.rotate(rotation, active_prop.offset)
 
-	go.set_rotation(rotation, const.CURSOR)
+	go.set_rotation(rotation, active_prop.id)
 end
 
 function cursor.update(dt)
-	if next(current_prop) == nil then
+	if next(active_prop) == nil then
 		return
 	end
+
+
 	ray_end_position = libcamera.position + data.cursor.dir * RAY_DISTANCE
-
-
-	local prop_collision_bit = current_prop.collider and collision.bits[current_prop.collider] or nil
+	local prop_collision_bit = active_prop.collider and collision.bits[active_prop.collider] or nil
 
 	--Camera to world ray
 	raycast_result, raycast_count = collision.raycast_sort(libcamera.position, ray_end_position, prop_collision_bit, true)
@@ -115,6 +114,7 @@ function cursor.update(dt)
 				)
 				if query_collision_response.normal.x < 0 or query_collision_response.normal.z < 0 then
 					print("WRONG")
+					is_prop_placed = false
 				end
 
 
@@ -126,35 +126,35 @@ function cursor.update(dt)
 		is_prop_placed = false
 	end
 
-
+	pprint(is_prop_placed)
 
 	go.set_position(data.cursor.position, const.CURSOR)
 end
 
 local function set_prop()
 	data.cursor.is_active = false
-	local prop = props.set(current_prop, prop_offset, rotated_prop_size)
+	local prop = props.set(active_prop, prop_offset, rotated_prop_size)
 	print("ADDED")
 	pprint(prop)
 	-- -- debug collider
 	if data.game_settings.collider_debug then
 		go.set_scale(rotated_prop_size, "/container/collision_debug")
-		go.set_position(current_prop.collider_position_offset, "/container/collision_debug")
+		go.set_position(active_prop.collider_position_offset, "/container/collision_debug")
 	end
 
-	current_prop = {}
+	active_prop = {}
 end
 
 local function add_prop(name)
-	if next(current_prop) ~= nil then
+	if next(active_prop) ~= nil then
 		data.cursor.is_active = false
-		go.delete(current_prop.id)
+		go.delete(active_prop.id)
 	end
 	data.cursor.is_active = true
-	current_prop = props.create(name)
-	go.set_parent(current_prop.id, const.CURSOR, false)
-	rotated_prop_size = current_prop.size
-	prop_offset = current_prop.offset
+	active_prop = props.create(name)
+	go.set_parent(active_prop.id, const.CURSOR, false)
+	rotated_prop_size = active_prop.size
+	prop_offset = active_prop.offset
 end
 
 function cursor.message(message_id, message, sender)
@@ -182,10 +182,16 @@ function cursor.input(action_id, action)
 	--local plane_normal = vmath.vector3(0, 0, 1)
 	--data.cursor.position = libcamera.ray_plane_intersect_normal(data.cursor.origin, data.cursor.dir, plane_point, plane_normal)
 
-	if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 and data.cursor.is_active then
+	if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 then
 		-- TODO Check for correct placement
-		if is_prop_placed then
+		if data.cursor.is_active and is_prop_placed then
 			set_prop()
+		end
+
+		if data.cursor.is_active == false and is_pick_probe == false then
+			print("data.cursor.is_active", data.cursor.is_active)
+			print("is_pick_probe", is_pick_probe)
+			is_pick_probe = true
 		end
 	end
 

@@ -1,7 +1,7 @@
 local data = require("scripts.lib.data")
 local collision = require("scripts.lib.collision")
 local const = require("scripts.lib.const")
-
+local utils = require("scripts.lib.utils")
 local props = {}
 
 
@@ -36,13 +36,19 @@ function props.create(prop_name, prop_position, prop_rotation)
 	prop_position = prop_position and prop_position or nil
 	prop_rotation = prop_rotation and prop_rotation or nil
 
-	local prop = data.props[prop_name]
+	local prop = utils.table_copy(data.props[prop_name])
 	local factory_url = const.FACTORIES.PROP
 	factory_url.fragment = prop_name
 
 	prop.id = factory.create(factory_url, prop_position, prop_rotation)
-
+	print("PROPID")
+	pprint(prop.id)
 	return prop
+end
+
+function props.pick(prop)
+	collision.remove(prop.aabb_id)
+	data.room_props[prop.aabb_id] = nil
 end
 
 function props.set(prop, prop_offset, rotated_prop_size)
@@ -58,9 +64,9 @@ function props.set(prop, prop_offset, rotated_prop_size)
 	prop.collider_position_offset = prop.position + prop_offset
 	prop.rotated_prop_size        = rotated_prop_size
 	prop.aabb_id                  = collision.insert_aabb(prop.collider_position_offset, prop.rotated_prop_size.x, prop.rotated_prop_size.y, prop.rotated_prop_size.z, collision.bits.PROPS)
-
+	print("AABB ID:", prop.aabb_id)
 	data.room_props[prop.aabb_id] = prop
-
+	pprint(data.room_props)
 	return prop
 end
 

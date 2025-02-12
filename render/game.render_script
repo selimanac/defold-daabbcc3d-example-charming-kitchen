@@ -283,7 +283,6 @@ function update(self)
     render.set_viewport(0, 0, state.window_width, state.window_height)
     render.enable_state(graphics.STATE_CULL_FACE)
     render.draw(predicates.model, { frustum = libcamera.frustum, constants = self.light_constant_buffer })
-
     render.enable_texture('shadow_render_depth_texture', self.shadow_render_target, graphics.BUFFER_TYPE_DEPTH_BIT)
     render.draw(predicates.shadow_render, { constants = self.light_constant_buffer })
     render.disable_texture('shadow_render_depth_texture')
