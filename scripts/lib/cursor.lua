@@ -1,30 +1,30 @@
-local data              = require("scripts.lib.data")
-local libcamera         = require("scripts.lib.libcamera")
-local collision         = require("scripts.lib.collision")
-local const             = require("scripts.lib.const")
-local props             = require("scripts.lib.props")
-local utils             = require("scripts.lib.utils")
-local trash             = require("scripts.lib.trash")
+local data                   = require("scripts.lib.data")
+local libcamera              = require("scripts.lib.libcamera")
+local collision              = require("scripts.lib.collision")
+local const                  = require("scripts.lib.const")
+local props                  = require("scripts.lib.props")
+local utils                  = require("scripts.lib.utils")
+local trash                  = require("scripts.lib.trash")
 
-local cursor            = {}
+local cursor                 = {}
 
 -- Ray
-local RAY_DISTANCE      = 100
-local ray_end_position  = vmath.vector3()
-local raycast_result    = {}
-local raycast_count     = 0
-
+local RAY_DISTANCE           = 100
+local ray_end_position       = vmath.vector3()
+local raycast_result         = {}
+local raycast_count          = 0
+local ray_collision_response = {}
 -- Props
-local prop_query_result = {}
-local prop_query_count  = 0
-local active_prop       = {}
-local picked_prop       = {}
-local rotated_prop_size = vmath.vector3()
-local prop_offset       = vmath.vector3()
-local prop_rotation     = 0
-local is_prop_placed    = false
-local is_prop_rotated   = false
-local is_pick_prop      = false
+local prop_query_result      = {}
+local prop_query_count       = 0
+local active_prop            = {}
+local picked_prop            = {}
+local rotated_prop_size      = vmath.vector3()
+local prop_offset            = vmath.vector3()
+local prop_rotation          = 0
+local is_prop_placed         = false
+local is_prop_rotated        = false
+local is_pick_prop           = false
 
 
 --[[local function rotate_prop(rotation)
@@ -42,6 +42,9 @@ end
 
 
 local function set_prop()
+	picked_prop = {}
+	is_pick_prop = false
+
 	data.cursor.is_active = false
 	local prop = props.set(active_prop, prop_offset, rotated_prop_size)
 	-- -- debug collider
@@ -84,8 +87,8 @@ local function pick_prop(prop)
 
 	go.set_position(vmath.vector3(), active_prop.id)
 	go.set_parent(active_prop.id, const.CURSOR, false)
-	--rotated_prop_size = active_prop.size
-	--	prop_offset = active_prop.offset
+	rotated_prop_size = active_prop.size
+	prop_offset = active_prop.offset
 end
 
 function cursor.update(dt)
@@ -96,33 +99,32 @@ function cursor.update(dt)
 	--Camera to world ray
 	raycast_result, raycast_count = collision.raycast_sort(libcamera.position, ray_end_position, prop_collision_bit, true)
 
+	if raycast_count > 0 then
+		ray_collision_response = raycast_result[1]
+		--	pprint(ray_collision_response.normal)
+	end
+
 
 	if next(active_prop) == nil then
-		if raycast_result then
-			local ray_collision_response = raycast_result[1]
-			local op = data.room_props[ray_collision_response.id]
-			if op then
+		if raycast_count > 0 and data.gui_scroll == false then
+			local room_prop = data.room_props[ray_collision_response.id]
+			if room_prop then
 				is_pick_prop = true
-				picked_prop = op
+				picked_prop = room_prop
 			else
 				is_pick_prop = false
 				picked_prop = {}
 			end
-
-			--pprint(op)
-			--	pick_prop(op)
+		else
+			is_pick_prop = false
+			picked_prop = {}
 		end
 		return
 	end
 
 
 
-	if raycast_result then
-		is_prop_placed = true
-		local ray_collision_response = raycast_result[1]
-
-
-
+	if raycast_count > 0 then
 		-- if ray_collision_response.normal.y == 0 then
 		-- 	local normal_rotation = utils.get_rotation_from_normal((ray_collision_response.normal.x), (ray_collision_response.normal.y), (ray_collision_response.normal.z))
 		-- 	rotate_prop(normal_rotation)
@@ -134,28 +136,29 @@ function cursor.update(dt)
 			return
 		end
 
-		data.cursor.position.x = ray_collision_response.contact_point.x
-		data.cursor.position.y = ray_collision_response.contact_point.y
-		data.cursor.position.z = ray_collision_response.contact_point.z
+		pprint(ray_collision_response)
+		local room_collider_direction = data.room_colliders[ray_collision_response.id].direction
+
+		local collider_position = data.cursor.position
+		if ray_collision_response.normal == room_collider_direction then
+			print("HIT")
+
+			is_prop_placed = true
+
+			collider_position.x = ray_collision_response.contact_point.x
+			collider_position.y = ray_collision_response.contact_point.y
+			collider_position.z = ray_collision_response.contact_point.z
+		else
+			is_prop_placed = false
+			print("nothing")
+		end
+
 
 		local collider_position_offset = vmath.vector3(
-			data.cursor.position.x + prop_offset.x,
-			data.cursor.position.y + prop_offset.y,
-			data.cursor.position.z + prop_offset.z)
-
-		-- TODO Check for correct placement
-		--[[	local prop_target_type = current_prop.target and collision.bits[current_prop.target] or nil
-		--	pprint(query_collision_response)
-
-		if data.room_colliders[ray_collision_response.id] then
-			local room_collider = data.room_colliders[query_collision_response.id]
-
-			if prop_target_type and prop_target_type == room_collider.type then
-				--	print("FOUND")
-				prop_target_count = prop_target_count + 1
-				is_correct_target = true
-			end
-		end]]
+			collider_position.x + prop_offset.x,
+			collider_position.y + prop_offset.y,
+			collider_position.z + prop_offset.z
+		)
 
 
 		-- debug collider
@@ -169,30 +172,55 @@ function cursor.update(dt)
 
 
 		-- Query rotated AABB of Cursor
-		prop_query_result, prop_query_count = collision.query_aabb_sort(collider_position_offset, rotated_prop_size.x, rotated_prop_size.y, rotated_prop_size.z, nil, true)
+		prop_query_result, prop_query_count = collision.query_aabb_sort(collider_position_offset, rotated_prop_size.x, rotated_prop_size.y, rotated_prop_size.z, prop_collision_bit, true)
+		-- if prop_query_count > 0 then
 
+		-- end
 		if prop_query_result then
 			for i = 1, prop_query_count do
 				local query_collision_response = prop_query_result[i]
 
-				local query_collider_position_offset = vmath.vector3(
-					(query_collision_response.normal.x) * query_collision_response.depth,
-					(query_collision_response.normal.y) * query_collision_response.depth,
-					(query_collision_response.normal.z) * query_collision_response.depth
-				)
+
+
+				-- local room_collider_direction = data.room_colliders[query_collision_response.id].direction
+
+				-- pprint(query_collision_response)
+				-- -- pprint("WALL NORMAL: ", room_collider_direction)
+				-- -- pprint("RAY NORMAL:", ray_collision_response.normal)
+				-- if (query_collision_response.normal) ~= const.VECTOR.RIGHT then
+				-- 	print("WRONG SIDE")
+				-- 	pprint(query_collision_response)
+				-- end
+
+				-- if query_collision_response.normal == room_collider_direction then
+				-- 	print("HIT")
+				-- else
+				-- 	print("nothing")
+				-- end
+				local query_collider_position_offset = vmath.vector3()
+				if is_prop_placed then
+					query_collider_position_offset.x = query_collision_response.normal.x * query_collision_response.depth
+					query_collider_position_offset.y = query_collision_response.normal.y * query_collision_response.depth
+					query_collider_position_offset.z = query_collision_response.normal.z * query_collision_response.depth
+				end
+
+
+				-- This must be FIXED
 				if query_collision_response.normal.y < 0 or query_collision_response.normal.x < 0 or query_collision_response.normal.z < 0 then
 					-- TODO CHECK THIS
 					print("WRONG")
 					--	go.animate(active_prop.model_url, "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1.0, 0.5, 0.5, 1), go.EASING_INSINE, 1.0)
-					is_prop_placed = false
+					--	is_prop_placed = false
 				else
-					data.cursor.position = data.cursor.position + query_collider_position_offset
+					--data.cursor.position = data.cursor.position + query_collider_position_offset
 				end
+
+				data.cursor.position = data.cursor.position + query_collider_position_offset
 			end
 		end
 	else
 		is_prop_placed = false
-
+		--print("NOT HIT")
 		if trash.is_trash_prop then
 			trash.reset(active_prop)
 		end
@@ -221,7 +249,7 @@ local function rotate_prop(dir)
 end
 
 local function delete_prop()
-	trash.delete(active_prop)
+	trash.delete()
 	go.animate(active_prop.id, "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0.2, 0.2, 0.2), go.EASING_INSINE, 0.2, 0, function()
 		trash.reset(active_prop)
 		remove_prop()
@@ -234,6 +262,7 @@ function cursor.input(action_id, action)
 
 	data.cursor.position = libcamera.ray_plane_intersect(data.cursor.origin, data.cursor.dir, const.PLANE_POINT)
 
+	-- Alternative
 	--local plane_normal = vmath.vector3(0, 0, 1)
 	--data.cursor.position = libcamera.ray_plane_intersect_normal(data.cursor.origin, data.cursor.dir, plane_point, plane_normal)
 
@@ -242,6 +271,7 @@ function cursor.input(action_id, action)
 		if data.cursor.is_active and is_prop_placed then
 			set_prop()
 		elseif not data.cursor.is_active and is_pick_prop then
+			print("is_pick_prop", is_pick_prop)
 			pick_prop(picked_prop)
 		elseif data.cursor.is_active and trash.is_trash_prop then
 			delete_prop()

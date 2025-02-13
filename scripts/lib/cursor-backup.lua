@@ -1,30 +1,32 @@
-local data              = require("scripts.lib.data")
-local libcamera         = require("scripts.lib.libcamera")
-local collision         = require("scripts.lib.collision")
-local const             = require("scripts.lib.const")
-local props             = require("scripts.lib.props")
-local utils             = require("scripts.lib.utils")
-local trash             = require("scripts.lib.trash")
+local data               = require("scripts.lib.data")
+local libcamera          = require("scripts.lib.libcamera")
+local collision          = require("scripts.lib.collision")
+local const              = require("scripts.lib.const")
+local props              = require("scripts.lib.props")
+local utils              = require("scripts.lib.utils")
+local trash              = require("scripts.lib.trash")
 
-local cursor            = {}
+local cursor             = {}
 
 -- Ray
-local RAY_DISTANCE      = 100
-local ray_end_position  = vmath.vector3()
-local raycast_result    = {}
-local raycast_count     = 0
+local RAY_DISTANCE       = 100
+local ray_end_position   = vmath.vector3()
+local raycast_result     = {}
+local raycast_count      = 0
 
 -- Props
-local prop_query_result = {}
-local prop_query_count  = 0
-local active_prop       = {}
-local picked_prop       = {}
-local rotated_prop_size = vmath.vector3()
-local prop_offset       = vmath.vector3()
-local prop_rotation     = 0
-local is_prop_placed    = false
-local is_prop_rotated   = false
-local is_pick_prop      = false
+local prop_query_result  = {}
+local prop_query_count   = 0
+local active_prop        = {}
+local picked_prop        = {}
+local prop_collision_bit = collision.bits.ALL
+local rotated_prop_size  = vmath.vector3()
+local prop_offset        = vmath.vector3()
+local prop_rotation      = 0
+
+local is_prop_placed     = false
+local is_prop_rotated    = false
+local is_pick_prop       = false
 
 
 --[[local function rotate_prop(rotation)
@@ -91,37 +93,31 @@ end
 function cursor.update(dt)
 	ray_end_position = libcamera.position + data.cursor.dir * RAY_DISTANCE
 
-	local prop_collision_bit = active_prop.collider and bit.bor(collision.bits[active_prop.collider], collision.bits.TRASH) or nil
+	prop_collision_bit = active_prop.collider and bit.bor(collision.bits[active_prop.collider], collision.bits.TRASH) or nil
 
 	--Camera to world ray
 	raycast_result, raycast_count = collision.raycast_sort(libcamera.position, ray_end_position, prop_collision_bit, true)
 
 
 	if next(active_prop) == nil then
+		-- Check for pick-up
 		if raycast_result then
 			local ray_collision_response = raycast_result[1]
-			local op = data.room_props[ray_collision_response.id]
-			if op then
+			local target_prop = data.room_props[ray_collision_response.id]
+			if target_prop then
 				is_pick_prop = true
-				picked_prop = op
+				picked_prop = target_prop
 			else
 				is_pick_prop = false
 				picked_prop = {}
 			end
-
-			--pprint(op)
-			--	pick_prop(op)
 		end
 		return
 	end
 
-
-
 	if raycast_result then
 		is_prop_placed = true
 		local ray_collision_response = raycast_result[1]
-
-
 
 		-- if ray_collision_response.normal.y == 0 then
 		-- 	local normal_rotation = utils.get_rotation_from_normal((ray_collision_response.normal.x), (ray_collision_response.normal.y), (ray_collision_response.normal.z))
