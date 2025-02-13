@@ -19,6 +19,7 @@ data.selected_prop = {
 data.room_number = 1
 data.room_props = {}
 data.room_colliders = {}
+data.room_trash = {}
 
 data.game_settings =
 {

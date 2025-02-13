@@ -125,7 +125,7 @@ function on_input(_, action_id, action)
 	for _, prop in ipairs(grid_props) do
 		if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 and gui.pick_node(prop.container, action.x, action.y) then
 			pop_btn(prop.container)
-			msg.post(const.URLS.MANAGER, const.MSG.PICK_PROP, { name = prop.name })
+			msg.post(const.URLS.MANAGER, const.MSG.ADD_PROP, { name = prop.name })
 		end
 	end
 

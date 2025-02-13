@@ -21,12 +21,12 @@ end
 local function toogle_profiler()
 	data.game_settings.profiler = not data.game_settings.profiler and true or false
 	data.game_settings.collider_debug = not data.game_settings.collider_debug and true or false
+
 	if profiler then
 		profiler.enable_ui(data.game_settings.profiler)
 		profiler.set_ui_view_mode(profiler.VIEW_MODE_MINIMIZED)
 	end
 end
-
 
 local function setup_urls()
 	for k, v in pairs(const.URLS) do
@@ -46,7 +46,6 @@ end
 
 function manager.init(camera_settings, game_settings)
 	msg.post("@render:", "clear_color", { color = const.BACKGROUND_COLOR })
-
 
 	setup_urls()
 

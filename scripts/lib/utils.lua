@@ -1,4 +1,5 @@
 local utils = {}
+
 function utils.get_rotation_from_normal(normal_x, normal_y, normal_z)
 	local length = math.sqrt(normal_x * normal_x + normal_y * normal_y + normal_z * normal_z)
 	normal_x = normal_x / length

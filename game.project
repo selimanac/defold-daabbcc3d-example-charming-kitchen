@@ -18,7 +18,7 @@ input_method = HiddenInputField
 scale_mode = stretch
 
 [project]
-title = defold-daabbcc3d-charming-kitchen
+title = defold-daabbcc3d-example-charming-kitchen
 custom_resources = /data/props.json
 dependencies#0 = https://github.com/selimanac/defold-daabbcc3d/archive/refs/heads/main.zip
 
@@ -31,7 +31,5 @@ max_gameobject_count = 128
 max_query_result_count = 32
 
 [input]
-repeat_delay = 0.0
-repeat_interval = 0.0
 use_accelerometer = 0
 

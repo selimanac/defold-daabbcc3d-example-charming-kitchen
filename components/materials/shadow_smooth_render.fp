@@ -14,6 +14,7 @@ uniform fs_uniforms
     mediump vec4 diffuse_light;
     mediump vec4 bias;
     mediump vec4 shadow_opacity;
+    mediump vec4 tint;
 };
 
 out vec4 fragColor;
@@ -96,7 +97,8 @@ float shadow_calculation(vec4 depth_data)
 
 void main()
 {
-    vec4  color = texture(shadow_render_diffuse_texture, var_texcoord0.xy);
+    vec4  tint_pm = vec4(tint.xyz * tint.w, tint.w);
+    vec4  color = texture(shadow_render_diffuse_texture, var_texcoord0.xy) * tint_pm;
 
     vec4  depth_proj = var_texcoord0_shadow / var_texcoord0_shadow.w;
     float shadow = shadow_calculation(depth_proj.xyzw);

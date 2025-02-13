@@ -1,4 +1,16 @@
 local const            = {}
+
+const.VECTOR           = {
+	UP = vmath.vector3(0, 1, 0),
+	BACK = vmath.vector3(0, 0, -1),
+	DOWN = vmath.vector3(0, -1, 0),
+	FORWARD = vmath.vector3(0, 0, 1),
+	LEFT = vmath.vector3(-1, 0, 0),
+	RIGHT = vmath.vector3(1, 0, 0)
+}
+
+const.PLANE_POINT      = vmath.vector3(0, 6, 6)
+
 const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
 const.PROPS_DATA       = "/data/props.json"
 
@@ -36,7 +48,7 @@ const.FACTORIES        = {
 }
 
 const.MSG              = {
-	PICK_PROP = hash("pick_prop"),
+	ADD_PROP = hash("add_prop"),
 	SETUP_GUI = hash("setup_gui"),
 	SAVE_ROOM = hash("save_room"),
 	LOAD_ROOM = hash("load_room"),

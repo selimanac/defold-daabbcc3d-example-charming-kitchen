@@ -88,7 +88,7 @@ instances {
   position {
     x: 3.0
     y: -0.25
-    z: 2.25
+    z: 2.0
   }
   scale3 {
     x: 6.0
@@ -101,11 +101,11 @@ instances {
   prototype: "/components/gameobjects/blank.go"
   position {
     x: 3.0
-    y: 2.0
+    y: 1.0
   }
   scale3 {
     x: 6.0
-    y: 4.0
+    y: 6.0
     z: 0.5
   }
 }
@@ -113,12 +113,12 @@ instances {
   id: "collider_wall_2"
   prototype: "/components/gameobjects/blank.go"
   position {
-    y: 2.0
+    y: 1.0
     z: 2.0
   }
   scale3 {
     x: 0.5
-    y: 4.0
+    y: 6.0
     z: 4.0
   }
 }

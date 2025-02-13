@@ -2,8 +2,8 @@ local data = require("scripts.lib.data")
 local collision = require("scripts.lib.collision")
 local const = require("scripts.lib.const")
 local utils = require("scripts.lib.utils")
-local props = {}
 
+local props = {}
 
 function props.init()
 	local json_data, error = sys.load_resource(const.PROPS_DATA)
@@ -19,6 +19,7 @@ function props.init()
 	end
 
 	data.props = json.decode(json_data)
+
 	local count = 0
 	for title, prop in pairs(data.props) do
 		prop.size = vmath.vector3(prop.size[1], prop.size[2], prop.size[3])
@@ -27,7 +28,6 @@ function props.init()
 		count = count + 1
 	end
 	print("Prop Count: ", count)
-
 
 	msg.post(const.URLS.GUI, const.MSG.SETUP_GUI)
 end
@@ -41,8 +41,9 @@ function props.create(prop_name, prop_position, prop_rotation)
 	factory_url.fragment = prop_name
 
 	prop.id = factory.create(factory_url, prop_position, prop_rotation)
-	print("PROPID")
-	pprint(prop.id)
+	prop.model_url = msg.url(prop.id)
+	prop.model_url.fragment = prop.name
+
 	return prop
 end
 
@@ -64,10 +65,23 @@ function props.set(prop, prop_offset, rotated_prop_size)
 	prop.collider_position_offset = prop.position + prop_offset
 	prop.rotated_prop_size        = rotated_prop_size
 	prop.aabb_id                  = collision.insert_aabb(prop.collider_position_offset, prop.rotated_prop_size.x, prop.rotated_prop_size.y, prop.rotated_prop_size.z, collision.bits.PROPS)
-	print("AABB ID:", prop.aabb_id)
+
 	data.room_props[prop.aabb_id] = prop
-	pprint(data.room_props)
+
 	return prop
+end
+
+function props.rotate(rotation, active_prop)
+	local rotated_prop_size = vmath.rotate(rotation, active_prop.size)
+	rotated_prop_size.x = math.abs(rotated_prop_size.x)
+	rotated_prop_size.y = math.abs(rotated_prop_size.y)
+	rotated_prop_size.z = math.abs(rotated_prop_size.z)
+
+	local prop_offset = vmath.rotate(rotation, active_prop.offset)
+
+	go.set_rotation(rotation, active_prop.id)
+
+	return rotated_prop_size, prop_offset
 end
 
 return props
