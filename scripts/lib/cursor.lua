@@ -27,20 +27,6 @@ local is_prop_rotated        = false
 local is_pick_prop           = false
 
 
---[[local function rotate_prop(rotation)
-	rotated_prop_size = vmath.rotate(rotation, active_prop.size)
-	rotated_prop_size.x = math.abs(rotated_prop_size.x)
-	rotated_prop_size.y = math.abs(rotated_prop_size.y)
-	rotated_prop_size.z = math.abs(rotated_prop_size.z)
-
-	prop_offset = vmath.rotate(rotation, active_prop.offset)
-
-	go.set_rotation(rotation, active_prop.id)
-end
-
-]]
-
-
 local function set_prop()
 	picked_prop = {}
 	is_pick_prop = false
@@ -92,138 +78,134 @@ local function pick_prop(prop)
 end
 
 function cursor.update(dt)
-	ray_end_position = libcamera.position + data.cursor.dir * RAY_DISTANCE
-
-	local prop_collision_bit = active_prop.collider and bit.bor(collision.bits[active_prop.collider], collision.bits.TRASH) or nil
-
 	--Camera to world ray
-	raycast_result, raycast_count = collision.raycast_sort(libcamera.position, ray_end_position, prop_collision_bit, true)
+	ray_end_position = libcamera.position + data.cursor.dir * RAY_DISTANCE
+	raycast_result, raycast_count = collision.raycast_sort(libcamera.position, ray_end_position, active_prop.ray_collision_bit, true)
 
 	if raycast_count > 0 then
 		ray_collision_response = raycast_result[1]
-		--	pprint(ray_collision_response.normal)
 	end
 
 
 	if next(active_prop) == nil then
+		-- Pickup the prop from room
+		is_pick_prop = false
+		picked_prop = {}
+
 		if raycast_count > 0 and data.gui_scroll == false then
 			local room_prop = data.room_props[ray_collision_response.id]
 			if room_prop then
 				is_pick_prop = true
 				picked_prop = room_prop
-			else
-				is_pick_prop = false
-				picked_prop = {}
 			end
-		else
-			is_pick_prop = false
-			picked_prop = {}
 		end
 		return
 	end
 
 
-
+	local collider_position = vmath.vector3(data.cursor.position.x, data.cursor.position.y, data.cursor.position.z)
 	if raycast_count > 0 then
-		-- if ray_collision_response.normal.y == 0 then
-		-- 	local normal_rotation = utils.get_rotation_from_normal((ray_collision_response.normal.x), (ray_collision_response.normal.y), (ray_collision_response.normal.z))
-		-- 	rotate_prop(normal_rotation)
-		-- end
-
+		-- Check for trash
 		if trash.check(ray_collision_response, active_prop) then
 			is_prop_placed = false
 			go.set_position(data.cursor.position, const.CURSOR)
 			return
 		end
 
-		pprint(ray_collision_response)
-		local room_collider_direction = data.room_colliders[ray_collision_response.id].direction
 
-		local collider_position = data.cursor.position
-		if ray_collision_response.normal == room_collider_direction then
-			print("HIT")
+		data.cursor.position.x = ray_collision_response.contact_point.x + (rotated_prop_size.x / 2.0)
 
-			is_prop_placed = true
-
-			collider_position.x = ray_collision_response.contact_point.x
-			collider_position.y = ray_collision_response.contact_point.y
-			collider_position.z = ray_collision_response.contact_point.z
+		-- Snap to the ground
+		if active_prop.target == "GROUND" then
+			data.cursor.position.y = 0
 		else
-			is_prop_placed = false
-			print("nothing")
+			data.cursor.position.y = ray_collision_response.contact_point.y
 		end
+		data.cursor.position.z = ray_collision_response.contact_point.z + (rotated_prop_size.z / 2.0)
 
+		collider_position.x = data.cursor.position.x + prop_offset.x
+		collider_position.y = data.cursor.position.y + prop_offset.y
+		collider_position.z = data.cursor.position.z + prop_offset.z
 
-		local collider_position_offset = vmath.vector3(
-			collider_position.x + prop_offset.x,
-			collider_position.y + prop_offset.y,
-			collider_position.z + prop_offset.z
-		)
+		prop_query_result, prop_query_count = collision.query_aabb_sort(collider_position, rotated_prop_size.x, rotated_prop_size.y, rotated_prop_size.z, active_prop.collision_bit, true)
 
-
-		-- debug collider
-		if data.game_settings.collider_debug then
-			if vmath.length(rotated_prop_size) > 0 then
-				go.set_scale(rotated_prop_size, "/container/collision_debug")
-			end
-
-			go.set_position(collider_position_offset, "/container/collision_debug")
-		end
-
-
-		-- Query rotated AABB of Cursor
-		prop_query_result, prop_query_count = collision.query_aabb_sort(collider_position_offset, rotated_prop_size.x, rotated_prop_size.y, rotated_prop_size.z, prop_collision_bit, true)
-		-- if prop_query_count > 0 then
-
-		-- end
 		if prop_query_result then
 			for i = 1, prop_query_count do
+				--	pprint(prop_query_result)
 				local query_collision_response = prop_query_result[i]
+				--	pprint(query_collision_response)
 
 
-
-				-- local room_collider_direction = data.room_colliders[query_collision_response.id].direction
-
-				-- pprint(query_collision_response)
-				-- -- pprint("WALL NORMAL: ", room_collider_direction)
-				-- -- pprint("RAY NORMAL:", ray_collision_response.normal)
-				-- if (query_collision_response.normal) ~= const.VECTOR.RIGHT then
-				-- 	print("WRONG SIDE")
-				-- 	pprint(query_collision_response)
-				-- end
-
-				-- if query_collision_response.normal == room_collider_direction then
-				-- 	print("HIT")
-				-- else
-				-- 	print("nothing")
-				-- end
 				local query_collider_position_offset = vmath.vector3()
-				if is_prop_placed then
-					query_collider_position_offset.x = query_collision_response.normal.x * query_collision_response.depth
-					query_collider_position_offset.y = query_collision_response.normal.y * query_collision_response.depth
+
+
+				local room_prop = data.room_props[query_collision_response.id]
+				local room_collider = data.room_colliders[query_collision_response.id]
+
+				pprint(active_prop)
+
+
+
+				query_collider_position_offset.x = query_collision_response.normal.x * query_collision_response.depth
+				query_collider_position_offset.y = query_collision_response.normal.y * query_collision_response.depth
+				if active_prop.target ~= "WALLS" then
 					query_collider_position_offset.z = query_collision_response.normal.z * query_collision_response.depth
 				end
 
 
+				data.cursor.position = data.cursor.position + query_collider_position_offset
+				is_prop_placed = true
+				-- if active_prop.target == "WALL" and room_prop then
+				-- 	print("FALSE")
+				-- 	is_prop_placed = false
+				-- else
+				-- 	is_prop_placed = true
+				-- end
+
+				if active_prop.target == "PROP" and query_collision_response.normal ~= const.VECTOR.UP then
+					is_prop_placed = false
+				end
+
+
+				if room_collider and room_collider.direction ~= query_collision_response.normal then
+					is_prop_placed = false
+				end
+
+				if room_prop and room_prop.name == "extractor_hood" then
+					is_prop_placed = false
+				end
+
+
+				--[[
 				-- This must be FIXED
 				if query_collision_response.normal.y < 0 or query_collision_response.normal.x < 0 or query_collision_response.normal.z < 0 then
 					-- TODO CHECK THIS
 					print("WRONG")
-					--	go.animate(active_prop.model_url, "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1.0, 0.5, 0.5, 1), go.EASING_INSINE, 1.0)
-					--	is_prop_placed = false
-				else
-					--data.cursor.position = data.cursor.position + query_collider_position_offset
-				end
 
-				data.cursor.position = data.cursor.position + query_collider_position_offset
+					is_prop_placed = false
+				else
+					print("CORRECT")
+					is_prop_placed = true
+				end]]
 			end
 		end
 	else
 		is_prop_placed = false
-		--print("NOT HIT")
 		if trash.is_trash_prop then
 			trash.reset(active_prop)
 		end
+	end
+
+
+
+
+	-- debug collider
+	if data.game_settings.collider_debug then
+		if vmath.length(rotated_prop_size) > 0 then
+			go.set_scale(rotated_prop_size, "/container/collision_debug")
+		end
+
+		go.set_position(collider_position, "/container/collision_debug")
 	end
 
 	go.set_position(data.cursor.position, const.CURSOR)
@@ -238,9 +220,6 @@ end
 local function rotate_prop(dir)
 	is_prop_rotated = true
 	prop_rotation = (prop_rotation + 90 * dir) % 360
-
-	--	rotate_prop()
-
 	rotated_prop_size, prop_offset = props.rotate(vmath.quat_rotation_y(math.rad(prop_rotation)), active_prop)
 
 	timer.delay(0.5, false, function()
@@ -271,7 +250,6 @@ function cursor.input(action_id, action)
 		if data.cursor.is_active and is_prop_placed then
 			set_prop()
 		elseif not data.cursor.is_active and is_pick_prop then
-			print("is_pick_prop", is_pick_prop)
 			pick_prop(picked_prop)
 		elseif data.cursor.is_active and trash.is_trash_prop then
 			delete_prop()

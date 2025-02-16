@@ -10,7 +10,15 @@
             0,
             0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "cuttingboard": {
         "size": [
@@ -23,7 +31,13 @@
             0,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "toaster": {
         "size": [
@@ -36,7 +50,13 @@
             0.3,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "wall_papertowel_holder": {
         "size": [
@@ -49,7 +69,15 @@
             0,
             0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "kettle": {
         "size": [
@@ -62,7 +90,13 @@
             0.3,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "container_kitchen_B_red": {
         "size": [
@@ -75,7 +109,13 @@
             0.2,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "wall_cabinet_single_left": {
         "size": [
@@ -85,10 +125,18 @@
         ],
         "offset": [
             0,
-            0.5,
-            0.5
+            0,
+            0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "mug_red": {
         "size": [
@@ -101,7 +149,13 @@
             0.15,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "countertop_sink": {
         "size": [
@@ -113,7 +167,18 @@
             0.0,
             0.5,
             0
-        ]
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
+        ],
+        "target": "GROUND"
     },
     "countertop_straight_B": {
         "size": [
@@ -125,7 +190,18 @@
             0.0,
             0.5,
             0
-        ]
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
+        ],
+        "target": "GROUND"
     },
     "container_kitchen_A_white": {
         "size": [
@@ -138,7 +214,13 @@
             0.25,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "container_kitchen_A_blue": {
         "size": [
@@ -151,7 +233,13 @@
             0.25,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "fridge": {
         "size": [
@@ -162,7 +250,17 @@
         "offset": [
             0,
             1.5,
-            0.3
+            0
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
         ],
         "target": "GROUND"
     },
@@ -174,10 +272,18 @@
         ],
         "offset": [
             0,
-            0.5,
-            0.5
+            0,
+            0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "wall_shelf_kitchen_hooks_decorated": {
         "size": [
@@ -188,9 +294,17 @@
         "offset": [
             0,
             0,
-            0.35
+            0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "countertop_counter_outer": {
         "size": [
@@ -202,7 +316,18 @@
             0,
             0.5,
             0.0
-        ]
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
+        ],
+        "target": "GROUND"
     },
     "countertop_single": {
         "size": [
@@ -214,7 +339,18 @@
             0.0,
             0.5,
             0
-        ]
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
+        ],
+        "target": "GROUND"
     },
     "countertop_straight_C": {
         "size": [
@@ -226,7 +362,18 @@
             0.0,
             0.5,
             0
-        ]
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
+        ],
+        "target": "GROUND"
     },
     "countertop_corner_inner": {
         "size": [
@@ -235,10 +382,21 @@
             1.75
         ],
         "offset": [
-            0.15,
+            0,
             0.5,
-            0.15
-        ]
+            0
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
+        ],
+        "target": "GROUND"
     },
     "lid": {
         "size": [
@@ -248,10 +406,16 @@
         ],
         "offset": [
             0.0,
-            0.1,
+            0.0,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "utensils_cup": {
         "size": [
@@ -264,7 +428,13 @@
             0.41,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "oven_glove": {
         "size": [
@@ -277,7 +447,13 @@
             0.05,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "wall_shelf_kitchen": {
         "size": [
@@ -287,10 +463,18 @@
         ],
         "offset": [
             0,
-            0.03,
+            0,
             0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "container_kitchen_A_red": {
         "size": [
@@ -303,7 +487,13 @@
             0.25,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "papertowel_holder": {
         "size": [
@@ -316,7 +506,13 @@
             0.4,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "pot": {
         "size": [
@@ -329,7 +525,13 @@
             0.2,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "pan": {
         "size": [
@@ -342,7 +544,13 @@
             0.1,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "container_kitchen_B_blue": {
         "size": [
@@ -355,7 +563,13 @@
             0.2,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "container_kitchen_B_white": {
         "size": [
@@ -368,7 +582,13 @@
             0.2,
             0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "wall_knife_rack": {
         "size": [
@@ -379,9 +599,17 @@
         "offset": [
             0.0,
             0,
-            0.08
+            0.0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "extractor_hood": {
         "size": [
@@ -394,20 +622,62 @@
             0.2,
             0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "wall_shelf_kitchen_corner": {
         "size": [
             1.75,
-            0.28,
+            0.5,
             1.75
         ],
         "offset": [
-            0.22,
-            0.15,
-            0.23
+            0.0,
+            0.0,
+            0.0
         ],
-        "collider": "WALLS"
+        "corner": {
+            "left": {
+                "size": [
+                    0.65,
+                    0.5,
+                    1.75
+                ],
+                "offset": [
+                    0.55,
+                    0.0,
+                    0
+                ]
+            },
+            "right": {
+                "size": [
+                    1,
+                    0.5,
+                    0.65
+                ],
+                "offset": [
+                    -0.30,
+                    0.0,
+                    0.55
+                ]
+            }
+        },
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "dishrack_plates": {
         "size": [
@@ -420,7 +690,13 @@
             0.39,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "plate": {
         "size": [
@@ -433,7 +709,13 @@
             0.05,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "wall_cabinet_corner": {
         "size": [
@@ -441,12 +723,46 @@
             1,
             1.75
         ],
+        "corner": {
+            "left": {
+                "size": [
+                    0.9,
+                    1.0,
+                    1.75
+                ],
+                "offset": [
+                    0.55,
+                    0.0,
+                    0
+                ]
+            },
+            "right": {
+                "size": [
+                    0.9,
+                    1.0,
+                    0.9
+                ],
+                "offset": [
+                    -0.30,
+                    0.0,
+                    0.55
+                ]
+            }
+        },
         "offset": [
-            0.15,
             0.0,
-            0.15
+            0.0,
+            0.0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     },
     "countertop_straight_A": {
         "size": [
@@ -458,7 +774,18 @@
             0.0,
             0.5,
             0
-        ]
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
+        ],
+        "target": "GROUND"
     },
     "mug_yellow": {
         "size": [
@@ -471,7 +798,13 @@
             0.175,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "mug_blue": {
         "size": [
@@ -484,7 +817,13 @@
             0.175,
             0.0
         ],
-        "collider": "PROPS"
+        "collider": [
+            "PROPS"
+        ],
+        "ray_targets": [
+            "PROPS"
+        ],
+        "target": "PROP"
     },
     "stove": {
         "size": [
@@ -496,7 +835,18 @@
             0.0,
             0.55,
             0
-        ]
+        ],
+        "collider": [
+            "PROPS",
+            "GROUND",
+            "WALLS"
+        ],
+        "ray_targets": [
+            "GROUND",
+            "WALLS",
+            "PROPS"
+        ],
+        "target": "GROUND"
     },
     "wall_cabinet_straight": {
         "size": [
@@ -506,9 +856,17 @@
         ],
         "offset": [
             0.0,
-            0.5,
-            0.5
+            0.0,
+            0.0
         ],
-        "collider": "WALLS"
+        "collider": [
+            "WALLS",
+            "PROPS",
+            "GROUND"
+        ],
+        "ray_targets": [
+            "WALLS"
+        ],
+        "target": "WALL"
     }
 }

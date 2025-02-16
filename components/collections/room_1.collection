@@ -128,12 +128,12 @@ instances {
   position {
     x: 7.513098
     y: -0.5
-    z: 1.0
+    z: -0.905682
   }
   scale3 {
-    x: 1.5
-    y: 1.5
-    z: 1.5
+    x: 1.3
+    y: 1.3
+    z: 1.3
   }
 }
 instances {
@@ -141,11 +141,13 @@ instances {
   prototype: "/components/gameobjects/blank.go"
   position {
     x: 7.513098
-    y: 0.333901
-    z: 1.0
+    y: 0.253064
+    z: -0.905682
   }
   scale3 {
-    y: 2.0
+    x: 0.7
+    y: 1.5
+    z: 0.7
   }
 }
 scale_along_z: 0

@@ -1,6 +1,7 @@
 local const                   = require("scripts.lib.const")
 local data                    = require("scripts.lib.data")
 local libcamera               = require("scripts.lib.libcamera")
+local audio                   = require("scripts.lib.audio")
 
 -- Scroll
 local scroll_delta            = 130 -- How much to change the target per mouse wheel tick.
@@ -37,10 +38,9 @@ local function setup_gui()
 		local prop_item = {}
 
 		prop_item["container"] = prop_item_clone[hash("prop_item/container")]
-		--prop_item["title"] = prop_item_clone[hash("prop_item/text")]
+
 		prop_item["name"] = title
-		--	gui.set_text(prop_item.title, title)
-		--	gui.set_texture(prop_item["container"], "thumbs/" .. title)
+
 		gui.play_flipbook(prop_item["container"], title)
 
 		local col = (i - 1) % grid_columns
@@ -61,6 +61,7 @@ local function setup_gui()
 end
 
 local function pop_btn(btn_node)
+	audio.play(audio.FX.CLICK)
 	gui.animate(btn_node, gui.PROP_SCALE, vmath.vector3(1.2, 0.8, 1), gui.EASING_INCIRC, 0.3, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
 end
 
@@ -95,7 +96,8 @@ function init(self)
 	scroll_current_y   = scroll_initial_pos.y
 	scroll_target_y    = scroll_initial_pos.y
 
-	--	msg.post(const.URLS.MANAGER, const.MSG.PICK_PROP, { name = "wall_shelf_kitchen" })
+	-- Set initial prop
+	msg.post(const.URLS.MANAGER, const.MSG.ADD_PROP, { name = "wall_cabinet_corner" })
 end
 
 function update(self, dt)

@@ -67,6 +67,10 @@ end
 function room.reset()
 	for aabb_id, prop in pairs(data.room_props) do
 		collision.remove(aabb_id)
+		if prop.is_corner then
+			collision.remove(prop.aabb_ids["left"])
+			collision.remove(prop.aabb_ids["right"])
+		end
 		go.delete(prop.id)
 	end
 	data.room_props = {}

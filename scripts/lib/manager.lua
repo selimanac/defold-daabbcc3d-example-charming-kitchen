@@ -6,7 +6,7 @@ local libcamera     = require("scripts.lib.libcamera")
 local room          = require("scripts.lib.room")
 local data          = require("scripts.lib.data")
 local file          = require("scripts.lib.file")
-
+local audio         = require("scripts.lib.audio")
 local manager       = {}
 
 local function collect_garbage()
@@ -56,6 +56,8 @@ function manager.init(camera_settings, game_settings)
 	room.init()
 
 	collect_garbage()
+
+	audio.init()
 end
 
 function manager.message(message_id, message, sender)
@@ -66,6 +68,7 @@ end
 function manager.update(dt)
 	libcamera.update(dt)
 	cursor.update(dt)
+	audio.update(dt)
 end
 
 function manager.input(action_id, action)

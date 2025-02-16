@@ -1,7 +1,7 @@
 mesh: "/assets/models/wall_shelf_kitchen_hooks_decorated.gltf"
 name: "wall_shelf_kitchen_hooks_decorated"
 materials {
-  name: "tiny_treats_1"
+  name: "default"
   material: "/components/materials/shadow_model_smooth.material"
   textures {
     sampler: "shadow_render_depth_texture"

@@ -9,7 +9,7 @@ const.VECTOR           = {
 	RIGHT = vmath.vector3(1, 0, 0)
 }
 
-const.PLANE_POINT      = vmath.vector3(0, 6, 6)
+const.PLANE_POINT      = vmath.vector3(0, 4, 4)
 
 const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
 const.PROPS_DATA       = "/data/props.json"
