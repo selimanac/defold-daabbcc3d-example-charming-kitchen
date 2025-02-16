@@ -45,7 +45,6 @@ function room.init(room_number)
 
 	add_trash(room_ids[hash("/trash")])
 
-
 	for id, collider in pairs(ROOM_COLLIDERS["ROOM_" .. data.room_number].COLLIDERS) do
 		local position = go.get_world_position(room_ids[id])
 		local size = go.get_scale(room_ids[id])

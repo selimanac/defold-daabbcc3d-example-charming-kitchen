@@ -1,5 +1,10 @@
 local const            = {}
 
+const.PLANE_POINT      = vmath.vector3(2, 6, 6)
+const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
+const.PROPS_DATA       = "/data/props.json"
+const.CURSOR           = "/cursor"
+
 const.VECTOR           = {
 	UP = vmath.vector3(0, 1, 0),
 	BACK = vmath.vector3(0, 0, -1),
@@ -8,11 +13,6 @@ const.VECTOR           = {
 	LEFT = vmath.vector3(-1, 0, 0),
 	RIGHT = vmath.vector3(1, 0, 0)
 }
-
-const.PLANE_POINT      = vmath.vector3(0, 4, 4)
-
-const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
-const.PROPS_DATA       = "/data/props.json"
 
 const.SHADOW_SETTINGS  = {
 	projection_width  = 20,
@@ -54,10 +54,7 @@ const.MSG              = {
 	LOAD_ROOM = hash("load_room"),
 	SAVE_LOAD_ROOM_COMPLETE = hash("save_load_room_complete"),
 	RESET_ROOM = hash("reset_room")
-
 }
-
-const.CURSOR           = "/cursor"
 
 const.URLS             = {
 	MANAGER = "/scripts#game",

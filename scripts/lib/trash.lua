@@ -5,7 +5,6 @@ local audio = require("scripts.lib.audio")
 local trash = {}
 
 trash.is_trash_prop = false
-
 local trash_size = vmath.vector3(1.3)
 
 function trash.reset(active_prop)

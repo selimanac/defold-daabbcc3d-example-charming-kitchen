@@ -170,12 +170,11 @@ function init(self)
     local camera_component = create_camera(state, "camera_component")
     update_state(state)
 
-
-    local w            = render.get_width()
-    local h            = render.get_height()
+    local w                   = render.get_width()
+    local h                   = render.get_height()
 
     -- render target buffer parameters
-    local color_params = {
+    local color_params        = {
         format = graphics.TEXTURE_FORMAT_RGBA,
         width = w,
         height = h,
@@ -185,7 +184,7 @@ function init(self)
         v_wrap = graphics.TEXTURE_WRAP_CLAMP_TO_EDGE
     }
 
-    local depth_params = {
+    local depth_params        = {
         format     = graphics.TEXTURE_FORMAT_DEPTH,
         width      = w,
         height     = h,
@@ -195,7 +194,6 @@ function init(self)
         v_wrap     = graphics.TEXTURE_WRAP_CLAMP_TO_EDGE,
         flags      = render.TEXTURE_BIT -- this will create the depth buffer as a texture
     }
-
 
     self.shadow_render_target = render.render_target(
         "shadow_buffer",
@@ -276,8 +274,8 @@ function update(self)
     --
 
     render.set_render_target(render.RENDER_TARGET_DEFAULT)
-    render.set_view(libcamera.view)             --camera.get_view("test:/camera#camera"))
-    render.set_projection(libcamera.projection) -- camera.get_projection("test:/camera#camera"))
+    render.set_view(libcamera.view)
+    render.set_projection(libcamera.projection)
 
     render.clear(state.clear_buffers)
     render.set_viewport(0, 0, state.window_width, state.window_height)

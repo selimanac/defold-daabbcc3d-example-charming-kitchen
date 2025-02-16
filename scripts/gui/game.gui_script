@@ -1,25 +1,24 @@
 local const                   = require("scripts.lib.const")
 local data                    = require("scripts.lib.data")
-local libcamera               = require("scripts.lib.libcamera")
 local audio                   = require("scripts.lib.audio")
 
 -- Scroll
-local scroll_delta            = 130 -- How much to change the target per mouse wheel tick.
-local scroll_smoothing_factor = 5   -- Use a higher factor here for a snappier feel.
-local scroll_min_scroll_y     = 0   -- Set your desired bounds.
+local scroll_delta            = 130
+local scroll_smoothing_factor = 5
+local scroll_min_scroll_y     = 0
 local scroll_max_scroll_y     = 450
 local scroll_initial_pos      = vmath.vector3()
 local scroll_current_y        = 0
 local scroll_target_y         = 0
-local scroll_snap_threshold   = 0.1 -- A small threshold to snap when close enough.
+local scroll_snap_threshold   = 0.1
 
 -- Grid
 local grid_props              = {}
-local grid_start_x            = 60  -- starting x position
-local grid_start_y            = 670 -- starting y position
-local grid_spacing_x          = 80  -- horizontal spacing between items
-local grid_spacing_y          = 80  -- vertical spacing between items
-local grid_columns            = 3   -- number of columns in the grid
+local grid_start_x            = 60
+local grid_start_y            = 670
+local grid_spacing_x          = 80
+local grid_spacing_y          = 80
+local grid_columns            = 3
 
 -- Nodes
 local prop_item_template
@@ -97,7 +96,7 @@ function init(self)
 	scroll_target_y    = scroll_initial_pos.y
 
 	-- Set initial prop
-	msg.post(const.URLS.MANAGER, const.MSG.ADD_PROP, { name = "wall_cabinet_corner" })
+	-- msg.post(const.URLS.MANAGER, const.MSG.ADD_PROP, { name = "wall_cabinet_corner" })
 end
 
 function update(self, dt)

@@ -92,7 +92,6 @@ function libcamera.input(action_id, action)
 		set_camera()
 	end
 
-
 	if data.cursor.is_active == false then
 		if action_id == const.TRIGGERS.MOUSE_WHEEL_DOWN and data.gui_scroll == false then
 			libcamera.settings.distance = libcamera.settings.distance + libcamera.settings.zoom_speed * 0.20
@@ -127,13 +126,8 @@ function libcamera.get_mouse_ray(mouse_pos_x, mouse_pos_y, result_ray)
 	result_ray.origin.y = near_point.y
 	result_ray.origin.z = near_point.z
 
-
-	result_ray.dir = vmath.normalize(vmath.vector3(far_point.x, far_point.y, far_point.z) - origin)
+	result_ray.dir      = vmath.normalize(vmath.vector3(far_point.x, far_point.y, far_point.z) - origin)
 end
-
--- Computes the intersection of a ray with a plane.
--- plane_point: a point on the plane
--- plane_normal: the plane's normal (should be normalized)
 
 function libcamera.get_camera_forward()
 	local inv_view = vmath.inv(libcamera.view)
@@ -143,11 +137,7 @@ end
 -- Computes the intersection of a ray with a plane.
 -- plane_point: a point on the plane
 -- plane_normal: the plane's normal (should be normalized)
--- local plane_point = vmath.vector3(0, 0, 0)
--- local plane_normal = vmath.vector3(0, 0, 1)  -- Adjust this if your ground is oriented differently
-
--- local world_pos = ray_plane_intersect(ray_origin, ray_dir, plane_point, plane_normal)
-
+-- local world_pos = ray_plane_intersect_normal(ray_origin, ray_dir, plane_point, plane_normal)
 function libcamera.ray_plane_intersect_normal(ray_origin, ray_dir, plane_point, plane_normal)
 	local denom = vmath.dot(ray_dir, plane_normal)
 	if math.abs(denom) < 1e-6 then

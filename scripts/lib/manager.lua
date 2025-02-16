@@ -7,6 +7,7 @@ local room          = require("scripts.lib.room")
 local data          = require("scripts.lib.data")
 local file          = require("scripts.lib.file")
 local audio         = require("scripts.lib.audio")
+
 local manager       = {}
 
 local function collect_garbage()

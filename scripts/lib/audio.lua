@@ -26,16 +26,9 @@ function audio.update(dt)
 end
 
 function audio.play(fx)
-	--	sound.play(fx)
-
 	if sounds[fx] == nil then
-		-- Store sound timer in table
 		sounds[fx] = gate_time
-		-- Play the sound
 		sound.play(fx)
-	else
-		-- An attempt to play a sound was gated
-		print("gated " .. fx)
 	end
 end
 

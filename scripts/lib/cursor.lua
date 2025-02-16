@@ -3,7 +3,6 @@ local libcamera              = require("scripts.lib.libcamera")
 local collision              = require("scripts.lib.collision")
 local const                  = require("scripts.lib.const")
 local props                  = require("scripts.lib.props")
-local utils                  = require("scripts.lib.utils")
 local trash                  = require("scripts.lib.trash")
 
 local cursor                 = {}
@@ -14,6 +13,7 @@ local ray_end_position       = vmath.vector3()
 local raycast_result         = {}
 local raycast_count          = 0
 local ray_collision_response = {}
+
 -- Props
 local prop_query_result      = {}
 local prop_query_count       = 0
@@ -26,18 +26,14 @@ local is_prop_placed         = false
 local is_prop_rotated        = false
 local is_pick_prop           = false
 
+local collider_position      = vmath.vector3()
 
 local function set_prop()
+	data.cursor.is_active = false
 	picked_prop = {}
 	is_pick_prop = false
 
-	data.cursor.is_active = false
-	local prop = props.set(active_prop, prop_offset, rotated_prop_size)
-	-- -- debug collider
-	if data.game_settings.collider_debug then
-		go.set_scale(rotated_prop_size, "/container/collision_debug")
-		go.set_position(active_prop.collider_position_offset, "/container/collision_debug")
-	end
+	props.set(active_prop, prop_offset, rotated_prop_size)
 
 	active_prop = {}
 end
@@ -55,6 +51,7 @@ local function create_prop(name)
 	data.cursor.is_active = true
 
 	active_prop = props.create(name)
+
 	rotated_prop_size = active_prop.size
 	prop_offset = active_prop.offset
 
@@ -68,11 +65,11 @@ local function pick_prop(prop)
 	props.pick(prop)
 
 	data.cursor.is_active = true
-
 	active_prop = prop
 
 	go.set_position(vmath.vector3(), active_prop.id)
 	go.set_parent(active_prop.id, const.CURSOR, false)
+
 	rotated_prop_size = active_prop.size
 	prop_offset = active_prop.offset
 end
@@ -85,7 +82,6 @@ function cursor.update(dt)
 	if raycast_count > 0 then
 		ray_collision_response = raycast_result[1]
 	end
-
 
 	if next(active_prop) == nil then
 		-- Pickup the prop from room
@@ -102,8 +98,10 @@ function cursor.update(dt)
 		return
 	end
 
+	collider_position.x = data.cursor.position.x
+	collider_position.y = data.cursor.position.y
+	collider_position.z = data.cursor.position.z
 
-	local collider_position = vmath.vector3(data.cursor.position.x, data.cursor.position.y, data.cursor.position.z)
 	if raycast_count > 0 then
 		-- Check for trash
 		if trash.check(ray_collision_response, active_prop) then
@@ -111,7 +109,6 @@ function cursor.update(dt)
 			go.set_position(data.cursor.position, const.CURSOR)
 			return
 		end
-
 
 		data.cursor.position.x = ray_collision_response.contact_point.x + (rotated_prop_size.x / 2.0)
 
@@ -121,6 +118,7 @@ function cursor.update(dt)
 		else
 			data.cursor.position.y = ray_collision_response.contact_point.y
 		end
+
 		data.cursor.position.z = ray_collision_response.contact_point.z + (rotated_prop_size.z / 2.0)
 
 		collider_position.x = data.cursor.position.x + prop_offset.x
@@ -131,62 +129,31 @@ function cursor.update(dt)
 
 		if prop_query_result then
 			for i = 1, prop_query_count do
-				--	pprint(prop_query_result)
+				is_prop_placed = true
+
 				local query_collision_response = prop_query_result[i]
-				--	pprint(query_collision_response)
-
-
 				local query_collider_position_offset = vmath.vector3()
-
-
 				local room_prop = data.room_props[query_collision_response.id]
 				local room_collider = data.room_colliders[query_collision_response.id]
 
-				pprint(active_prop)
-
-
-
 				query_collider_position_offset.x = query_collision_response.normal.x * query_collision_response.depth
 				query_collider_position_offset.y = query_collision_response.normal.y * query_collision_response.depth
-				if active_prop.target ~= "WALLS" then
-					query_collider_position_offset.z = query_collision_response.normal.z * query_collision_response.depth
-				end
+				query_collider_position_offset.z = query_collision_response.normal.z * query_collision_response.depth
 
+				-- I don’t remember why I protect z. Let’s keep it for a while. :)
+				--	if active_prop.target ~= "WALLS" then
+				-- query_collider_position_offset.z = query_collision_response.normal.z * query_collision_response.depth
+				--	end
 
 				data.cursor.position = data.cursor.position + query_collider_position_offset
-				is_prop_placed = true
-				-- if active_prop.target == "WALL" and room_prop then
-				-- 	print("FALSE")
-				-- 	is_prop_placed = false
-				-- else
-				-- 	is_prop_placed = true
-				-- end
 
-				if active_prop.target == "PROP" and query_collision_response.normal ~= const.VECTOR.UP then
+				if active_prop.target == "PROP" and query_collision_response.normal ~= const.VECTOR.UP then -- prop targets only from top
+					is_prop_placed = false
+				elseif room_collider and room_collider.direction ~= query_collision_response.normal then -- wall - grounds only from facing normal
+					is_prop_placed = false
+				elseif room_prop and room_prop.name == "extractor_hood" then                    -- don't place anything to extractor. Find a better way if you got time :)
 					is_prop_placed = false
 				end
-
-
-				if room_collider and room_collider.direction ~= query_collision_response.normal then
-					is_prop_placed = false
-				end
-
-				if room_prop and room_prop.name == "extractor_hood" then
-					is_prop_placed = false
-				end
-
-
-				--[[
-				-- This must be FIXED
-				if query_collision_response.normal.y < 0 or query_collision_response.normal.x < 0 or query_collision_response.normal.z < 0 then
-					-- TODO CHECK THIS
-					print("WRONG")
-
-					is_prop_placed = false
-				else
-					print("CORRECT")
-					is_prop_placed = true
-				end]]
 			end
 		end
 	else
@@ -194,18 +161,6 @@ function cursor.update(dt)
 		if trash.is_trash_prop then
 			trash.reset(active_prop)
 		end
-	end
-
-
-
-
-	-- debug collider
-	if data.game_settings.collider_debug then
-		if vmath.length(rotated_prop_size) > 0 then
-			go.set_scale(rotated_prop_size, "/container/collision_debug")
-		end
-
-		go.set_position(collider_position, "/container/collision_debug")
 	end
 
 	go.set_position(data.cursor.position, const.CURSOR)
@@ -246,7 +201,6 @@ function cursor.input(action_id, action)
 	--data.cursor.position = libcamera.ray_plane_intersect_normal(data.cursor.origin, data.cursor.dir, plane_point, plane_normal)
 
 	if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 then
-		-- TODO Check for correct placement
 		if data.cursor.is_active and is_prop_placed then
 			set_prop()
 		elseif not data.cursor.is_active and is_pick_prop then
@@ -256,7 +210,7 @@ function cursor.input(action_id, action)
 		end
 	end
 
-
+	-- Rotate prop
 	if action_id == const.TRIGGERS.MOUSE_WHEEL_DOWN and action.pressed and data.cursor.is_active and data.gui_scroll == false and is_prop_rotated == false then
 		rotate_prop(1)
 	elseif action_id == const.TRIGGERS.MOUSE_WHEEL_UP and action.pressed and data.cursor.is_active and data.gui_scroll == false and is_prop_rotated == false then

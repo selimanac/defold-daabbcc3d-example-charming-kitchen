@@ -3,19 +3,15 @@ local collision     = {}
 local aabb_group_id = daabbcc3d.new_group(daabbcc3d.UPDATE_PARTIALREBUILD)
 
 collision.bits      = {
-	CURSOR          = 1,   -- (2^0)
-	WALLS           = 2,   -- (2^1)
-	GROUND          = 4,   -- (2^2)
-	PROPS           = 8,   -- (2^3)
+	CURSOR          = 1,       -- (2^0)
+	WALLS           = 2,       -- (2^1)
+	GROUND          = 4,       -- (2^2)
+	PROPS           = 8,       -- (2^3)
 	TRASH           = 16,
-	PROPS_CONTAINER = 32,  -- (2^3)
+	PROPS_CONTAINER = 32,      -- (2^3)
 
 	ALL             = bit.bnot(0) -- -1 for all results
 }
-
---PROP_TARGETS = bit.bor(collision.bits.WALLS, collision.bits.PROPS, collision.bits.TRASH),
-
-collision.targets   = bit.bor(collision.bits.WALLS, collision.bits.GROUND)
 
 function collision.insert_aabb(position, width, height, depth, collision_bit)
 	collision_bit = collision_bit and collision_bit or nil

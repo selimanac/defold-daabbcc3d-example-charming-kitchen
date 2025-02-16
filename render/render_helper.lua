@@ -1,14 +1,13 @@
-local render_helper         = {}
+local render_helper            = {}
 
-local VECTOR_UP             = vmath.vector3(0, 1, 0)
-local light_source_position = vmath.vector3()
-local light_target_position = vmath.vector3()
-local BIAS_MATRIX           = vmath.matrix4()
-BIAS_MATRIX.c0              = vmath.vector4(0.5, 0.0, 0.0, 0.0)
-BIAS_MATRIX.c1              = vmath.vector4(0.0, 0.5, 0.0, 0.0)
-BIAS_MATRIX.c2              = vmath.vector4(0.0, 0.0, 0.5, 0.0)
-BIAS_MATRIX.c3              = vmath.vector4(0.5, 0.5, 0.5, 1.0)
-
+local VECTOR_UP                = vmath.vector3(0, 1, 0)
+local light_source_position    = vmath.vector3()
+local light_target_position    = vmath.vector3()
+local BIAS_MATRIX              = vmath.matrix4()
+BIAS_MATRIX.c0                 = vmath.vector4(0.5, 0.0, 0.0, 0.0)
+BIAS_MATRIX.c1                 = vmath.vector4(0.0, 0.5, 0.0, 0.0)
+BIAS_MATRIX.c2                 = vmath.vector4(0.0, 0.0, 0.5, 0.0)
+BIAS_MATRIX.c3                 = vmath.vector4(0.5, 0.5, 0.5, 1.0)
 
 ---Shadow orthographic projection settings. Values are per-scene dependent and must be tweaked accordingly.
 render_helper.shadow_settings  = {

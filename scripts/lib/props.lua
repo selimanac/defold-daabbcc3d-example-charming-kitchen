@@ -3,6 +3,7 @@ local collision = require("scripts.lib.collision")
 local const = require("scripts.lib.const")
 local utils = require("scripts.lib.utils")
 local audio = require("scripts.lib.audio")
+
 local props = {}
 
 function props.init()
@@ -27,6 +28,7 @@ function props.init()
 		prop.name = title
 		count = count + 1
 	end
+
 	print("Prop Count: ", count)
 
 	msg.post(const.URLS.GUI, const.MSG.SETUP_GUI)
@@ -65,7 +67,9 @@ end
 
 function props.pick(prop)
 	audio.play(audio.FX.PICK)
+
 	collision.remove(prop.aabb_id)
+
 	if prop.is_corner then
 		collision.remove(prop.aabb_ids["left"])
 		collision.remove(prop.aabb_ids["right"])
@@ -81,6 +85,7 @@ function props.set(prop, prop_offset, rotated_prop_size)
 	go.set_parent(prop.id, const.URLS.ROOM_CONTAINER, true)
 
 	audio.play(audio.FX.POP)
+
 	go.animate(prop.id, "scale", go.PLAYBACK_ONCE_PINGPONG, vmath.vector3(0.9, 1.3, 1), go.EASING_INSINE, 0.2)
 
 	prop.position                 = go.get_world_position(prop.id)
@@ -88,34 +93,26 @@ function props.set(prop, prop_offset, rotated_prop_size)
 	prop.prop_offset              = prop_offset
 	prop.collider_position_offset = prop.position + prop_offset
 	prop.rotated_prop_size        = rotated_prop_size
-	--	prop.aabb_id                  = collision.insert_aabb(prop.collider_position_offset, prop.rotated_prop_size.x, prop.rotated_prop_size.y, prop.rotated_prop_size.z, collision.bits.PROPS)
-
-
 
 	if prop.corner then
-		prop.is_corner           = true
-		prop.aabb_ids            = {}
-		local corner_left_size   = vmath.vector3(prop.corner.left.size[1], prop.corner.left.size[2], prop.corner.left.size[3])
-		corner_left_size         = vmath.rotate(prop.rotation, corner_left_size)
-		corner_left_size.x       = math.abs(corner_left_size.x)
-		corner_left_size.y       = math.abs(corner_left_size.y)
-		corner_left_size.z       = math.abs(corner_left_size.z)
+		prop.is_corner            = true
+		prop.aabb_ids             = {}
+		local corner_left_size    = vmath.vector3(prop.corner.left.size[1], prop.corner.left.size[2], prop.corner.left.size[3])
+		corner_left_size          = vmath.rotate(prop.rotation, corner_left_size)
+		corner_left_size.x        = math.abs(corner_left_size.x)
+		corner_left_size.y        = math.abs(corner_left_size.y)
+		corner_left_size.z        = math.abs(corner_left_size.z)
 
-		local corver_left_offset = vmath.vector3(prop.corner.left.offset[1], prop.corner.left.offset[2], prop.corner.left.offset[3])
-		corver_left_offset       = vmath.rotate(prop.rotation, corver_left_offset)
+		local corner_left_offset  = vmath.vector3(prop.corner.left.offset[1], prop.corner.left.offset[2], prop.corner.left.offset[3])
+		corner_left_offset        = vmath.rotate(prop.rotation, corner_left_offset)
 
-		prop.aabb_ids["left"]    = collision.insert_aabb(prop.position - corver_left_offset, corner_left_size.x, corner_left_size.y, corner_left_size.z, collision.bits.PROPS)
+		prop.aabb_ids["left"]     = collision.insert_aabb(prop.position - corner_left_offset, corner_left_size.x, corner_left_size.y, corner_left_size.z, collision.bits.PROPS)
 
-
-
-
-
-		local corner_right_size = vmath.vector3(prop.corner.right.size[1], prop.corner.right.size[2], prop.corner.right.size[3])
-		corner_right_size       = vmath.rotate(prop.rotation, corner_right_size)
-		corner_right_size.x     = math.abs(corner_right_size.x)
-		corner_right_size.y     = math.abs(corner_right_size.y)
-		corner_right_size.z     = math.abs(corner_right_size.z)
-
+		local corner_right_size   = vmath.vector3(prop.corner.right.size[1], prop.corner.right.size[2], prop.corner.right.size[3])
+		corner_right_size         = vmath.rotate(prop.rotation, corner_right_size)
+		corner_right_size.x       = math.abs(corner_right_size.x)
+		corner_right_size.y       = math.abs(corner_right_size.y)
+		corner_right_size.z       = math.abs(corner_right_size.z)
 
 		local corver_right_offset = vmath.vector3(prop.corner.right.offset[1], prop.corner.right.offset[2], prop.corner.right.offset[3])
 		corver_right_offset       = vmath.rotate(prop.rotation, corver_right_offset)
@@ -123,14 +120,11 @@ function props.set(prop, prop_offset, rotated_prop_size)
 		prop.aabb_ids["right"]    = collision.insert_aabb(prop.position - corver_right_offset, corner_right_size.x, corner_right_size.y, corner_right_size.z, collision.bits.PROPS)
 
 
-
-
 		prop.aabb_id = collision.insert_aabb(prop.collider_position_offset, prop.rotated_prop_size.x, prop.rotated_prop_size.y, prop.rotated_prop_size.z, collision.bits.PROPS_CONTAINER)
 	else
 		prop.is_corner = false
 		prop.aabb_id   = collision.insert_aabb(prop.collider_position_offset, prop.rotated_prop_size.x, prop.rotated_prop_size.y, prop.rotated_prop_size.z, collision.bits.PROPS)
 	end
-
 
 	data.room_props[prop.aabb_id] = prop
 
