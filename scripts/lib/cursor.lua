@@ -58,7 +58,6 @@ local function create_prop(name)
 	go.set_parent(active_prop.id, const.CURSOR, false)
 end
 
-
 local function pick_prop(prop)
 	remove_prop()
 
@@ -147,11 +146,12 @@ function cursor.update(dt)
 
 				data.cursor.position = data.cursor.position + query_collider_position_offset
 
-				if active_prop.target == "PROP" and query_collision_response.normal ~= const.VECTOR.UP then -- prop targets only from top
-					is_prop_placed = false
-				elseif room_collider and room_collider.direction ~= query_collision_response.normal then -- wall - grounds only from facing normal
-					is_prop_placed = false
-				elseif room_prop and room_prop.name == "extractor_hood" then                    -- don't place anything to extractor. Find a better way if you got time :)
+				if (active_prop.target == "PROP" and query_collision_response.normal ~= const.VECTOR.UP) -- prop targets only from top
+					or
+					(room_collider and room_collider.direction ~= query_collision_response.normal) -- wall - grounds only from facing normal
+					or
+					(room_prop and room_prop.name == "extractor_hood")                       -- don't place anything to extractor. Find a better way if you got time :)
+				then
 					is_prop_placed = false
 				end
 			end

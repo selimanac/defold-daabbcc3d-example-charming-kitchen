@@ -1,6 +1,6 @@
 local const            = {}
 
-const.PLANE_POINT      = vmath.vector3(2, 6, 6)
+const.PLANE_POINT      = vmath.vector3(0, 6, 6)
 const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
 const.PROPS_DATA       = "/data/props.json"
 const.CURSOR           = "/cursor"
@@ -19,8 +19,8 @@ const.SHADOW_SETTINGS  = {
 	projection_height = 20,
 	projection_near   = -80,
 	projection_far    = 80,
-	depth_bias        = 0.0008, -- Usually, it's 0.00002 for perspective and 0.002 for orthographic projection.
-	shadow_opacity    = 0.2, -- Shadow opacity
+	depth_bias        = 0.0008,
+	shadow_opacity    = 0.2,
 	buffer_size       = 2048
 }
 

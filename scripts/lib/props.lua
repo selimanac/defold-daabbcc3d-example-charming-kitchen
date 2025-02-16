@@ -37,7 +37,7 @@ end
 function props.create(prop_name, prop_position, prop_rotation)
 	audio.play(audio.FX.PICK)
 
-	prop_position           = prop_position and prop_position or nil
+	prop_position           = prop_position and prop_position or vmath.vector3()
 	prop_rotation           = prop_rotation and prop_rotation or nil
 
 	local prop              = utils.table_copy(data.props[prop_name])
