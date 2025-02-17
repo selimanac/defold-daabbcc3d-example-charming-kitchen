@@ -35,8 +35,6 @@ function props.init()
 end
 
 function props.create(prop_name, prop_position, prop_rotation)
-	audio.play(audio.FX.PICK)
-
 	prop_position           = prop_position and prop_position or vmath.vector3()
 	prop_rotation           = prop_rotation and prop_rotation or nil
 
@@ -48,19 +46,21 @@ function props.create(prop_name, prop_position, prop_rotation)
 	prop.model_url          = msg.url(prop.id)
 	prop.model_url.fragment = prop.name
 
-
-	local collision_bits = bit.bor(collision.bits.TRASH)
+	-- for query
+	local collision_bits    = bit.bor(collision.bits.TRASH)
 	for _, collision_bit in ipairs(prop.collider) do
 		collision_bits = bit.bor(collision_bits, collision.bits[collision_bit])
 	end
 	prop.collision_bit = prop.collider and collision_bits or nil
 
-
+	-- for ray
 	collision_bits = bit.bor(collision.bits.TRASH)
 	for _, collision_bit in ipairs(prop.ray_targets) do
 		collision_bits = bit.bor(collision_bits, collision.bits[collision_bit])
 	end
 	prop.ray_collision_bit = prop.ray_targets and collision_bits or nil
+
+	audio.play(audio.FX.PICK)
 
 	return prop
 end
@@ -94,6 +94,7 @@ function props.set(prop, prop_offset, rotated_prop_size)
 	prop.collider_position_offset = prop.position + prop_offset
 	prop.rotated_prop_size        = rotated_prop_size
 
+	-- Props with multiple aabb, just a few for corners
 	if prop.corner then
 		prop.is_corner            = true
 		prop.aabb_ids             = {}

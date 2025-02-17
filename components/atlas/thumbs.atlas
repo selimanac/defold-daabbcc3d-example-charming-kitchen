@@ -121,4 +121,19 @@ images {
 images {
   image: "/assets/textures/thumbs/wall_cabinet_single_left.png"
 }
+images {
+  image: "/assets/textures/mouse_left.png"
+}
+images {
+  image: "/assets/textures/mouse_right.png"
+}
+images {
+  image: "/assets/textures/mouse_scroll.png"
+}
+images {
+  image: "/assets/textures/keyboard_space_icon.png"
+}
+images {
+  image: "/assets/textures/playstation4_touchpad.png"
+}
 extrude_borders: 2

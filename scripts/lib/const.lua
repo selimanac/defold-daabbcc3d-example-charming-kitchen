@@ -53,7 +53,8 @@ const.MSG              = {
 	SAVE_ROOM = hash("save_room"),
 	LOAD_ROOM = hash("load_room"),
 	SAVE_LOAD_ROOM_COMPLETE = hash("save_load_room_complete"),
-	RESET_ROOM = hash("reset_room")
+	RESET_ROOM = hash("reset_room"),
+	TOGGLE_ROTATE = hash("toggle_rotate")
 }
 
 const.URLS             = {

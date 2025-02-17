@@ -28,6 +28,11 @@ local load_btn_node
 local save_btn_node
 local save_load_status_node
 local reset_btn_node
+local rotate_status_node
+local open_close_btn_node
+local info_box_node
+
+local is_info_box_open        = true
 
 local function setup_gui()
 	local prop_position = gui.get_position(prop_item_template)
@@ -87,9 +92,19 @@ function init(self)
 	save_btn_node = gui.get_node("save_btn")
 	save_load_status_node = gui.get_node("save_load_status")
 	reset_btn_node = gui.get_node("clear_btn")
+	rotate_status_node = gui.get_node("rotate_status")
+	open_close_btn_node = gui.get_node("open_close_btn")
+	info_box_node = gui.get_node("info_box")
 
 	gui.set_enabled(save_load_status_node, false)
 	gui.set_enabled(prop_item_template, false)
+	gui.set_enabled(rotate_status_node, false)
+
+	local color = gui.get_color(rotate_status_node)
+	gui.set_color(rotate_status_node, vmath.vector4(color.x, color.y, color.z, 0))
+
+	color = gui.get_color(save_load_status_node)
+	gui.set_color(save_load_status_node, vmath.vector4(color.x, color.y, color.z, 0))
 
 	scroll_initial_pos = gui.get_position(scroll_child_root_node)
 	scroll_current_y   = scroll_initial_pos.y
@@ -113,11 +128,41 @@ function update(self, dt)
 	end
 end
 
+local function toggle_info_box()
+	audio.play(audio.FX.CLICK)
+
+	-- close
+	if is_info_box_open then
+		is_info_box_open = false
+		gui.animate(info_box_node, "position.x", 1600, gui.EASING_INSINE, 0.3, 0)
+	else
+		is_info_box_open = true
+		gui.animate(info_box_node, "position.x", 1280, gui.EASING_INSINE, 0.3, 0)
+	end
+end
+
+local function toggle_auto_rotate(status)
+	if status then
+		gui.set_text(rotate_status_node, "Auto rotate activated!")
+	else
+		gui.set_text(rotate_status_node, "Auto rotate deactivated!")
+	end
+	local color = gui.get_color(rotate_status_node)
+
+	gui.set_enabled(rotate_status_node, true)
+	gui.animate(rotate_status_node, gui.PROP_COLOR, vmath.vector4(color.x, color.y, color.z, 1), gui.EASING_OUTSINE, 2.2, 0, function()
+		gui.set_color(rotate_status_node, vmath.vector4(color.x, color.y, color.z, 0))
+		gui.set_enabled(rotate_status_node, false)
+	end, gui.PLAYBACK_ONCE_PINGPONG)
+end
+
 function on_message(_, message_id, message, _)
 	if message_id == const.MSG.SETUP_GUI then
 		setup_gui()
 	elseif message_id == const.MSG.SAVE_LOAD_ROOM_COMPLETE then
 		set_file_status(message.status)
+	elseif message_id == const.MSG.TOGGLE_ROTATE then
+		toggle_auto_rotate(message.status)
 	end
 end
 
@@ -145,7 +190,7 @@ function on_input(_, action_id, action)
 		data.gui_scroll = false
 	end
 
-	-- Save & Load
+	-- Save & Load & Info
 	if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 then
 		if gui.pick_node(load_btn_node, action.x, action.y) then
 			pop_btn(load_btn_node)
@@ -156,6 +201,8 @@ function on_input(_, action_id, action)
 		elseif gui.pick_node(reset_btn_node, action.x, action.y) then
 			pop_btn(reset_btn_node)
 			msg.post(const.URLS.MANAGER, const.MSG.RESET_ROOM)
+		elseif gui.pick_node(open_close_btn_node, action.x, action.y) then
+			toggle_info_box()
 		end
 	end
 end

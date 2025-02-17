@@ -21,8 +21,10 @@ libcamera.settings = {
 	zoom_speed = 1,
 	angle_x = 0,
 	angle_y = 0,
-	angle_min = 0,
-	angle_max = 0,
+	angle_x_min = 0,
+	angle_x_max = 0,
+	angle_y_min = 0,
+	angle_y_max = 0,
 	auto_turn = false,
 	auto_turn_speed = 5
 }
@@ -50,8 +52,10 @@ function libcamera.init(camera_settings)
 
 		libcamera.settings.angle_x = math.rad(camera_settings.angle_x)
 		libcamera.settings.angle_y = math.rad(camera_settings.angle_y)
-		libcamera.settings.angle_min = math.rad(camera_settings.angle_min)
-		libcamera.settings.angle_max = math.rad(camera_settings.angle_max)
+		libcamera.settings.angle_x_min = math.rad(camera_settings.angle_x_min)
+		libcamera.settings.angle_x_max = math.rad(camera_settings.angle_x_max)
+		libcamera.settings.angle_y_min = math.rad(camera_settings.angle_y_min)
+		libcamera.settings.angle_y_max = math.rad(camera_settings.angle_y_max)
 	end
 end
 
@@ -78,16 +82,19 @@ function libcamera.input(action_id, action)
 		end
 	end
 
-	if action_id == const.TRIGGERS.KEY_SPACE and action.pressed then
+	--[[if action_id == const.TRIGGERS.KEY_SPACE and action.pressed then
 		libcamera.toogle_auto_turn()
-	end
+	end]]
 
 	if touch_down and action_id == nil then
 		libcamera.settings.angle_x = libcamera.settings.angle_x + action.dy * 0.01
 		libcamera.settings.angle_y = libcamera.settings.angle_y - action.dx * 0.01
 
-		libcamera.settings.angle_x = math.min(libcamera.settings.angle_x, libcamera.settings.angle_max)
-		libcamera.settings.angle_x = math.max(libcamera.settings.angle_x, libcamera.settings.angle_min)
+		libcamera.settings.angle_x = math.min(libcamera.settings.angle_x, libcamera.settings.angle_x_max)
+		libcamera.settings.angle_x = math.max(libcamera.settings.angle_x, libcamera.settings.angle_x_min)
+
+		libcamera.settings.angle_y = math.min(libcamera.settings.angle_y, libcamera.settings.angle_y_max)
+		libcamera.settings.angle_y = math.max(libcamera.settings.angle_y, libcamera.settings.angle_y_min)
 
 		set_camera()
 	end

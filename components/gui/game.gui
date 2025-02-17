@@ -219,6 +219,190 @@ nodes {
   parent: "clear_btn"
   layer: "text"
 }
+nodes {
+  position {
+    x: 1265.0
+    y: 41.55157
+  }
+  size {
+    x: 300.0
+    y: 20.0
+  }
+  color {
+    x: 0.114
+    y: 0.729
+  }
+  type: TYPE_TEXT
+  text: "Room could not be saved!"
+  font: "good_matcha"
+  id: "rotate_status"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_E
+  layer: "text"
+}
+nodes {
+  position {
+    x: 1280.0
+    y: 607.5473
+  }
+  size {
+    x: 320.0
+    y: 280.0
+  }
+  color {
+    x: 0.114
+    y: 0.729
+  }
+  type: TYPE_BOX
+  id: "info_box"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NE
+  layer: "gfx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -277.50656
+    y: -41.36931
+  }
+  type: TYPE_BOX
+  texture: "thumbs/mouse_left"
+  id: "left_click"
+  parent: "info_box"
+  layer: "gfx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 32.638535
+  }
+  size {
+    x: 300.0
+    y: 50.0
+  }
+  type: TYPE_TEXT
+  text: "Select - Pick - Place "
+  font: "good_matcha"
+  id: "text"
+  pivot: PIVOT_W
+  parent: "left_click"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -277.50656
+    y: -108.624504
+  }
+  type: TYPE_BOX
+  texture: "thumbs/mouse_right"
+  id: "right_click"
+  parent: "info_box"
+  layer: "gfx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 32.638535
+  }
+  size {
+    x: 300.0
+    y: 50.0
+  }
+  type: TYPE_TEXT
+  text: "Rotate camera"
+  font: "good_matcha"
+  id: "text1"
+  pivot: PIVOT_W
+  parent: "right_click"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -277.50656
+    y: -169.91527
+  }
+  type: TYPE_BOX
+  texture: "thumbs/mouse_scroll"
+  id: "wheel"
+  parent: "info_box"
+  layer: "gfx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 32.638535
+  }
+  size {
+    x: 300.0
+    y: 50.0
+  }
+  type: TYPE_TEXT
+  text: "Rotate item"
+  font: "good_matcha"
+  id: "text2"
+  pivot: PIVOT_W
+  parent: "wheel"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -277.50656
+    y: -236.13748
+  }
+  type: TYPE_BOX
+  texture: "thumbs/keyboard_space_icon"
+  id: "space"
+  parent: "info_box"
+  layer: "gfx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 32.638535
+  }
+  size {
+    x: 300.0
+    y: 50.0
+  }
+  type: TYPE_TEXT
+  text: "Auto rotate item"
+  font: "good_matcha"
+  id: "text3"
+  pivot: PIVOT_W
+  parent: "space"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -292.70105
+    y: 16.314016
+  }
+  color {
+    x: 0.114
+    y: 0.729
+  }
+  type: TYPE_BOX
+  texture: "thumbs/playstation4_touchpad"
+  id: "open_close_btn"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NE
+  parent: "info_box"
+  layer: "gfx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
 layers {
   name: "gfx"
 }

@@ -5,7 +5,7 @@ local props = require("scripts.lib.props")
 
 local room = {}
 
-local ROOM_COLLIDERS = {
+local ROOMS = {
 	ROOM_1 = {
 		COLLIDERS = {
 			[hash("/collider_ground")] = {
@@ -45,7 +45,7 @@ function room.init(room_number)
 
 	add_trash(room_ids[hash("/trash")])
 
-	for id, collider in pairs(ROOM_COLLIDERS["ROOM_" .. data.room_number].COLLIDERS) do
+	for id, collider in pairs(ROOMS["ROOM_" .. data.room_number].COLLIDERS) do
 		local position = go.get_world_position(room_ids[id])
 		local size = go.get_scale(room_ids[id])
 		local aabb_id = collision.insert_aabb(position, size.x, size.y, size.z, collider.type)

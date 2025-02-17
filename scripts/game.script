@@ -1,15 +1,15 @@
-go.property("camera_target", hash("/camera_target"))
+go.property("camera_target", hash("/container/camera_target"))
 go.property("camera_distance", 13)
-go.property("camera_distance_min", 0)
+go.property("camera_distance_min", 10)
 go.property("camera_distance_max", 20)
 go.property("camera_scroll_speed", 1)
 go.property("camera_angle_x", -30)
 go.property("camera_angle_y", 45)
-go.property("camera_angle_min", -30)
-go.property("camera_angle_max", 45)
-go.property("camera_auto_turn", false)
-go.property("camera_auto_turn_speed", 5)
-go.property("collider_debug", false)
+go.property("camera_angle_x_min", -30)
+go.property("camera_angle_x_max", 45)
+go.property("camera_angle_y_min", -30)
+go.property("camera_angle_y_max", 45)
+
 
 local manager = require("scripts.lib.manager")
 
@@ -24,8 +24,10 @@ function init(self)
 		zoom_speed = self.camera_scroll_speed,
 		angle_x = self.camera_angle_x,
 		angle_y = self.camera_angle_y,
-		angle_min = self.camera_angle_min,
-		angle_max = self.camera_angle_max,
+		angle_x_min = self.camera_angle_x_min,
+		angle_x_max = self.camera_angle_x_max,
+		angle_y_min = self.camera_angle_y_min,
+		angle_y_max = self.camera_angle_y_max,
 		auto_turn = self.camera_auto_turn,
 		auto_turn_speed = self.camera_auto_turn_speed
 	}
@@ -37,14 +39,14 @@ function init(self)
 	manager.init(camera_settings, game_settings)
 end
 
-function on_message(self, message_id, message, sender)
+function on_message(_, message_id, message, sender)
 	manager.message(message_id, message, sender)
 end
 
-function update(self, dt)
+function update(_, dt)
 	manager.update(dt)
 end
 
-function on_input(self, action_id, action)
+function on_input(_, action_id, action)
 	manager.input(action_id, action)
 end

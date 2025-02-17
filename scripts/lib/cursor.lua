@@ -4,6 +4,7 @@ local collision              = require("scripts.lib.collision")
 local const                  = require("scripts.lib.const")
 local props                  = require("scripts.lib.props")
 local trash                  = require("scripts.lib.trash")
+local utils                  = require("scripts.lib.utils")
 
 local cursor                 = {}
 
@@ -25,6 +26,7 @@ local prop_rotation          = 0
 local is_prop_placed         = false
 local is_prop_rotated        = false
 local is_pick_prop           = false
+local is_rotate_snap         = false
 
 local collider_position      = vmath.vector3()
 
@@ -109,8 +111,14 @@ function cursor.update(dt)
 			return
 		end
 
-		data.cursor.position.x = ray_collision_response.contact_point.x + (rotated_prop_size.x / 2.0)
+		-- Auto rotate to normal
+		if (active_prop.target == "WALL" or active_prop.target == "GROUND") and is_rotate_snap then
+			local normal_rotation = utils.get_rotation_from_normal(ray_collision_response.normal.x, ray_collision_response.normal.y, ray_collision_response.normal.z)
+			rotated_prop_size, prop_offset = props.rotate(normal_rotation, active_prop)
+		end
 
+		data.cursor.position.x = ray_collision_response.contact_point.x + (rotated_prop_size.x / 3)
+		data.cursor.position.z = ray_collision_response.contact_point.z + (rotated_prop_size.z / 3)
 		-- Snap to the ground
 		if active_prop.target == "GROUND" then
 			data.cursor.position.y = 0
@@ -118,8 +126,7 @@ function cursor.update(dt)
 			data.cursor.position.y = ray_collision_response.contact_point.y
 		end
 
-		data.cursor.position.z = ray_collision_response.contact_point.z + (rotated_prop_size.z / 2.0)
-
+		-- Set aabb offset
 		collider_position.x = data.cursor.position.x + prop_offset.x
 		collider_position.y = data.cursor.position.y + prop_offset.y
 		collider_position.z = data.cursor.position.z + prop_offset.z
@@ -191,6 +198,11 @@ local function delete_prop()
 	end)
 end
 
+local function toogle_rotate_snap()
+	is_rotate_snap = not is_rotate_snap and true or false
+	msg.post(const.URLS.GUI, const.MSG.TOGGLE_ROTATE, { status = is_rotate_snap })
+end
+
 function cursor.input(action_id, action)
 	libcamera.get_mouse_ray(action.x, action.y, data.cursor)
 
@@ -199,6 +211,10 @@ function cursor.input(action_id, action)
 	-- Alternative
 	--local plane_normal = vmath.vector3(0, 0, 1)
 	--data.cursor.position = libcamera.ray_plane_intersect_normal(data.cursor.origin, data.cursor.dir, plane_point, plane_normal)
+
+	if action_id == const.TRIGGERS.KEY_SPACE and action.pressed then
+		toogle_rotate_snap()
+	end
 
 	if action.pressed and action_id == const.TRIGGERS.MOUSE_BUTTON_1 then
 		if data.cursor.is_active and is_prop_placed then
