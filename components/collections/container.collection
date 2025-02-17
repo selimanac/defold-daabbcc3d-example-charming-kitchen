@@ -14,28 +14,6 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "collision_debug"
-  data: "embedded_components {\n"
-  "  id: \"model\"\n"
-  "  type: \"model\"\n"
-  "  data: \"mesh: \\\"/assets/models/cube.glb\\\"\\n"
-  "name: \\\"{{NAME}}\\\"\\n"
-  "materials {\\n"
-  "  name: \\\"default\\\"\\n"
-  "  material: \\\"/components/materials/model.material\\\"\\n"
-  "  textures {\\n"
-  "    sampler: \\\"tex0\\\"\\n"
-  "    texture: \\\"/assets/textures/pink.png\\\"\\n"
-  "  }\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  ""
-  position {
-    x: -348.0
-  }
-}
-embedded_instances {
   id: "factories"
   children: "prop_factories"
   data: "components {\n"

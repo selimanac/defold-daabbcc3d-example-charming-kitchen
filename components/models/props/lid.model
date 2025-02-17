@@ -1,7 +1,7 @@
 mesh: "/assets/models/lid.gltf"
 name: "lid"
 materials {
-  name: "tiny_treats_1"
+  name: "default"
   material: "/components/materials/shadow_model_smooth.material"
   textures {
     sampler: "shadow_render_depth_texture"

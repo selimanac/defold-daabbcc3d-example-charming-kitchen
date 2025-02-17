@@ -15,7 +15,7 @@ samples = 2
 input_method = HiddenInputField
 
 [html5]
-scale_mode = stretch
+scale_mode = fit
 
 [project]
 title = defold-daabbcc3d-example-charming-kitchen

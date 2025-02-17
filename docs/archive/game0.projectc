@@ -171,7 +171,7 @@ wasm_streaming = 0
 show_fullscreen_button = 1
 show_made_with_defold = 1
 show_console_banner = 1
-scale_mode = stretch
+scale_mode = fit
 transparent_graphics_context = 0
 
 [particle_fx]

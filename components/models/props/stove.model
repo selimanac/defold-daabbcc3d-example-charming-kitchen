@@ -2,9 +2,13 @@ mesh: "/assets/models/stove.gltf"
 name: "stove"
 materials {
   name: "default"
-  material: "/components/materials/model.material"
+  material: "/components/materials/shadow_model_smooth.material"
   textures {
-    sampler: "tex0"
+    sampler: "shadow_render_depth_texture"
+    texture: "/assets/textures/tiny_treats_texture_1.png"
+  }
+  textures {
+    sampler: "shadow_render_diffuse_texture"
     texture: "/assets/textures/tiny_treats_texture_1.png"
   }
 }
