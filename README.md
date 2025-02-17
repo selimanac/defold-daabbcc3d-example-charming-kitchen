@@ -2,7 +2,7 @@
 
 Basic example project for [daabbcc3D](https://github.com/selimanac/defold-daabbcc3d)  
 
-Play it here: https://selimanac.github.io/defold-daabbcc-flappybird-example/  
+Play it here: https://selimanac.github.io/defold-daabbcc3d-example-charming-kitchen/  
 
 
 
