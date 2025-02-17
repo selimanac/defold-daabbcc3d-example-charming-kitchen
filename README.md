@@ -1,4 +1,4 @@
-![DAABBCC](/.github/charming-kitchen.png.png?raw=true)
+![DAABBCC](/.github/charming-kitchen.png?raw=true)
 
 Basic example project for [daabbcc3D](https://github.com/selimanac/defold-daabbcc3d)  
 
