@@ -119,7 +119,6 @@ end
 
 
 function libcamera.get_mouse_ray(mouse_pos_x, mouse_pos_y, result_ray)
-	--	libcamera.view      = camera.get_view(libcamera.ID)
 	local ndc_x         = (mouse_pos_x / libcamera.DISPLAY_WIDTH) * 2 - 1
 	local ndc_y         = (mouse_pos_y / libcamera.DISPLAY_HEIGHT) * 2 - 1
 

@@ -82,6 +82,34 @@ local function set_file_status(status_text)
 	end, gui.PLAYBACK_ONCE_PINGPONG)
 end
 
+local function toggle_info_box()
+	audio.play(audio.FX.CLICK)
+
+	-- close
+	if is_info_box_open then
+		is_info_box_open = false
+		gui.animate(info_box_node, "position.x", 1600, gui.EASING_INSINE, 0.3, 0) -- so lazy
+	else
+		is_info_box_open = true
+		gui.animate(info_box_node, "position.x", 1280, gui.EASING_INSINE, 0.3, 0)
+	end
+end
+
+local function toggle_auto_rotate(status)
+	if status then
+		gui.set_text(rotate_status_node, "Auto rotate activated!")
+	else
+		gui.set_text(rotate_status_node, "Auto rotate deactivated!")
+	end
+	local color = gui.get_color(rotate_status_node)
+
+	gui.set_enabled(rotate_status_node, true)
+	gui.animate(rotate_status_node, gui.PROP_COLOR, vmath.vector4(color.x, color.y, color.z, 1), gui.EASING_OUTSINE, 2.2, 0, function()
+		gui.set_color(rotate_status_node, vmath.vector4(color.x, color.y, color.z, 0))
+		gui.set_enabled(rotate_status_node, false)
+	end, gui.PLAYBACK_ONCE_PINGPONG)
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
@@ -110,7 +138,11 @@ function init(self)
 	scroll_current_y   = scroll_initial_pos.y
 	scroll_target_y    = scroll_initial_pos.y
 
-	-- Set initial prop
+	timer.delay(2, false, toggle_info_box)
+
+	toggle_auto_rotate(true)
+
+	-- Set initial prop for testing
 	-- msg.post(const.URLS.MANAGER, const.MSG.ADD_PROP, { name = "wall_cabinet_corner" })
 end
 
@@ -126,34 +158,6 @@ function update(self, dt)
 		local scroll_new_pos = vmath.vector3(scroll_initial_pos.x, scroll_current_y, scroll_initial_pos.z)
 		gui.set_position(scroll_child_root_node, scroll_new_pos)
 	end
-end
-
-local function toggle_info_box()
-	audio.play(audio.FX.CLICK)
-
-	-- close
-	if is_info_box_open then
-		is_info_box_open = false
-		gui.animate(info_box_node, "position.x", 1600, gui.EASING_INSINE, 0.3, 0)
-	else
-		is_info_box_open = true
-		gui.animate(info_box_node, "position.x", 1280, gui.EASING_INSINE, 0.3, 0)
-	end
-end
-
-local function toggle_auto_rotate(status)
-	if status then
-		gui.set_text(rotate_status_node, "Auto rotate activated!")
-	else
-		gui.set_text(rotate_status_node, "Auto rotate deactivated!")
-	end
-	local color = gui.get_color(rotate_status_node)
-
-	gui.set_enabled(rotate_status_node, true)
-	gui.animate(rotate_status_node, gui.PROP_COLOR, vmath.vector4(color.x, color.y, color.z, 1), gui.EASING_OUTSINE, 2.2, 0, function()
-		gui.set_color(rotate_status_node, vmath.vector4(color.x, color.y, color.z, 0))
-		gui.set_enabled(rotate_status_node, false)
-	end, gui.PLAYBACK_ONCE_PINGPONG)
 end
 
 function on_message(_, message_id, message, _)

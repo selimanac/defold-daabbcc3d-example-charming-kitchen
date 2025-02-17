@@ -26,7 +26,7 @@ local prop_rotation          = 0
 local is_prop_placed         = false
 local is_prop_rotated        = false
 local is_pick_prop           = false
-local is_rotate_snap         = false
+local is_rotate_snap         = true
 
 local collider_position      = vmath.vector3()
 
@@ -191,6 +191,7 @@ end
 
 local function delete_prop()
 	trash.delete()
+
 	go.animate(active_prop.id, "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0.2, 0.2, 0.2), go.EASING_INSINE, 0.2, 0, function()
 		trash.reset(active_prop)
 		remove_prop()

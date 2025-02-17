@@ -30,8 +30,8 @@ local function toogle_profiler()
 end
 
 local function setup_urls()
-	for k, v in pairs(const.URLS) do
-		const.URLS[k] = msg.url(v)
+	for key, url in pairs(const.URLS) do
+		const.URLS[key] = msg.url(url)
 	end
 
 	for factory_key, factory_url in pairs(const.FACTORIES) do

@@ -76,7 +76,7 @@ function room.reset()
 end
 
 function room.generate(room_props)
-	for aabb_id, prop in pairs(room_props) do
+	for _, prop in pairs(room_props) do
 		local new_prop = props.create(prop.name, prop.position, prop.rotation)
 		props.set(new_prop, prop.prop_offset, prop.rotated_prop_size)
 	end

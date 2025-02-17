@@ -27,7 +27,7 @@ const.SHADOW_SETTINGS  = {
 const.LIGHT_SETTINGS   = {
 	source = '/container/light_source',
 	target = '/container/light_target',
-	diffuse_light_color = vmath.vector3(0.7), -- Diffuse light color
+	diffuse_light_color = vmath.vector3(0.7),
 }
 
 const.TRIGGERS         = {

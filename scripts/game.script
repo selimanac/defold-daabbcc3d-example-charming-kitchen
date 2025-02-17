@@ -10,7 +10,6 @@ go.property("camera_angle_x_max", 45)
 go.property("camera_angle_y_min", -30)
 go.property("camera_angle_y_max", 45)
 
-
 local manager = require("scripts.lib.manager")
 
 function init(self)
@@ -28,8 +27,6 @@ function init(self)
 		angle_x_max = self.camera_angle_x_max,
 		angle_y_min = self.camera_angle_y_min,
 		angle_y_max = self.camera_angle_y_max,
-		auto_turn = self.camera_auto_turn,
-		auto_turn_speed = self.camera_auto_turn_speed
 	}
 
 	local game_settings = {
