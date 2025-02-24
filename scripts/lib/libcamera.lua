@@ -118,16 +118,16 @@ end
 -- Screen to plane stuff
 --------------------------
 
-local function unproject(v, inv_view, inv_proj)
-	local p = inv_view * (inv_proj * v)
+local function unproject(v)
+	local p = libcamera.inv_view * (libcamera.inv_proj * v)
 	return p / p.w
 end
 
 local function get_mouse_ray(action_x, action_y)
 	local nx           = (action_x / libcamera.DISPLAY_WIDTH) * 2 - 1
 	local ny           = (action_y / libcamera.DISPLAY_HEIGHT) * 2 - 1
-	local near_point   = unproject(vmath.vector4(nx, ny, -1, 1), libcamera.inv_view, libcamera.inv_proj)
-	local far_point    = unproject(vmath.vector4(nx, ny, 1, 1), libcamera.inv_view, libcamera.inv_proj)
+	local near_point   = unproject(vmath.vector4(nx, ny, -1, 1))
+	local far_point    = unproject(vmath.vector4(nx, ny, 1, 1))
 
 	data.cursor.origin = vmath.vector3(near_point.x, near_point.y, near_point.z)
 	data.cursor.dir    = vmath.normalize(vmath.vector3(far_point.x, far_point.y, far_point.z) - data.cursor.origin)
