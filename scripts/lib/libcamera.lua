@@ -123,7 +123,7 @@ local function unproject(v, inv_view, inv_proj)
 	return p / p.w
 end
 
-local function get_mouse_ray(action_x, action_y, result_ray)
+local function get_mouse_ray(action_x, action_y)
 	local nx           = (action_x / libcamera.DISPLAY_WIDTH) * 2 - 1
 	local ny           = (action_y / libcamera.DISPLAY_HEIGHT) * 2 - 1
 	local near_point   = unproject(vmath.vector4(nx, ny, -1, 1), libcamera.inv_view, libcamera.inv_proj)
