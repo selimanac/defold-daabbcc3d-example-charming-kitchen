@@ -157,7 +157,7 @@ function cursor.update(dt)
 					or
 					(room_collider and room_collider.direction ~= query_collision_response.normal) -- wall - grounds only from facing normal
 					or
-					(room_prop and room_prop.name == "extractor_hood")                       -- don't place anything to extractor. Find a better way if you got time :)
+					(room_prop and room_prop.name == "extractor_hood")                       -- Lazy way to prevent placing anything to extractor. Find a better way if you got time :)
 				then
 					is_prop_placed = false
 				end
@@ -205,13 +205,7 @@ local function toogle_rotate_snap()
 end
 
 function cursor.input(action_id, action)
-	libcamera.get_mouse_ray(action.x, action.y, data.cursor)
-
-	data.cursor.position = libcamera.ray_plane_intersect(data.cursor.origin, data.cursor.dir, const.PLANE_POINT)
-
-	-- Alternative
-	--local plane_normal = vmath.vector3(0, 0, 1)
-	--data.cursor.position = libcamera.ray_plane_intersect_normal(data.cursor.origin, data.cursor.dir, plane_point, plane_normal)
+	data.cursor.position = libcamera.screen_to_plane(action.x, action.y)
 
 	if action_id == const.TRIGGERS.KEY_SPACE and action.pressed then
 		toogle_rotate_snap()

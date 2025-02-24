@@ -8,7 +8,7 @@ data.room_colliders = {}
 data.room_trash     = {}
 
 data.cursor         = {
-	origin = vmath.vector3(),
+	origin = vmath.vector3(5),
 	dir = vmath.vector3(),
 	position = vmath.vector3(),
 	rotation = vmath.quat(),

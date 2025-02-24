@@ -1,6 +1,6 @@
 local const            = {}
 
-const.PLANE_POINT      = vmath.vector3(0, 6, 6)
+const.PLANE_DISTANCE   = 9
 const.BACKGROUND_COLOR = vmath.vector4(255 / 255, 228 / 255, 245 / 255, 1)
 const.PROPS_DATA       = "/data/props.json"
 const.CURSOR           = "/cursor"

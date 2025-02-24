@@ -228,7 +228,9 @@ function update(self)
     --
     local camera_components = camera.get_cameras()
     libcamera.projection = camera.get_projection(camera_components[1])
+    libcamera.inv_proj = vmath.inv(libcamera.projection)
     libcamera.view = camera.get_view(camera_components[1])
+    libcamera.inv_view = vmath.inv(libcamera.view)
     libcamera.frustum = libcamera.projection * libcamera.view
 
     -- set states used for all the world predicates
