@@ -204,8 +204,6 @@ function init(self)
 
 
     self.light_constant_buffer = render.constant_buffer()
-    self.light_transform       = vmath.matrix4()
-    self.light_projection      = vmath.matrix4()
 end
 
 function update(self)
@@ -224,12 +222,11 @@ function update(self)
     render.set_stencil_mask(0xff)
     render.clear(state.clear_buffers)
 
-    -- setup camera view and projection
+    --  camera view and projection
     --
-    local camera_components = camera.get_cameras()
-    libcamera.projection = camera.get_projection(camera_components[1])
+    libcamera.projection = camera.get_projection(libcamera.ID)
     libcamera.inv_proj = vmath.inv(libcamera.projection)
-    libcamera.view = camera.get_view(camera_components[1])
+    libcamera.view = camera.get_view(libcamera.ID)
     libcamera.inv_view = vmath.inv(libcamera.view)
     libcamera.frustum = libcamera.projection * libcamera.view
 
@@ -237,12 +234,6 @@ function update(self)
     render.set_blend_func(graphics.BLEND_FACTOR_SRC_ALPHA, graphics.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA)
     render.enable_state(graphics.STATE_DEPTH_TEST)
 
-    -- Shadows and other constants
-    ---------------------------------------------------
-    -- lights
-
-    self.light_projection                     = render_helper.light_projection
-    self.light_transform                      = render_helper.light_transform
 
     --light_constant_buffer
     self.light_constant_buffer.light          = render_helper.light
@@ -260,8 +251,8 @@ function update(self)
     ---------------------------------------------------
 
     render.set_render_target_size(self.shadow_render_target, render_helper.shadow_settings.buffer_size, render_helper.shadow_settings.buffer_size)
-    render.set_projection(self.light_projection)
-    render.set_view(self.light_transform)
+    render.set_projection(render_helper.light_projection)
+    render.set_view(render_helper.light_transform)
     render.set_viewport(0, 0, render_helper.shadow_settings.buffer_size, render_helper.shadow_settings.buffer_size)
 
     render.enable_state(graphics.FACE_TYPE_FRONT)

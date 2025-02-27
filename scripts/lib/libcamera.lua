@@ -3,8 +3,8 @@ local data = require("scripts.lib.data")
 
 local libcamera = {}
 
-libcamera.CONTAINER_ID = ""
-libcamera.ID = ""
+libcamera.CONTAINER_ID = msg.url()
+libcamera.ID = msg.url()
 libcamera.DISPLAY_WIDTH = sys.get_config_int("display.width")
 libcamera.DISPLAY_HEIGHT = sys.get_config_int("display.height")
 libcamera.view = vmath.matrix4()
