@@ -23,7 +23,7 @@ custom_resources = /data/props.json
 dependencies#0 = https://github.com/selimanac/defold-daabbcc3d/archive/refs/heads/main.zip
 
 [native_extension]
-app_manifest = /test.appmanifest
+app_manifest = 
 
 [daabbcc]
 max_group_count = 3
